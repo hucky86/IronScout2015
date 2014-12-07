@@ -1,15 +1,18 @@
 
-// CounterButton.h
-#ifndef COUNTERBUTTON_H
-#define COUNTERBUTTON_H
+#ifndef CCENTRALWIDGET_H
+#define CCENTRALWIDGET_H
  
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QTableWidget>
 #include <QStringList>
 #include <QHeaderView>
+#include <QLabel>
+#include <QList>
+
+#include "CTable.h"
  
-class CCentralWidget : public QWidget   // von QPushButton ableiten -> indirekt von QObject abgeleitet
+class CCentralWidget : public QWidget
 {
  
   Q_OBJECT
@@ -21,8 +24,7 @@ class CCentralWidget : public QWidget   // von QPushButton ableiten -> indirekt 
   private:
     QVBoxLayout* layout_;
     QTableWidget* table_;
-    
-    const QStringList names_;
+    QList<CTable> tableList_;
     
  
   private slots:
