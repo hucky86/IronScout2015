@@ -9,6 +9,8 @@
 #include <QHeaderView>
 #include <QLabel>
 #include <QList>
+#include <QComboBox>
+#include <QPushButton>
 
 #include "CTable.h"
  
@@ -21,11 +23,14 @@ class CCentralWidget : public QWidget
 
  
   private:
-    QVBoxLayout* Vlayout_;
-    QHBoxLayout* HLayout_;
-    QList<CTable*> tableList_;
+    QVBoxLayout* vLayout_;
+    QHBoxLayout* hLayout_;
     
- 
+    QList<CTable*> tableList_;
+    QPushButton* button_;
+    QComboBox* dropDown_;
+    QLabel* name_;
+    
   private slots:
  
   signals:
