@@ -14,7 +14,6 @@
  
 class CCentralWidget : public QWidget
 {
- 
   Q_OBJECT
  
   public:
@@ -22,9 +21,9 @@ class CCentralWidget : public QWidget
 
  
   private:
-    QVBoxLayout* layout_;
-    QTableWidget* table_;
-    QList<CTable> tableList_;
+    QVBoxLayout* Vlayout_;
+    QHBoxLayout* HLayout_;
+    QList<CTable*> tableList_;
     
  
   private slots:

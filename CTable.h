@@ -3,6 +3,7 @@
 
 #include <QTableWidget>
 #include <QLabel>
+#include <QHeaderView>
 
 
 class CTable	:	public QTableWidget

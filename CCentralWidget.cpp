@@ -2,10 +2,11 @@
 
 CCentralWidget::CCentralWidget()
 { 
-  // Anlegen der Layouts
-  layout_ = new QVBoxLayout;
-  table_ = new QTableWidget;;
+  HLayout_ = new QHBoxLayout;
   
-  layout_->addWidget(table_);
-  this->setLayout(layout_);
+  tableList_.append(new CTable);
+  
+  // Anlegen der Layouts
+  HLayout_->addWidget(tableList_.at(0));
+  this->setLayout(HLayout_);
 }

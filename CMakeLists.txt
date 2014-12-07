@@ -4,7 +4,7 @@ find_package(Qt4 REQUIRED)
 set(CMAKE_AUTOMOC ON)
 include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 
-set(IronScout2015_SRCS main.cpp CMainWindow.h CMainWindow.cpp CCentralWidget.h CCentralWidget.cpp)
+set(IronScout2015_SRCS main.cpp CMainWindow.h CMainWindow.cpp CCentralWidget.h CCentralWidget.cpp CTable.h CTable.cpp)
 qt4_automoc(${IronScout2015_SRCS})
 add_executable(IronScout2015 ${IronScout2015_SRCS})
 target_link_libraries(IronScout2015 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})

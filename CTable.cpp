@@ -1,6 +1,6 @@
 #include "CTable.h"
 
-CTable::CTable(): QTableWidget()
+CTable::CTable()
 {
   // Größe der Tabelle setzen
   this->setColumnCount(6);
@@ -8,7 +8,7 @@ CTable::CTable(): QTableWidget()
   
   // Tabelleneinträge
   QStringList names_ = QStringList() << "Laeufername" << "#" << "Punkte 1" 
-  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt"
+  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
   
   // Spaltenüberschriften setzen 
   //(Muss nach setColumnCount geschehen. Sonst wird es wieder überschrieben)
