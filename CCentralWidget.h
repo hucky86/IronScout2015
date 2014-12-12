@@ -11,6 +11,7 @@
 #include <QList>
 #include <QComboBox>
 #include <QPushButton>
+#include <QGridLayout>
 
 #include "CTable.h"
  
@@ -25,6 +26,9 @@ class CCentralWidget : public QWidget
   private:
     QVBoxLayout* vLayout_;
     QHBoxLayout* hLayout_;
+    
+    //TODO: Spaeter evtl. für Eingabefelder
+    QGridLayout* gLayout_;
     
     QList<CTable*> tableList_;
     QPushButton* button_;
