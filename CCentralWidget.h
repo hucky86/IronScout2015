@@ -12,6 +12,9 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QGridLayout>
+#include <QStackedLayout>
+#include <QInputDialog>
+#include <QDebug>
 
 #include "CTable.h"
  
@@ -26,6 +29,7 @@ class CCentralWidget : public QWidget
   private:
     QVBoxLayout* vLayout_;
     QHBoxLayout* hLayout_;
+    QStackedLayout* sLayout_;
     
     //TODO: Spaeter evtl. für Eingabefelder
     QGridLayout* gLayout_;
@@ -36,10 +40,11 @@ class CCentralWidget : public QWidget
     QLabel* name_;
     
   private slots:
+    void addGroup();
  
   signals:
 
  
 };
  
-#endif // COUNTERBUTTON_H
+#endif // CCENTRALWIDGET_H
