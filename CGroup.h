@@ -3,28 +3,37 @@
 #define CGROUP_H
 
 #include <QLabel>
+#include <QVBoxLayout>
 #include "CTable.h"
  
-class CGroup
+class CGroup : public QWidget
 {
+  Q_OBJECT
  
   public:
     CGroup(QString name);
     
     CTable* getTable();
-    QString getName();
+    QLabel* getName();
 
  
   private:
     
     // Gruppenname
-    const QString name_;
+    QLabel* name_;
     
     // Gruppennummer
     int number_;
     
     // Zugehoerige Tabelle mit allen Informationen
     CTable* table_;
+    
+    // Layout
+    QVBoxLayout* vLayout_;
+    
+private slots:
+  
+signals:
     
 };
  

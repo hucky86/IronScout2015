@@ -37,7 +37,6 @@ class CCentralWidget : public QWidget
     
     QPushButton* button_;
     QComboBox* dropDown_;
-    QLabel* name_;
     
     QList<CGroup*> groupList_;
     
