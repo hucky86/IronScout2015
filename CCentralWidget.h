@@ -24,29 +24,45 @@ class CCentralWidget : public QWidget
   Q_OBJECT
  
   public:
+  // Konstruktoren
+    // leerer Standartkonstruktor
     CCentralWidget();
 
  
   private:
+  
+  // Widgets
+    // neue Gruppe anlegen
+    QPushButton* button_;
+    
+    // Gruppe anwählen
+    QComboBox* dropDown_;
+    
+    // Liste aller Gruppen
+    QList<CGroup*> groupList_;
+    
+  // Layouts
+    // QVBoxLayout für dropDown_ und button_
     QVBoxLayout* vLayout_;
-    QHBoxLayout* hLayout_;
+    
+    // QStackedLayout für alle CGroup
     QStackedLayout* sLayout_;
+    
+    // QHBoxLayout für vLayout_ und sLayout_
+    QHBoxLayout* hLayout_;
     
     //TODO: Spaeter evtl. für Eingabefelder
     QGridLayout* gLayout_;
     
-    QPushButton* button_;
-    QComboBox* dropDown_;
-    
-    QList<CGroup*> groupList_;
-    
   private slots:
+    
+    // hinzufügen einer Gruppe
     void addGroup();
+    
+    // ändern der angewählten Gruppe
     void changeGroup(int index);
  
   signals:
-
- 
 };
  
 #endif // CCENTRALWIDGET_H
