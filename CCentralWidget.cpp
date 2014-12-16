@@ -24,6 +24,7 @@ CCentralWidget::CCentralWidget()
   this->setLayout(vLayout_);
   
   connect(button_, SIGNAL(clicked()), this, SLOT(addGroup()));
+  connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
 }
 
 void CCentralWidget::addGroup()
@@ -33,13 +34,19 @@ void CCentralWidget::addGroup()
                                        tr("neuer Stationsname:"), QLineEdit::Normal,QString(),&ok);
   if (ok)
   {
-    CTable* newGroup = new CTable;
+    CGroup* newGroup = new CGroup;
     bool ok;
   
-    tableList_.append(newGroup);
-  
-    sLayout_->addWidget(newGroup);
-    sLayout_->setCurrentWidget(newGroup);
+    sLayout_->addWidget(newGroup->getTable());
+    sLayout_->setCurrentWidget(newGroup->getTable());
+    
+    dropDown_->addItem(text);
   }
 }
+
+void CCentralWidget::changeGroup(int index)
+{
+  sLayout_->setCurrentIndex(index);
+}
+
 

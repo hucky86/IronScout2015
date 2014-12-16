@@ -3,12 +3,15 @@
 #define CGROUP_H
 
 #include <QString>
+#include "CTable.h"
  
 class CGroup
 {
  
   public:
     CGroup();
+    
+    CTable* getTable();
 
  
   private:
@@ -19,7 +22,8 @@ class CGroup
     // Gruppennummer
     int number_;
     
-    // 
+    // Zugehoerige Tabelle mit allen Informationen
+    CTable* table_;
     
 };
  

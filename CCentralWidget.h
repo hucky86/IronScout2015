@@ -16,7 +16,8 @@
 #include <QInputDialog>
 #include <QDebug>
 
-#include "CTable.h"
+#include "CGroup.h"
+
  
 class CCentralWidget : public QWidget
 {
@@ -34,13 +35,13 @@ class CCentralWidget : public QWidget
     //TODO: Spaeter evtl. für Eingabefelder
     QGridLayout* gLayout_;
     
-    QList<CTable*> tableList_;
     QPushButton* button_;
     QComboBox* dropDown_;
     QLabel* name_;
     
   private slots:
     void addGroup();
+    void changeGroup(int index);
  
   signals:
 
