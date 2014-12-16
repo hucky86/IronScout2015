@@ -8,10 +8,7 @@ CCentralWidget::CCentralWidget()
   
   dropDown_ = new QComboBox;
   button_ = new QPushButton("neue Station");
-  name_ = new QLabel("Station");
-  
-  
-  //tableList_.append(new CTable);
+  name_ = new QLabel;
   
   // Anlegen der Layouts
   hLayout_->addWidget(name_);
@@ -34,11 +31,14 @@ void CCentralWidget::addGroup()
                                        tr("neuer Stationsname:"), QLineEdit::Normal,QString(),&ok);
   if (ok)
   {
-    CGroup* newGroup = new CGroup;
-    bool ok;
+    CGroup* newGroup = new CGroup(text);
+    
+    groupList_.append(newGroup);
   
     sLayout_->addWidget(newGroup->getTable());
+    
     sLayout_->setCurrentWidget(newGroup->getTable());
+    name_->setText(newGroup->getName());
     
     dropDown_->addItem(text);
   }
@@ -47,6 +47,8 @@ void CCentralWidget::addGroup()
 void CCentralWidget::changeGroup(int index)
 {
   sLayout_->setCurrentIndex(index);
+  
+  name_->setText(groupList_.at(index)->getName());
 }
 
 

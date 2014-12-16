@@ -2,22 +2,23 @@
 #ifndef CGROUP_H
 #define CGROUP_H
 
-#include <QString>
+#include <QLabel>
 #include "CTable.h"
  
 class CGroup
 {
  
   public:
-    CGroup();
+    CGroup(QString name);
     
     CTable* getTable();
+    QString getName();
 
  
   private:
     
     // Gruppenname
-    QString name_;
+    const QString name_;
     
     // Gruppennummer
     int number_;

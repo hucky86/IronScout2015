@@ -39,6 +39,8 @@ class CCentralWidget : public QWidget
     QComboBox* dropDown_;
     QLabel* name_;
     
+    QList<CGroup*> groupList_;
+    
   private slots:
     void addGroup();
     void changeGroup(int index);
