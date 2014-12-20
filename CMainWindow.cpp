@@ -28,7 +28,14 @@ QMenuBar* CMainWindow::createMenuBar()
   fileMenu->addAction("Datei speichern", this, SLOT(saveFile()));
   fileMenu->addAction("Programm beenden", this, SLOT(closeWindow()));
   
+  // Hinzufügen des Eintrages "Auswertungsmodus"
+  QMenu* modus = new QMenu("Auswertungsmodus");
+  
+  modus->addAction("Stationsbögen auswerten", this, SLOT(changeToStation()));
+  modus->addAction("Läuferbögen auswerten", this, SLOT(changeToRunner()));
+  
   mbar->addMenu(fileMenu);
+  mbar->addMenu(modus);
   
   return mbar;
 }
@@ -56,5 +63,16 @@ void CMainWindow::loadFile()
   //TODO: Algorithmus zum Laden einfügen
   qDebug() << path;
 }
+
+void CMainWindow::changeToStation()
+{
+  //TODO
+}
+
+void CMainWindow::changeToRunner()
+{
+  //TODO
+}
+
 
 

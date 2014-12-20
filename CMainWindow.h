@@ -35,6 +35,8 @@ private slots:
   void closeWindow();
   void saveFile();
   void loadFile();
+  void changeToStation();
+  void changeToRunner();
   
   
 signals:

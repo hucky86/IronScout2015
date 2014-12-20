@@ -11,7 +11,6 @@
 #include <QList>
 #include <QComboBox>
 #include <QPushButton>
-#include <QGridLayout>
 #include <QStackedLayout>
 #include <QInputDialog>
 #include <QDebug>
@@ -50,9 +49,6 @@ class CCentralWidget : public QWidget
     
     // QHBoxLayout für vLayout_ und sLayout_
     QHBoxLayout* hLayout_;
-    
-    //TODO: Spaeter evtl. für Eingabefelder
-    QGridLayout* gLayout_;
     
   private slots:
     

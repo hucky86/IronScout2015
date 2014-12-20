@@ -4,6 +4,7 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QGridLayout>
 #include "CTable.h"
  
 class CGroup : public QWidget
@@ -28,8 +29,11 @@ class CGroup : public QWidget
     // Zugehoerige Tabelle mit allen Informationen
     CTable* table_;
     
-    // Layout
+    // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;
+    
+    // Layout für die Eingabe eines neuen Eintrages
+    QGridLayout* gLayout_;
     
 private slots:
   
