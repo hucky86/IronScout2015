@@ -16,5 +16,5 @@ CTable::CTable()
   
   // Verhalten der Tabelle definieren
   this->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-  this->horizontalHeader()->setResizeMode( QHeaderView::Stretch );
+  this->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
 }
