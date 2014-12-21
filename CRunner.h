@@ -7,7 +7,7 @@ class CRunner : public CGroup
 {
  
   public:
-    CRunner();
+    CRunner(QString name);
 
  
   private:

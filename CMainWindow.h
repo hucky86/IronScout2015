@@ -1,7 +1,7 @@
 /* Klasse zur Darstellung einer Laeufergruppe */
 
-#ifndef CRUNNER_H
-#define CRUNNER_H
+#ifndef CMAINWINDOW_H
+#define CMAINWINDOW_H
 
 #include <QMainWindow>
 #include <qstring.h>
@@ -43,4 +43,4 @@ signals:
   
 };
 
-#endif // CRUNNER_H
+#endif // CMAINWINDOW_H

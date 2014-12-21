@@ -4,7 +4,7 @@
 CMainWindow::CMainWindow()
 { 
   menu_ = createMenuBar();
-  central_ = new CCentralWidget;
+  central_ = new CCentralWidget("Station");
   
   setMenuBar(menu_);
   setCentralWidget(central_);

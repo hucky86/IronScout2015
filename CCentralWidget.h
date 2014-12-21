@@ -16,6 +16,8 @@
 #include <QDebug>
 
 #include "CGroup.h"
+#include "CRunner.h"
+#include "CStation.h"
 
  
 class CCentralWidget : public QWidget
@@ -25,7 +27,7 @@ class CCentralWidget : public QWidget
   public:
   // Konstruktoren
     // leerer Standartkonstruktor
-    CCentralWidget();
+    CCentralWidget(QString analysis);
 
  
   private:
@@ -49,6 +51,9 @@ class CCentralWidget : public QWidget
     
     // QHBoxLayout für vLayout_ und sLayout_
     QHBoxLayout* hLayout_;
+    
+    // Zugehörigkeit der Auswertungsart
+    QString analysis_;
     
   private slots:
     
