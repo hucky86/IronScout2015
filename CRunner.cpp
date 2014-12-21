@@ -5,3 +5,8 @@ CRunner::CRunner(QString name):CGroup(name)
 {
   
 }
+
+void CRunner::buildTable()
+{
+
+}

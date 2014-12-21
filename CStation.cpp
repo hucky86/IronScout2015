@@ -3,6 +3,13 @@
 
 CStation::CStation(QString name): CGroup(name)
 {
+  buildTable();
+  
+  vLayout_->addWidget(table_);
+}
+
+void CStation::buildTable()
+{
   // Table anlegen
   table_ = new QTableWidget;
   
@@ -21,8 +28,8 @@ CStation::CStation(QString name): CGroup(name)
   // Verhalten der Tabelle definieren
   table_->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   table_->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
-  
-  vLayout_->addWidget(table_);
+
 }
+
 
 

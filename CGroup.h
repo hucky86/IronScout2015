@@ -5,7 +5,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QGridLayout>
-#include "CTable.h"
+#include <QTableWidget>
  
 class CGroup : public QWidget
 {
@@ -35,6 +35,8 @@ protected:
     
     // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;
+    
+    virtual void buildTable () = 0;
     
 private slots:
   

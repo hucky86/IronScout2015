@@ -12,6 +12,10 @@ class CRunner : public CGroup
  
   private:
     
+  protected:
+  
+    void buildTable ();
+    
 };
  
 #endif // CRUNNER_H
