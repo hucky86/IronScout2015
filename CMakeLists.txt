@@ -10,7 +10,7 @@ set(CMAKE_AUTOMOC ON)
 # Find the QtWidgets library
 find_package(Qt5Widgets)
 
-set(IronScout2015_SRCS CStation.cpp CRunner.cpp CGroup.cpp main.cpp CMainWindow.cpp CCentralWidget.cpp CTable.cpp)
+set(IronScout2015_SRCS CStation.cpp CRunner.cpp CGroup.cpp main.cpp CMainWindow.cpp CCentralWidget.cpp)
 
 # Tell CMake to create the IronScout executable
 add_executable(IronScout2015 WIN32 ${IronScout2015_SRCS})

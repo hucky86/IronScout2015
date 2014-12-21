@@ -14,7 +14,7 @@ class CGroup : public QWidget
   public:
     CGroup(QString name);
     
-    CTable* getTable();
+    QTableWidget* getTable();
     QLabel* getName();
 
  
@@ -26,14 +26,15 @@ class CGroup : public QWidget
     // Gruppennummer
     int number_;
     
-    // Zugehoerige Tabelle mit allen Informationen
-    CTable* table_;
+    // Layout für die Eingabe eines neuen Eintrages
+    QGridLayout* gLayout_;
+    
+protected:
+    // Table Widget zur Speicherung aller Eingaben
+    QTableWidget* table_;
     
     // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;
-    
-    // Layout für die Eingabe eines neuen Eintrages
-    QGridLayout* gLayout_;
     
 private slots:
   
