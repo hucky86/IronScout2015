@@ -1,4 +1,3 @@
-
 #ifndef CGROUP_H
 #define CGROUP_H
 
@@ -6,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QTableWidget>
+#include <QPushButton>
  
 class CGroup : public QWidget
 {
@@ -26,15 +26,18 @@ class CGroup : public QWidget
     // Gruppennummer
     int number_;
     
-    // Layout für die Eingabe eines neuen Eintrages
-    QGridLayout* gLayout_;
-    
 protected:
     // Table Widget zur Speicherung aller Eingaben
     QTableWidget* table_;
     
     // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;
+    
+    // Layout für die Eingabe eines neuen Eintrages
+    QGridLayout* gLayout_;
+    
+    // Button zur Bestätigung eines Eintrages in die Tabelle
+    QPushButton* inputButton_;
     
     virtual void buildTable () = 0;
     

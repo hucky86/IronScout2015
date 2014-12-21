@@ -2,6 +2,7 @@
 #define CSTATION_H
 
 #include <QHeaderView>
+#include <QLineEdit>
 
 #include "CGroup.h"
  
@@ -13,6 +14,8 @@ class CStation : public CGroup
 
   private:
     void buildTable();
+    
+    QStringList parameters_;
     
 };
  

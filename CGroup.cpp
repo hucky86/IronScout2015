@@ -4,6 +4,7 @@ CGroup::CGroup(QString name)
 {
   name_ = new QLabel(name);
   vLayout_ = new QVBoxLayout;
+  gLayout_ = new QGridLayout;
   
   vLayout_->addWidget(name_);
   
