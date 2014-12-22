@@ -1,12 +1,7 @@
 
 #include "CRunner.h"
 
-CRunner::CRunner(QString name):CGroup(name)
+CRunner::CRunner(QStringList parameter, QString text):CGroup(parameter, text)
 {
   
-}
-
-void CRunner::buildTable()
-{
-
 }

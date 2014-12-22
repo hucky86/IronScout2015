@@ -7,14 +7,13 @@ class CRunner : public CGroup
 {
  
   public:
-    CRunner(QString name);
+    CRunner(QStringList parameter, QString text);
 
  
   private:
     
   protected:
-  
-    void buildTable ();
+
     
 };
  

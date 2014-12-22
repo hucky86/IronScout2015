@@ -48,12 +48,12 @@ void CCentralWidget::addGroup()
     
     if(analysis_ == "Station")
     {
-      newGroup = new CStation(parameterStation_, text);
+      newGroup = new CStation(parameter_, text);
     }
     
     else if(analysis_ == "Läufer")
     {
-      newGroup = new CRunner(text);
+      newGroup = new CRunner(parameter_, text);
     }
     
     // neue Gruppe anlegen und dem QStackedLayout hinzufügen
@@ -72,16 +72,20 @@ void CCentralWidget::changeGroup(int index)
 
 void CCentralWidget::buildInputLayout()
 {
-  QStringList p;
+  QStringList parameterStation_ = QStringList() << "Laeufername" << "#" << "Punkte 1" 
+  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
+  
+  QStringList parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 1" 
+  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
   
   if (analysis_ == "Station")
   {
-    p = parameterStation_;
+    parameter_ = parameterStation_;
   }
   
   else if (analysis_ == "Läufer")
   {
-    //TODO:
+    parameter_ = parameterRunner_;
   }
   
   else
@@ -91,27 +95,21 @@ void CCentralWidget::buildInputLayout()
   
   // Bauen des Eingabefeldes
   // Hinzufügen der Label
-  for (int i = 0; i < p.size(); i++)
+  for (int i = 0; i < parameter_.size(); i++)
   {
-    gLayout_->addWidget(new QLabel(p.at(i)),0,i);
+    gLayout_->addWidget(new QLabel(parameter_.at(i)),0,i);
   }
   
   // Hinzufügen der Eingabefelder
-  for (int i = 0; i < p.size(); i++)
+  for (int i = 0; i < parameter_.size(); i++)
   {
     gLayout_->addWidget(new QLineEdit,1,i);
   }
   
   // Hinzufügen des Bestätigungs-Buttons
   inputButton_ = new QPushButton("Eintrag hinzufügen");
-  gLayout_->addWidget(inputButton_,1,p.size());
+  gLayout_->addWidget(inputButton_,1,parameter_.size());
 }
-
-QStringList CCentralWidget::parameterStation_ = QStringList() << "Laeufername" << "#" << "Punkte 1" 
-  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
-  
-QStringList CCentralWidget::parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 1" 
-  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
 
 
 

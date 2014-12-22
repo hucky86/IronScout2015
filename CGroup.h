@@ -5,13 +5,14 @@
 #include <QVBoxLayout>
 #include <QTableWidget>
 #include <QPushButton>
+#include <QHeaderView>
  
 class CGroup : public QWidget
 {
   Q_OBJECT
  
   public:
-    CGroup(QString name);
+    CGroup(QStringList parameter, QString name);
     
     QTableWidget* getTable();
     QLabel* getName();
@@ -32,7 +33,10 @@ protected:
     // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;
     
-    virtual void buildTable () = 0;
+    // Liste mit den Eingabeparametern
+    QStringList parameter_;
+    
+    virtual void buildTable ();
     
 private slots:
   

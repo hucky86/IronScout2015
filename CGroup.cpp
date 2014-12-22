@@ -1,11 +1,16 @@
 #include "CGroup.h"
 
-CGroup::CGroup(QString name)
+CGroup::CGroup(QStringList parameter, QString name)
 {
+  parameter_ = parameter;
   name_ = new QLabel(name);
   vLayout_ = new QVBoxLayout;
   
+   // Bauen des TableWidget
+  buildTable();
+  
   vLayout_->addWidget(name_);
+  vLayout_->addWidget(table_);
   
   setLayout(vLayout_);
 }
@@ -19,4 +24,23 @@ QLabel* CGroup::getName()
 {
   return name_;
 }
+
+void CGroup::buildTable()
+{
+  // Table anlegen
+  table_ = new QTableWidget;
+  
+  // Größe der Tabelle setzen
+  table_->setColumnCount(parameter_.size());
+  table_->setRowCount(0);
+  
+  // Spaltenüberschriften setzen 
+  //(Muss nach setColumnCount geschehen. Sonst wird es wieder überschrieben)
+  table_->setHorizontalHeaderLabels(parameter_);
+  
+  // Verhalten der Tabelle definieren
+  table_->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  table_->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
+}
+
 

@@ -63,9 +63,8 @@ class CCentralWidget : public QWidget
     // Button zur Bestätigung eines Eintrages in die Tabelle
     QPushButton* inputButton_;
     
-    // Parameter der Läufer und Stationen
-    static QStringList parameterRunner_;
-    static QStringList parameterStation_;
+    // Parametersatz dieses Widgets
+    QStringList parameter_;
     
     // bauen des GridLayouts mit allen Eingabefeldern
     void buildInputLayout();
