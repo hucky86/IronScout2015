@@ -14,6 +14,8 @@
 #include <QStackedLayout>
 #include <QInputDialog>
 #include <QDebug>
+#include <QGridLayout>
+#include <QStringList>
 
 #include "CGroup.h"
 #include "CRunner.h"
@@ -54,6 +56,20 @@ class CCentralWidget : public QWidget
     
     // Zugehörigkeit der Auswertungsart
     QString analysis_;
+    
+    // Layout für die Eingabe eines neuen Eintrages
+    QGridLayout* gLayout_;
+    
+    // Button zur Bestätigung eines Eintrages in die Tabelle
+    QPushButton* inputButton_;
+    
+    // Parameter der Läufer und Stationen
+    static QStringList parameterRunner_;
+    static QStringList parameterStation_;
+    
+    // bauen des GridLayouts mit allen Eingabefeldern
+    void buildInputLayout();
+  
     
   private slots:
     

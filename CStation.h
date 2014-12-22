@@ -10,12 +10,12 @@ class CStation : public CGroup
 {
  
   public:
-    CStation(QString name);
+    CStation(QStringList parameter, QString name);
 
   private:
     void buildTable();
     
-    QStringList parameters_;
+    QStringList parameter_;
     
 };
  

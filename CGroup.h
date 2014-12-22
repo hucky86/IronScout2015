@@ -3,7 +3,6 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
-#include <QGridLayout>
 #include <QTableWidget>
 #include <QPushButton>
  
@@ -32,12 +31,6 @@ protected:
     
     // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;
-    
-    // Layout für die Eingabe eines neuen Eintrages
-    QGridLayout* gLayout_;
-    
-    // Button zur Bestätigung eines Eintrages in die Tabelle
-    QPushButton* inputButton_;
     
     virtual void buildTable () = 0;
     
