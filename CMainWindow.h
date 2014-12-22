@@ -11,6 +11,8 @@
 #include <QFileDialog>
 #include <QDebug>
 #include <QTableWidget>
+#include <QStackedLayout>
+#include <QWidget>
 
 #include "CCentralWidget.h"
 
@@ -21,7 +23,10 @@ class CMainWindow : public QMainWindow
 private:
   
   // Hauptmenüeinträge
-  CCentralWidget* central_;
+  QWidget* centralWidget_;
+  QStackedLayout* centralLayout_;
+  CCentralWidget* centralStation_;
+  CCentralWidget* centralRunner_;
   QMenuBar* menu_;
   
   // Menüleiste erzeugen

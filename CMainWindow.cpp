@@ -4,10 +4,17 @@
 CMainWindow::CMainWindow()
 { 
   menu_ = createMenuBar();
-  central_ = new CCentralWidget("Station");
+  centralWidget_ = new QWidget;
+  centralLayout_ = new QStackedLayout;
+  centralStation_ = new CCentralWidget("Station");
+  centralRunner_ = new CCentralWidget("Läufer");
   
   setMenuBar(menu_);
-  setCentralWidget(central_);
+  centralLayout_->addWidget(centralStation_);
+  centralLayout_->addWidget(centralRunner_);
+  
+  centralWidget_->setLayout(centralLayout_);
+  setCentralWidget(centralWidget_);
   setWindowTitle("IronScout 2015 Selm");
 }
 
@@ -66,12 +73,18 @@ void CMainWindow::loadFile()
 
 void CMainWindow::changeToStation()
 {
-  //TODO
+  if(centralLayout_->currentWidget() != centralStation_)
+  {
+    centralLayout_->setCurrentWidget(centralStation_);
+  }
 }
 
 void CMainWindow::changeToRunner()
 {
-  //TODO
+  if(centralLayout_->currentWidget() != centralRunner_)
+  {
+    centralLayout_->setCurrentWidget(centralRunner_);
+  }
 }
 
 
