@@ -13,21 +13,24 @@ CCentralWidget::CCentralWidget(QString analysis)
   
   // Anlegen der Widgets
   dropDown_ = new QComboBox;
-  button_ = new QPushButton("Neu: " + analysis_);
+  bNew_ = new QPushButton("Neu: " + analysis_);
+  bInputDelete_ = new QPushButton("Eintrag löschen");
   buildInputLayout();
   
   // Konfigurieren der Layouts
   hLayout_->addWidget(dropDown_);
-  hLayout_->addWidget(button_);
+  hLayout_->addWidget(bNew_);
   vLayout_->addLayout(hLayout_);
   vLayout_->addLayout(gLayout_);
   vLayout_->addLayout(sLayout_);
+  vLayout_->addWidget(bInputDelete_,0,Qt::AlignRight);
   this->setLayout(vLayout_);
   
   // setzen der connections
-  connect(button_, SIGNAL(clicked()), this, SLOT(addGroup()));
+  connect(bNew_, SIGNAL(clicked()), this, SLOT(addGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
-  connect(inputButton_, SIGNAL(clicked()), this, SLOT(addEntry()));
+  connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
+  connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -118,26 +121,40 @@ void CCentralWidget::buildInputLayout()
   }
 
   // Hinzufügen des Bestätigungs-Buttons
-  inputButton_ = new QPushButton("Eintrag hinzufügen");
-  gLayout_->addWidget(inputButton_,1,parameter_.size());
+  bInputNew_ = new QPushButton("Eintrag hinzufügen");
+  gLayout_->addWidget(bInputNew_,1,parameter_.size());
 }
 //---------------------------------------------------------------------------------------
 
 void CCentralWidget::addEntry()
 {
   // Holen der aktuellen Gruppe
-  CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->currentWidget());
+  CGroup* group = getCurrentGroup();
   
-  if (actualGroup == NULL)
+  if (group == NULL)
   {
     // TODO: Execption
     return;
   }
   
   // Eintrag hinzufügen
-  actualGroup->addTableEntry(inputList_);
+  group->addTableEntry(inputList_);
 }
 //---------------------------------------------------------------------------------------
 
+void CCentralWidget::deleteEntry()
+{
+  QTableWidget* table = getCurrentGroup()->getTable();
+  
+  table->removeRow(table->currentRow());
+}
+//---------------------------------------------------------------------------------------
 
+CGroup* CCentralWidget::getCurrentGroup()
+{
+    // Holen der aktuellen Gruppe
+  CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->currentWidget());
+  
+  return actualGroup;
+}
 

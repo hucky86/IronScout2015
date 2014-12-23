@@ -28,10 +28,6 @@ public:
   
 // Konstruktoren:
     CGroup(QStringList parameter, QString name);
-
-// Widgets:
-    // Table Widget zur Speicherung aller Eingaben
-    QTableWidget* table_;
     
 // Memberfunktionen:
     // get Funktionen
@@ -57,6 +53,10 @@ public:
     QVBoxLayout* vLayout_;
     
 protected:
+  
+//Widgets:
+    // Table Widget zur Speicherung aller Eingaben
+    QTableWidget* table_;
     
 private slots:
   

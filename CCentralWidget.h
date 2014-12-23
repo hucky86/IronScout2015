@@ -45,14 +45,16 @@ class CCentralWidget : public QWidget
   
 // Widgets:
     // neue Gruppe anlegen
-    QPushButton* button_;
+    QPushButton* bNew_;
     // Gruppe anwählen
     QComboBox* dropDown_;
     // Button zur Bestätigung eines Eintrages in die Tabelle
-    QPushButton* inputButton_;
+    QPushButton* bInputNew_;
+    // Button zum löschen eines Eintrages in der Tabelle
+    QPushButton* bInputDelete_;
     
 // Layouts:
-    // QVBoxLayout für dropDown_ und button_
+    // QVBoxLayout für dropDown_ und bNew_
     QVBoxLayout* vLayout_;
     // QStackedLayout für alle CGroup
     QStackedLayout* sLayout_;
@@ -82,6 +84,10 @@ private slots:
     void changeGroup(int index);
     // Eintrag zum table hinzufügen
     void addEntry();
+    // Eintrag im table löschen
+    void deleteEntry();
+    // Aktuelle CGroup
+    CGroup* getCurrentGroup();
  
 signals:
 };
