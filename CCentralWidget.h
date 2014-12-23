@@ -88,6 +88,8 @@ private slots:
     void deleteEntry();
     // Aktuelle CGroup
     CGroup* getCurrentGroup();
+    // Daten in den Eingabefeldern aktualisieren
+    void refreshInput();
  
 signals:
 };

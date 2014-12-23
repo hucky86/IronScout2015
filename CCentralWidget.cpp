@@ -64,6 +64,8 @@ void CCentralWidget::addGroup()
     sLayout_->addWidget(newGroup);
     sLayout_->setCurrentWidget(newGroup);
   }
+  
+  connect(getCurrentGroup()->getTable(), SIGNAL(itemSelectionChanged()), this, SLOT(refreshInput()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -157,4 +159,19 @@ CGroup* CCentralWidget::getCurrentGroup()
   
   return actualGroup;
 }
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::refreshInput()
+{
+  int row = getCurrentGroup()->getTable()->currentRow();
+  QTableWidget* table = getCurrentGroup()->getTable();
+  
+  for(int i = 0; i < inputList_.size(); i++)
+  {
+    QString text = table->item(row,i)->text();
+    
+    inputList_.at(i)->setText(text);
+  }
+}
+
 
