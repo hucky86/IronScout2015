@@ -17,11 +17,13 @@ CMainWindow::CMainWindow()
   setCentralWidget(centralWidget_);
   setWindowTitle("IronScout 2015 Selm");
 }
+//---------------------------------------------------------------------------------------
 
 CMainWindow::~CMainWindow()
 {
 
 }
+//---------------------------------------------------------------------------------------
 
 QMenuBar* CMainWindow::createMenuBar()
 {
@@ -46,6 +48,7 @@ QMenuBar* CMainWindow::createMenuBar()
   
   return mbar;
 }
+//---------------------------------------------------------------------------------------
 
 void CMainWindow::closeWindow()
 {
@@ -54,6 +57,7 @@ void CMainWindow::closeWindow()
   // Schließen des Hauptfensters
   emit close();
 }
+//---------------------------------------------------------------------------------------
 
 void CMainWindow::saveFile()
 {
@@ -62,6 +66,7 @@ void CMainWindow::saveFile()
   //TODO: Algorithmus zum Speichern einfügen
   qDebug() << path;
 }
+//---------------------------------------------------------------------------------------
 
 void CMainWindow::loadFile()
 {
@@ -70,6 +75,7 @@ void CMainWindow::loadFile()
   //TODO: Algorithmus zum Laden einfügen
   qDebug() << path;
 }
+//---------------------------------------------------------------------------------------
 
 void CMainWindow::changeToStation()
 {
@@ -78,6 +84,7 @@ void CMainWindow::changeToStation()
     centralLayout_->setCurrentWidget(centralStation_);
   }
 }
+//---------------------------------------------------------------------------------------
 
 void CMainWindow::changeToRunner()
 {
@@ -86,6 +93,6 @@ void CMainWindow::changeToRunner()
     centralLayout_->setCurrentWidget(centralRunner_);
   }
 }
-
+//---------------------------------------------------------------------------------------
 
 

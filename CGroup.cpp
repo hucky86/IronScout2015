@@ -14,16 +14,19 @@ CGroup::CGroup(QStringList parameter, QString name)
   
   setLayout(vLayout_);
 }
+//---------------------------------------------------------------------------------------
 
 QTableWidget* CGroup::getTable()
 {
   return table_;
 }
+//---------------------------------------------------------------------------------------
 
 QLabel* CGroup::getName()
 {
   return name_;
 }
+//---------------------------------------------------------------------------------------
 
 void CGroup::buildTable()
 {
@@ -42,6 +45,7 @@ void CGroup::buildTable()
   table_->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   table_->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
 }
+//---------------------------------------------------------------------------------------
 
 void CGroup::addTableEntry(const QList<QLineEdit*> list)
 {
@@ -58,6 +62,6 @@ void CGroup::addTableEntry(const QList<QLineEdit*> list)
     p->setText(list.at(i)->text());
   }
 }
-
+//---------------------------------------------------------------------------------------
 
 

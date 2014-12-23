@@ -27,21 +27,30 @@ class CMainWindow : public QMainWindow
 {
   Q_OBJECT
   
+public:
+  
+// Konstruktoren:
+  CMainWindow();
+  ~CMainWindow();
+  
 private:
   
-  // Hauptmenüeinträge
+// Widgets:
+  // Basis-Widget
   QWidget* centralWidget_;
-  QStackedLayout* centralLayout_;
+  // Stationsauswertung
   CCentralWidget* centralStation_;
+  // Läuferauswertung
   CCentralWidget* centralRunner_;
   QMenuBar* menu_;
   
+//Layouts:
+  // Hält Stations- und Läuferauswertung
+  QStackedLayout* centralLayout_;
+
+// Memberfunktionen:
   // Menüleiste erzeugen
   QMenuBar* createMenuBar ();
-  
-public:
-  CMainWindow();
-  ~CMainWindow();
 
 private slots:
   void closeWindow();

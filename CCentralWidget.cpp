@@ -2,7 +2,7 @@
 
 CCentralWidget::CCentralWidget(QString analysis)
 { 
-  // Auswertung Station oder Läufer
+  // Auswahl der Analyse (Station oder Läufer?)
   analysis_ = analysis;
   
   // Anlegen der Layouts
@@ -19,11 +19,9 @@ CCentralWidget::CCentralWidget(QString analysis)
   // Konfigurieren der Layouts
   hLayout_->addWidget(dropDown_);
   hLayout_->addWidget(button_);
-  
   vLayout_->addLayout(hLayout_);
   vLayout_->addLayout(gLayout_);
   vLayout_->addLayout(sLayout_);
-    
   this->setLayout(vLayout_);
   
   // setzen der connections
@@ -31,6 +29,7 @@ CCentralWidget::CCentralWidget(QString analysis)
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
   connect(inputButton_, SIGNAL(clicked()), this, SLOT(addEntry()));
 }
+//---------------------------------------------------------------------------------------
 
 void CCentralWidget::addGroup()
 {
@@ -47,6 +46,7 @@ void CCentralWidget::addGroup()
     dropDown_->addItem(text);
     dropDown_->setCurrentIndex(dropDown_->count() - 1);
     
+    // Unterscheidung ob es sich um eine Stations- oder Läuferauswertung handelt
     if(analysis_ == "Station")
     {
       newGroup = new CStation(parameter_, text);
@@ -56,25 +56,31 @@ void CCentralWidget::addGroup()
     {
       newGroup = new CRunner(parameter_, text);
     }
-  
+    
+    // Hinzufügen zum stacked Layout
     sLayout_->addWidget(newGroup);
     sLayout_->setCurrentWidget(newGroup);
   }
 }
+//---------------------------------------------------------------------------------------
 
 void CCentralWidget::changeGroup(int index)
 {
   sLayout_->setCurrentIndex(index);
 }
+//---------------------------------------------------------------------------------------
 
 void CCentralWidget::buildInputLayout()
 {
+  // Hier werden die Parameter der Auswertung festgelegt
+  // TODO: Besser als const in eigene source auslagern...
   QStringList parameterStation_ = QStringList() << "Laeufername" << "#" << "Punkte 1" 
   << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
   
   QStringList parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 1" 
   << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
   
+  // Auswertung entsprechend anlegen
   if (analysis_ == "Station")
   {
     parameter_ = parameterStation_;
@@ -115,6 +121,7 @@ void CCentralWidget::buildInputLayout()
   inputButton_ = new QPushButton("Eintrag hinzufügen");
   gLayout_->addWidget(inputButton_,1,parameter_.size());
 }
+//---------------------------------------------------------------------------------------
 
 void CCentralWidget::addEntry()
 {
@@ -127,8 +134,10 @@ void CCentralWidget::addEntry()
     return;
   }
   
+  // Eintrag hinzufügen
   actualGroup->addTableEntry(inputList_);
 }
+//---------------------------------------------------------------------------------------
 
 
 

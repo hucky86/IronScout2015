@@ -22,35 +22,39 @@ class CGroup : public QWidget
 {
   Q_OBJECT
  
-  public:
+public:
+  
+// Konstruktoren:
     CGroup(QStringList parameter, QString name);
-    
-    QTableWidget* getTable();
-    QLabel* getName();
-    
-    void addTableEntry (const QList<QLineEdit*> list);
-    
+
+// Widgets:
     // Table Widget zur Speicherung aller Eingaben
     QTableWidget* table_;
-
- 
-  private:
     
+// Memberfunktionen:
+    // get Funktionen
+    QTableWidget* getTable();
+    QLabel* getName();
+    // Hinzufügen eines Tabelleneintrages
+    void addTableEntry (const QList<QLineEdit*> list);
+
+  private:
+
+//Membervariablen:
     // Gruppenname
     QLabel* name_;
-    
-    // Gruppennummer
-    int number_;
-    
-protected:
-    
-    // Layout für Name und Tabelle
-    QVBoxLayout* vLayout_;
-    
     // Liste mit den Eingabeparametern
     QStringList parameter_;
     
-    virtual void buildTable ();
+//Memberfunktionen:
+    // Gekapselte Funktion zum Aufbau des QTableWidget
+    void buildTable ();
+
+// Layouts:
+    // Layout für Name und Tabelle
+    QVBoxLayout* vLayout_;
+    
+protected:
     
 private slots:
   
