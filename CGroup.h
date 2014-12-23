@@ -6,6 +6,7 @@
 #include <QTableWidget>
 #include <QPushButton>
 #include <QHeaderView>
+#include <QLineEdit>
  
 class CGroup : public QWidget
 {
@@ -16,6 +17,8 @@ class CGroup : public QWidget
     
     QTableWidget* getTable();
     QLabel* getName();
+    
+    void addTableEntry (QList<QLineEdit*> list);
     
     // Table Widget zur Speicherung aller Eingaben
     QTableWidget* table_;

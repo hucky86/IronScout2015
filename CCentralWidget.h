@@ -65,6 +65,9 @@ class CCentralWidget : public QWidget
     
     // bauen des GridLayouts mit allen Eingabefeldern
     void buildInputLayout();
+    
+    // Hält die Referenzen zu allen Eingabeparametern
+    QList<QLineEdit*> inputList_;
   
     
   private slots:

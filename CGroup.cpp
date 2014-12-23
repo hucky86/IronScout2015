@@ -43,4 +43,21 @@ void CGroup::buildTable()
   table_->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
 }
 
+void CGroup::addTableEntry(QList<QLineEdit*> list)
+{
+  // Neue Zeile hinzufügen
+  table_->insertRow(table_->rowCount());
+  
+  for (int i = 0; i < list.size(); i++)
+  {    
+    // Holen des TableWidgetItem
+    QTableWidgetItem* p = new QTableWidgetItem;
+    
+    // Einfügen in die Tabelle
+    table_->setItem(table_->rowCount() - 1, i, p);
+    p->setText(list.at(i)->text());
+  }
+}
+
+
 

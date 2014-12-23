@@ -103,6 +103,14 @@ void CCentralWidget::buildInputLayout()
     gLayout_->addWidget(new QLineEdit,1,i);
   }
   
+  // Herstellung der Referenz zu den Eingabeparametern
+  // TODO: Schleife über Abfrage "if QLineEdit" verbessern
+  // TODO: Safe machen
+  for (int i = 0; i < gLayout_->columnCount(); i++)
+  {
+    inputList_.push_back(dynamic_cast<QLineEdit*>(gLayout_->itemAtPosition(1,i)->widget()));
+  }
+
   // Hinzufügen des Bestätigungs-Buttons
   inputButton_ = new QPushButton("Eintrag hinzufügen");
   gLayout_->addWidget(inputButton_,1,parameter_.size());
@@ -119,26 +127,7 @@ void CCentralWidget::addEntry()
     return;
   }
   
-  // Neue Zeile hinzufügen
-  actualGroup->table_->insertRow(actualGroup->table_->rowCount());
-  
-  for (int i = 0; i < gLayout_->columnCount()-1; i++)
-  {
-    // Anlegen des QLineEdit
-    QLineEdit* input = dynamic_cast<QLineEdit*>(gLayout_->itemAtPosition(1,i)->widget());
-    
-    if (input == NULL)
-    {
-      // TODO: Execption; Programm schließen
-    }
-    
-    // Holen des TableWidgetItem
-    QTableWidgetItem* p = new QTableWidgetItem;
-    
-    // Einfügen in die Tabelle
-    actualGroup->table_->setItem(actualGroup->table_->rowCount() - 1, i, p);
-    p->setText(input->text());
-  }
+  actualGroup->addTableEntry(inputList_);
 }
 
 
