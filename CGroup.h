@@ -1,3 +1,13 @@
+// IRON SCOUT AUSWERTUNG
+//************************************************************************
+// Klasse:          CGroup
+// 
+// Beschreibung:    Abstrakte Basisklasse des Interfaces der Ein- und 
+//                  Ausgabe für Gruppen. Abgeleitete Klassen CRunner und
+//                  CStation. 
+//                  
+//************************************************************************
+
 #ifndef CGROUP_H
 #define CGROUP_H
 
@@ -18,7 +28,7 @@ class CGroup : public QWidget
     QTableWidget* getTable();
     QLabel* getName();
     
-    void addTableEntry (QList<QLineEdit*> list);
+    void addTableEntry (const QList<QLineEdit*> list);
     
     // Table Widget zur Speicherung aller Eingaben
     QTableWidget* table_;

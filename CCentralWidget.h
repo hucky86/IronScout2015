@@ -1,3 +1,12 @@
+// IRON SCOUT AUSWERTUNG
+//************************************************************************
+// Klasse:          CCentralWidget
+// 
+// Beschreibung:    Zentrales Widget zur Verwaltung der Ein- und Ausgaben.
+//                  Wird als "Station"- oder "Läufer"-Auswertung
+//                  initialisiert.
+// 
+//************************************************************************
 
 #ifndef CCENTRALWIDGET_H
 #define CCENTRALWIDGET_H

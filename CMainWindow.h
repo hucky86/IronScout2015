@@ -1,4 +1,11 @@
-/* Klasse zur Darstellung einer Laeufergruppe */
+// IRON SCOUT AUSWERTUNG
+//************************************************************************
+// Klasse:          CMainWindow
+// 
+// Beschreibung:    Interface zur Verwaltung des Programms. Verwaltung
+//                  der Menüleiste sowie des CCentralWidget.
+//                  
+//************************************************************************
 
 #ifndef CMAINWINDOW_H
 #define CMAINWINDOW_H

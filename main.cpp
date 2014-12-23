@@ -1,3 +1,11 @@
+// IRON SCOUT AUSWERTUNG
+//************************************************************************
+// Klasse:          main
+// 
+// Beschreibung:    Einstiegspunkt des Programms.
+//                  
+//************************************************************************
+
 #include <QApplication>
 #include "CMainWindow.h"
 #include "CCentralWidget.h"

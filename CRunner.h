@@ -1,3 +1,12 @@
+// IRON SCOUT AUSWERTUNG
+//************************************************************************
+// Klasse:          CRunner
+// 
+// Beschreibung:    Verwaltung des Interfaces der Ein- und Ausgabe für 
+//                  Läufergruppen.
+//                  
+//************************************************************************
+
 #ifndef CRUNNER_H
 #define CRUNNER_H
 
