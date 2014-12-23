@@ -17,6 +17,8 @@
 #include <QPushButton>
 #include <QHeaderView>
 #include <QLineEdit>
+#include <QFlag>
+#include <QAbstractItemView>
  
 class CGroup : public QWidget
 {

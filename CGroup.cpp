@@ -44,6 +44,9 @@ void CGroup::buildTable()
   // Verhalten der Tabelle definieren
   table_->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   table_->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
+  
+  // Nur Auswahl eines Items im table erlauben
+  table_->setSelectionMode(QAbstractItemView::SingleSelection);
 }
 //---------------------------------------------------------------------------------------
 
@@ -56,6 +59,8 @@ void CGroup::addTableEntry(const QList<QLineEdit*> list)
   {    
     // Holen des TableWidgetItem
     QTableWidgetItem* p = new QTableWidgetItem;
+    // Item read only
+    p->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
     
     // Einfügen in die Tabelle
     table_->setItem(table_->rowCount() - 1, i, p);
