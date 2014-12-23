@@ -16,6 +16,9 @@ class CGroup : public QWidget
     
     QTableWidget* getTable();
     QLabel* getName();
+    
+    // Table Widget zur Speicherung aller Eingaben
+    QTableWidget* table_;
 
  
   private:
@@ -27,8 +30,6 @@ class CGroup : public QWidget
     int number_;
     
 protected:
-    // Table Widget zur Speicherung aller Eingaben
-    QTableWidget* table_;
     
     // Layout für Name und Tabelle
     QVBoxLayout* vLayout_;

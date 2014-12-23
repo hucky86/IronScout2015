@@ -29,6 +29,7 @@ CCentralWidget::CCentralWidget(QString analysis)
   // setzen der connections
   connect(button_, SIGNAL(clicked()), this, SLOT(addGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
+  connect(inputButton_, SIGNAL(clicked()), this, SLOT(addEntry()));
 }
 
 void CCentralWidget::addGroup()
@@ -55,10 +56,6 @@ void CCentralWidget::addGroup()
     {
       newGroup = new CRunner(parameter_, text);
     }
-    
-    // neue Gruppe anlegen und dem QStackedLayout hinzufügen
-    //CGroup* newGroup = new CGroup(text);
-    groupList_.append(newGroup);
   
     sLayout_->addWidget(newGroup);
     sLayout_->setCurrentWidget(newGroup);
@@ -109,6 +106,39 @@ void CCentralWidget::buildInputLayout()
   // Hinzufügen des Bestätigungs-Buttons
   inputButton_ = new QPushButton("Eintrag hinzufügen");
   gLayout_->addWidget(inputButton_,1,parameter_.size());
+}
+
+void CCentralWidget::addEntry()
+{
+  // Holen der aktuellen Gruppe
+  CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->currentWidget());
+  
+  if (actualGroup == NULL)
+  {
+    // TODO: Execption
+    return;
+  }
+  
+  // Neue Zeile hinzufügen
+  actualGroup->table_->insertRow(actualGroup->table_->rowCount());
+  
+  for (int i = 0; i < gLayout_->columnCount()-1; i++)
+  {
+    // Anlegen des QLineEdit
+    QLineEdit* input = dynamic_cast<QLineEdit*>(gLayout_->itemAtPosition(1,i)->widget());
+    
+    if (input == NULL)
+    {
+      // TODO: Execption; Programm schließen
+    }
+    
+    // Holen des TableWidgetItem
+    QTableWidgetItem* p = new QTableWidgetItem;
+    
+    // Einfügen in die Tabelle
+    actualGroup->table_->setItem(actualGroup->table_->rowCount() - 1, i, p);
+    p->setText(input->text());
+  }
 }
 
 

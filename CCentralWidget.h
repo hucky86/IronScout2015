@@ -41,9 +41,6 @@ class CCentralWidget : public QWidget
     // Gruppe anwählen
     QComboBox* dropDown_;
     
-    // Liste aller Gruppen
-    QList<CGroup*> groupList_;
-    
   // Layouts
     // QVBoxLayout für dropDown_ und button_
     QVBoxLayout* vLayout_;
@@ -77,6 +74,9 @@ class CCentralWidget : public QWidget
     
     // ändern der angewählten Gruppe
     void changeGroup(int index);
+    
+    // Eintrag zum table hinzufügen
+    void addEntry();
  
   signals:
 };
