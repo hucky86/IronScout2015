@@ -52,6 +52,8 @@ class CCentralWidget : public QWidget
     QPushButton* bInputNew_;
     // Button zum löschen eines Eintrages in der Tabelle
     QPushButton* bInputDelete_;
+    // Button zum Bearbeiten eines Eintrages in der Tabelle
+    QPushButton* bEdit_;
     
 // Layouts:
     // QVBoxLayout für dropDown_ und bNew_
@@ -74,6 +76,8 @@ class CCentralWidget : public QWidget
 //Memberfunktionen:
     // bauen des GridLayouts mit allen Eingabefeldern
     void buildInputLayout();
+    // Leeren der Inputfelder
+    void emptyInput();
   
 
 private slots:
@@ -88,9 +92,11 @@ private slots:
     void deleteEntry();
     // Aktuelle CGroup
     CGroup* getCurrentGroup();
-    // Daten in den Eingabefeldern aktualisieren
-    void refreshInput();
- 
+    // Bearbeiten-Modus öffnen
+    void editInput();
+    // Bearbeiten-Modus schließen
+    void resumeEditInput();
+    
 signals:
 };
  

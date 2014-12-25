@@ -65,7 +65,8 @@ void CCentralWidget::addGroup()
     sLayout_->setCurrentWidget(newGroup);
   }
   
-  connect(getCurrentGroup()->getTable(), SIGNAL(itemSelectionChanged()), this, SLOT(refreshInput()));
+  connect(getCurrentGroup()->getTable(), SIGNAL(cellDoubleClicked(int,int)), this, SLOT(editInput()));
+  connect(getCurrentGroup()->getTable(), SIGNAL(cellPressed(int,int)), this, SLOT(resumeEditInput()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -124,7 +125,14 @@ void CCentralWidget::buildInputLayout()
 
   // Hinzufügen des Bestätigungs-Buttons
   bInputNew_ = new QPushButton("Eintrag hinzufügen");
-  gLayout_->addWidget(bInputNew_,1,parameter_.size());
+  bEdit_ = new QPushButton("Eintrag bearbeiten");
+  
+  // Buttons ins Grid einfügen
+  gLayout_->addWidget(bEdit_,0,inputList_.size());
+  gLayout_->addWidget(bInputNew_,1,inputList_.size());
+  
+  //Deaktivieren des Bearbeiten-Buttons
+  bEdit_->setDisabled(true);
 }
 //---------------------------------------------------------------------------------------
 
@@ -141,6 +149,9 @@ void CCentralWidget::addEntry()
   
   // Eintrag hinzufügen
   group->addTableEntry(inputList_);
+  
+  // Input leeren
+  emptyInput();
 }
 //---------------------------------------------------------------------------------------
 
@@ -161,11 +172,17 @@ CGroup* CCentralWidget::getCurrentGroup()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::refreshInput()
+void CCentralWidget::editInput()
 {
+  // Umstellen der Button Aktivität
+  bEdit_->setDisabled(false);
+  bInputNew_->setDisabled(true);
+  
+  // Ermittlung der aktivierten Zeile und des aktuellen table
   int row = getCurrentGroup()->getTable()->currentRow();
   QTableWidget* table = getCurrentGroup()->getTable();
   
+  // Übertragung der Daten auf die Input Felder
   for(int i = 0; i < inputList_.size(); i++)
   {
     QString text = table->item(row,i)->text();
@@ -173,5 +190,27 @@ void CCentralWidget::refreshInput()
     inputList_.at(i)->setText(text);
   }
 }
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::resumeEditInput()
+{
+  // Umstellen der Button Aktivität
+  bEdit_->setDisabled(true);
+  bInputNew_->setDisabled(false);
+  
+  emptyInput();
+}
+
+void CCentralWidget::emptyInput()
+{
+  QString empty ("");
+  
+  // Übertragung der Daten auf die Input Felder
+  for(int i = 0; i < inputList_.size(); i++)
+  { 
+    inputList_.at(i)->setText(empty);
+  }
+}
+
 
 
