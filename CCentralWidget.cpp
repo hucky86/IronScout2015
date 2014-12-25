@@ -31,6 +31,7 @@ CCentralWidget::CCentralWidget(QString analysis)
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
   connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
   connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
+  connect(bEdit_, SIGNAL(clicked()), this, SLOT(sendEditedInput()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -175,8 +176,7 @@ CGroup* CCentralWidget::getCurrentGroup()
 void CCentralWidget::editInput()
 {
   // Umstellen der Button Aktivität
-  bEdit_->setDisabled(false);
-  bInputNew_->setDisabled(true);
+  changeToEditStatus(true);
   
   // Ermittlung der aktivierten Zeile und des aktuellen table
   int row = getCurrentGroup()->getTable()->currentRow();
@@ -195,11 +195,11 @@ void CCentralWidget::editInput()
 void CCentralWidget::resumeEditInput()
 {
   // Umstellen der Button Aktivität
-  bEdit_->setDisabled(true);
-  bInputNew_->setDisabled(false);
+  changeToEditStatus(false);
   
   emptyInput();
 }
+//---------------------------------------------------------------------------------------
 
 void CCentralWidget::emptyInput()
 {
@@ -211,6 +211,44 @@ void CCentralWidget::emptyInput()
     inputList_.at(i)->setText(empty);
   }
 }
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::sendEditedInput()
+{
+  changeToEditStatus(false);
+  
+  // Ermittlung der aktivierten Zeile und des aktuellen table
+  int row = getCurrentGroup()->getTable()->currentRow();
+  QTableWidget* table = getCurrentGroup()->getTable();
+  
+  // Übertragung der Daten auf die Input Felder
+  for(int i = 0; i < inputList_.size(); i++)
+  {
+    QString text = inputList_.at(i)->text();
+    
+    table->item(row,i)->setText(text);
+  }
+  
+  emptyInput();
+}
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::changeToEditStatus(bool editStatus)
+{
+  // Abfrage des Status
+  if(editStatus == true)
+  {
+    bInputNew_->setDisabled(true);
+    bEdit_->setDisabled(false);
+  }
+  
+  else
+  {
+    bInputNew_->setDisabled(false);
+    bEdit_->setDisabled(true);
+  }
+}
+
 
 
 

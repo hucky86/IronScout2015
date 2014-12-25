@@ -78,6 +78,8 @@ class CCentralWidget : public QWidget
     void buildInputLayout();
     // Leeren der Inputfelder
     void emptyInput();
+    // Ändern der Button Aktivität von bEdit_ und bInputNew_
+    void changeToEditStatus(bool editStatus);
   
 
 private slots:
@@ -96,6 +98,8 @@ private slots:
     void editInput();
     // Bearbeiten-Modus schließen
     void resumeEditInput();
+    // Absenden der Änderungen
+    void sendEditedInput();
     
 signals:
 };
