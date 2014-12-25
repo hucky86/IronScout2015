@@ -1,7 +1,7 @@
 
 #include "CStation.h"
 
-CStation::CStation(QStringList parameter, QString text):CGroup(parameter, text)
+CStation::CStation(QStringList parameter, QString text, int number):CGroup(parameter, text, number)
 {  
 
 }

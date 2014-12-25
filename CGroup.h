@@ -27,7 +27,7 @@ class CGroup : public QWidget
 public:
   
 // Konstruktoren:
-    CGroup(QStringList parameter, QString name);
+    CGroup(QStringList parameter, QString name, int number);
     
 // Memberfunktionen:
     // get Funktionen
@@ -41,6 +41,8 @@ public:
 //Membervariablen:
     // Gruppenname
     QLabel* name_;
+    // Gruppennummer
+    int number_;
     // Liste mit den Eingabeparametern
     QStringList parameter_;
     

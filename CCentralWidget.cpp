@@ -37,14 +37,26 @@ CCentralWidget::CCentralWidget(QString analysis)
 
 void CCentralWidget::addGroup()
 {
-  bool ok;
+  bool ok_name;
+  bool ok_number;
   CGroup* newGroup;
 
+  // Eingabeauforderung der neuen Stationsnummer
+  int number = QInputDialog::getInt(this, tr("Erstellung einer neuen: ") + analysis_,
+                                       tr("neue Nummer:"),0,1,200,1,&ok_number);
+  
   // Eingabeauforderung des neuen Stationsnamens
-  QString text = QInputDialog::getText(this, tr("Erstellung einer neuen: ") + analysis_,
-                                       tr("neuer Name:"), QLineEdit::Normal,QString(),&ok);
+  QString name = QInputDialog::getText(this, tr("Erstellung einer neuen: ") + analysis_,
+                                       tr("neuer Name:"), QLineEdit::Normal,QString(),&ok_name);
+  
+  // Text im stacked Layout
+  QString text (QString::number(number));
+  text.append(": ");
+  text.append(name);
+
+  
   // Wenn durch "ok" bestätigt
-  if (ok)
+  if (ok_number && ok_name)
   {
     // Hinzufügen des items und aktiv setzen
     dropDown_->addItem(text);
@@ -53,12 +65,12 @@ void CCentralWidget::addGroup()
     // Unterscheidung ob es sich um eine Stations- oder Läuferauswertung handelt
     if(analysis_ == "Station")
     {
-      newGroup = new CStation(parameter_, text);
+      newGroup = new CStation(parameter_, name, number);
     }
     
     else if(analysis_ == "Läufer")
     {
-      newGroup = new CRunner(parameter_, text);
+      newGroup = new CRunner(parameter_, name, number);
     }
     
     // Hinzufügen zum stacked Layout
@@ -216,7 +228,7 @@ void CCentralWidget::sendEditedInput()
 void CCentralWidget::changeToEditStatus(bool editStatus)
 {
   // Abfrage des Status
-  if(editStatus == true)
+  if(editStatus)
   {
     bInputNew_->setDisabled(true);
     bEdit_->setDisabled(false);

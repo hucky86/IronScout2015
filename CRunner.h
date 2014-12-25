@@ -16,7 +16,7 @@ class CRunner : public CGroup
 {
  
   public:
-    CRunner(QStringList parameter, QString text);
+    CRunner(QStringList parameter, QString text, int number);
 
  
   private:

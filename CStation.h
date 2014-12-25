@@ -18,7 +18,7 @@ class CStation : public CGroup
 {
  
   public:
-    CStation(QStringList parameter, QString text);
+    CStation(QStringList parameter, QString text, int number);
 
   private:
     

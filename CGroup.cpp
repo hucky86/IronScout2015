@@ -1,7 +1,8 @@
 #include "CGroup.h"
 
-CGroup::CGroup(QStringList parameter, QString name)
+CGroup::CGroup(QStringList parameter, QString name, int number)
 {
+  number_ = number;
   parameter_ = parameter;
   name_ = new QLabel(name);
   vLayout_ = new QVBoxLayout;
