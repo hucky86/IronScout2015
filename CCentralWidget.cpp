@@ -178,17 +178,7 @@ void CCentralWidget::editInput()
   // Umstellen der Button Aktivität
   changeToEditStatus(true);
   
-  // Ermittlung der aktivierten Zeile und des aktuellen table
-  int row = getCurrentGroup()->getTable()->currentRow();
-  QTableWidget* table = getCurrentGroup()->getTable();
-  
-  // Übertragung der Daten auf die Input Felder
-  for(int i = 0; i < inputList_.size(); i++)
-  {
-    QString text = table->item(row,i)->text();
-    
-    inputList_.at(i)->setText(text);
-  }
+  writeToInput();
 }
 //---------------------------------------------------------------------------------------
 
@@ -217,17 +207,7 @@ void CCentralWidget::sendEditedInput()
 {
   changeToEditStatus(false);
   
-  // Ermittlung der aktivierten Zeile und des aktuellen table
-  int row = getCurrentGroup()->getTable()->currentRow();
-  QTableWidget* table = getCurrentGroup()->getTable();
-  
-  // Übertragung der Daten auf die Input Felder
-  for(int i = 0; i < inputList_.size(); i++)
-  {
-    QString text = inputList_.at(i)->text();
-    
-    table->item(row,i)->setText(text);
-  }
+  writeToTable();
   
   emptyInput();
 }
@@ -248,6 +228,39 @@ void CCentralWidget::changeToEditStatus(bool editStatus)
     bEdit_->setDisabled(true);
   }
 }
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::writeToTable()
+{
+  // Ermittlung der aktivierten Zeile und des aktuellen table
+  int row = getCurrentGroup()->getTable()->currentRow();
+  QTableWidget* table = getCurrentGroup()->getTable();
+  
+  // Übertragung der Daten auf die Input Felder
+  for(int i = 0; i < inputList_.size(); i++)
+  {
+    QString text = inputList_.at(i)->text();
+    
+    table->item(row,i)->setText(text);
+  }
+}
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::writeToInput()
+{
+  // Ermittlung der aktivierten Zeile und des aktuellen table
+  int row = getCurrentGroup()->getTable()->currentRow();
+  QTableWidget* table = getCurrentGroup()->getTable();
+  
+  // Übertragung der Daten auf die Input Felder
+  for(int i = 0; i < inputList_.size(); i++)
+  {
+    QString text = table->item(row,i)->text();
+    
+    inputList_.at(i)->setText(text);
+  }
+}
+
 
 
 

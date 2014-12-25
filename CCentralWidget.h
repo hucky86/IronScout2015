@@ -80,6 +80,10 @@ class CCentralWidget : public QWidget
     void emptyInput();
     // Ändern der Button Aktivität von bEdit_ und bInputNew_
     void changeToEditStatus(bool editStatus);
+    // Schreiben der Input Daten in das table
+    void writeToTable();
+    // Schreiben der table Daten in das Input Format
+    void writeToInput();
   
 
 private slots:
