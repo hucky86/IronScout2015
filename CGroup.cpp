@@ -70,4 +70,10 @@ void CGroup::addTableEntry(const QList<QLineEdit*> list)
 }
 //---------------------------------------------------------------------------------------
 
+void CGroup::deleteTableEntry()
+{  
+  table_->removeRow(table_->currentRow());
+}
+
+
 

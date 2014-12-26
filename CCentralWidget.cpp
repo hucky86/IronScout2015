@@ -184,11 +184,7 @@ void CCentralWidget::addEntry()
 //TODO: In CGroup auslagern
 void CCentralWidget::deleteEntry()
 {
-  QTableWidget* table = getCurrentGroup()->getTable();
-  
-  table->removeRow(table->currentRow());
-  
-  //TODO: Müssen die TableWidgetItems gelöscht werden?
+  getCurrentGroup()->deleteTableEntry();
 }
 //---------------------------------------------------------------------------------------
 

@@ -35,6 +35,8 @@ public:
     QLabel* getName();
     // Hinzufügen eines Tabelleneintrages
     void addTableEntry (const QList<QLineEdit*> list);
+    // Löschen des aktuellen Tabelleneintrages
+    void deleteTableEntry ();
 
   private:
 
