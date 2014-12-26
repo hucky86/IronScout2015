@@ -25,6 +25,7 @@
 #include <QDebug>
 #include <QGridLayout>
 #include <QStringList>
+#include <QMessageBox>
 
 #include "CGroup.h"
 #include "CRunner.h"

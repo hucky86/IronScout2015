@@ -86,14 +86,27 @@ void CCentralWidget::addGroup()
 }
 //---------------------------------------------------------------------------------------
 void CCentralWidget::deleteGroup()
-{  
+{
+  // Holen der aktuellen Gruppe und den index
   CGroup* delGroup = getCurrentGroup();
   int index = sLayout_->indexOf(delGroup);
-
-  dropDown_->removeItem(index);
-  sLayout_->removeWidget(delGroup);
   
-  delete delGroup;
+  // Konfigurieren der Sicherheitsnachfrage
+  QMessageBox msgBox;
+  msgBox.setIcon(QMessageBox::Warning);
+  msgBox.setText("Soll diese Gruppe gelöscht werden?");
+  msgBox.setInformativeText(dropDown_->itemText(index));
+  msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+  msgBox.setDefaultButton(QMessageBox::Cancel);
+  int ret = msgBox.exec();
+  
+  // Löschen wenn mit "ok" bestätigt
+  if(ret == QMessageBox::Ok)
+  {
+    dropDown_->removeItem(index);
+    sLayout_->removeWidget(delGroup);
+    delete delGroup;
+  }
 }
 //---------------------------------------------------------------------------------------
 
