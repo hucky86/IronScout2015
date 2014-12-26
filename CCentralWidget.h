@@ -46,6 +46,8 @@ class CCentralWidget : public QWidget
 // Widgets:
     // neue Gruppe anlegen
     QPushButton* bNew_;
+    // Gruppe löschen
+    QPushButton* bDelete_;
     // Gruppe anwählen
     QComboBox* dropDown_;
     // Button zur Bestätigung eines Eintrages in die Tabelle
@@ -90,6 +92,8 @@ private slots:
     
     // hinzufügen einer Gruppe
     void addGroup();
+    // löschen der aktuellen Gruppe
+    void deleteGroup();
     // ändern der angewählten Gruppe
     void changeGroup(int index);
     // Eintrag zum table hinzufügen

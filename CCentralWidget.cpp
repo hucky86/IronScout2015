@@ -14,12 +14,14 @@ CCentralWidget::CCentralWidget(QString analysis)
   // Anlegen der Widgets
   dropDown_ = new QComboBox;
   bNew_ = new QPushButton("Neu: " + analysis_);
+  bDelete_ = new QPushButton("Löschen: " + analysis_);
   bInputDelete_ = new QPushButton("Eintrag löschen");
   buildInputLayout();
   
   // Konfigurieren der Layouts
   hLayout_->addWidget(dropDown_);
   hLayout_->addWidget(bNew_);
+  hLayout_->addWidget(bDelete_);
   vLayout_->addLayout(hLayout_);
   vLayout_->addLayout(gLayout_);
   vLayout_->addLayout(sLayout_);
@@ -28,6 +30,7 @@ CCentralWidget::CCentralWidget(QString analysis)
   
   // setzen der connections
   connect(bNew_, SIGNAL(clicked()), this, SLOT(addGroup()));
+  connect(bDelete_, SIGNAL(clicked()), this, SLOT(deleteGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
   connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
   connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
@@ -80,6 +83,17 @@ void CCentralWidget::addGroup()
   
   connect(getCurrentGroup()->getTable(), SIGNAL(cellDoubleClicked(int,int)), this, SLOT(editInput()));
   connect(getCurrentGroup()->getTable(), SIGNAL(cellPressed(int,int)), this, SLOT(resumeEditInput()));
+}
+//---------------------------------------------------------------------------------------
+void CCentralWidget::deleteGroup()
+{  
+  CGroup* delGroup = getCurrentGroup();
+  int index = sLayout_->indexOf(delGroup);
+
+  dropDown_->removeItem(index);
+  sLayout_->removeWidget(delGroup);
+  
+  delete delGroup;
 }
 //---------------------------------------------------------------------------------------
 
@@ -167,12 +181,14 @@ void CCentralWidget::addEntry()
   emptyInput();
 }
 //---------------------------------------------------------------------------------------
-
+//TODO: In CGroup auslagern
 void CCentralWidget::deleteEntry()
 {
   QTableWidget* table = getCurrentGroup()->getTable();
   
   table->removeRow(table->currentRow());
+  
+  //TODO: Müssen die TableWidgetItems gelöscht werden?
 }
 //---------------------------------------------------------------------------------------
 
@@ -272,7 +288,7 @@ void CCentralWidget::writeToInput()
     inputList_.at(i)->setText(text);
   }
 }
-
+//---------------------------------------------------------------------------------------
 
 
 
