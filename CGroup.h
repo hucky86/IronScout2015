@@ -32,7 +32,6 @@ public:
 // Memberfunktionen:
     // get Funktionen
     QTableWidget* getTable();
-    QLabel* getName();
     // Hinzufügen eines Tabelleneintrages
     void addTableEntry (const QList<QLineEdit*> list);
     // Löschen des aktuellen Tabelleneintrages
@@ -42,7 +41,7 @@ public:
 
 //Membervariablen:
     // Gruppenname
-    QLabel* name_;
+    QLabel* description_;
     // Gruppennummer
     int number_;
     // Liste mit den Eingabeparametern

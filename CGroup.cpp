@@ -4,13 +4,13 @@ CGroup::CGroup(QStringList parameter, QString name, int number)
 {
   number_ = number;
   parameter_ = parameter;
-  name_ = new QLabel(name);
+  description_ = new QLabel(QString::number(number_) + ": " + name);
   vLayout_ = new QVBoxLayout;
   
    // Bauen des TableWidget
   buildTable();
   
-  vLayout_->addWidget(name_);
+  vLayout_->addWidget(description_);
   vLayout_->addWidget(table_);
   
   setLayout(vLayout_);
@@ -20,12 +20,6 @@ CGroup::CGroup(QStringList parameter, QString name, int number)
 QTableWidget* CGroup::getTable()
 {
   return table_;
-}
-//---------------------------------------------------------------------------------------
-
-QLabel* CGroup::getName()
-{
-  return name_;
 }
 //---------------------------------------------------------------------------------------
 
