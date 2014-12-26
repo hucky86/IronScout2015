@@ -120,7 +120,7 @@ void CCentralWidget::buildInputLayout()
 {
   // Hier werden die Parameter der Auswertung festgelegt
   // TODO: Besser als const in eigene source auslagern...
-  QStringList parameterStation_ = QStringList() << "Laeufername" << "#" << "Punkte 1" 
+  QStringList parameterStation_ = QStringList() << "Läufernr." << "Läufername" << "Punkte 1" 
   << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
   
   QStringList parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 1" 
@@ -162,7 +162,10 @@ void CCentralWidget::buildInputLayout()
   {
     inputList_.push_back(dynamic_cast<QLineEdit*>(gLayout_->itemAtPosition(1,i)->widget()));
   }
-
+  
+  // Einfügen der erlaubten Eingabemethoden
+  buildInputValidators();
+  
   // Hinzufügen des Bestätigungs-Buttons
   bInputNew_ = new QPushButton("Eintrag hinzufügen");
   bEdit_ = new QPushButton("Eintrag bearbeiten");
@@ -173,6 +176,19 @@ void CCentralWidget::buildInputLayout()
   
   //Deaktivieren des Bearbeiten-Buttons
   bEdit_->setDisabled(true);
+}
+//---------------------------------------------------------------------------------------
+
+void CCentralWidget::buildInputValidators()
+{
+  if(analysis_ == "Station"|| analysis_ == "Läufer")
+  {
+    inputList_.at(0)->setValidator(new QIntValidator(0, 200, inputList_.at(0)));
+    inputList_.at(2)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
+    inputList_.at(3)->setValidator(new QIntValidator(0, 30, inputList_.at(3)));
+    inputList_.at(4)->setValidator(new QIntValidator(0, 20, inputList_.at(4)));
+    inputList_.at(5)->setValidator(new QIntValidator(0, 100, inputList_.at(5)));
+  }
 }
 //---------------------------------------------------------------------------------------
 
@@ -298,7 +314,3 @@ void CCentralWidget::writeToInput()
   }
 }
 //---------------------------------------------------------------------------------------
-
-
-
-

@@ -63,8 +63,13 @@ void CMainWindow::saveFile()
 {
   QString path = QFileDialog::getSaveFileName();
   
-  //TODO: Algorithmus zum Speichern einfügen
-  qDebug() << path;
+  ofstream file;
+  file.open(path.toStdString().c_str());
+  
+  QString test ("bla12");
+  int foo = test.toInt();
+  
+  file.close();
 }
 //---------------------------------------------------------------------------------------
 

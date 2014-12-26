@@ -21,7 +21,11 @@
 #include <QStackedLayout>
 #include <QWidget>
 
+#include <iostream>
+#include <fstream>
+
 #include "CCentralWidget.h"
+using namespace std;
 
 class CMainWindow : public QMainWindow
 {

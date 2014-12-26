@@ -79,6 +79,8 @@ class CCentralWidget : public QWidget
 //Memberfunktionen:
     // bauen des GridLayouts mit allen Eingabefeldern
     void buildInputLayout();
+    // setzen der erlaubten Eingabemethoden
+    void buildInputValidators();
     // Leeren der Inputfelder
     void emptyInput();
     // Ändern der Button Aktivität von bEdit_ und bInputNew_
