@@ -39,7 +39,7 @@ void CGroup::buildTable()
   // Verhalten der Tabelle definieren
   table_->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   table_->horizontalHeader()->setSectionResizeMode( QHeaderView::Stretch );
-  
+
   // Nur Auswahl eines Items im table erlauben
   table_->setSelectionMode(QAbstractItemView::SingleSelection);
 }

@@ -56,7 +56,6 @@ void CCentralWidget::addGroup()
   QString text (QString::number(number));
   text.append(": ");
   text.append(name);
-
   
   // Wenn durch "ok" bestätigt
   if (ok_number && ok_name)
@@ -120,11 +119,11 @@ void CCentralWidget::buildInputLayout()
 {
   // Hier werden die Parameter der Auswertung festgelegt
   // TODO: Besser als const in eigene source auslagern...
-  QStringList parameterStation_ = QStringList() << "Läufernr." << "Läufername" << "Punkte 1" 
-  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
+  QStringList parameterStation_ = QStringList() << "Läufernr." << "Läufername" << "Läuferanzahl" 
+  << "Joker [ja]" << "Punkte 'Spiel'" << "Punkte 'Teamwork'" << "Punkte Gesamt";
   
-  QStringList parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 1" 
-  << "Punkte 2" << "Punkte 3" << "Punkte Gesamt";
+  QStringList parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 'Spielidee'" 
+  << "Punkte 'Spielausführung'" << "Punkte 'Atmosphäre'" << "Punkte Gesamt";
   
   // Auswertung entsprechend anlegen
   if (analysis_ == "Station")
@@ -178,16 +177,32 @@ void CCentralWidget::buildInputLayout()
   bEdit_->setDisabled(true);
 }
 //---------------------------------------------------------------------------------------
-
+// TODO: Unterscheidung zwischen Station und Läufer einfügen.
+// Besser: InputLayout in eigene Klassen auslagern
 void CCentralWidget::buildInputValidators()
 {
-  if(analysis_ == "Station"|| analysis_ == "Läufer")
+  if(analysis_ == "Station")
   {
     inputList_.at(0)->setValidator(new QIntValidator(0, 200, inputList_.at(0)));
-    inputList_.at(2)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
+    inputList_.at(2)->setValidator(new QIntValidator(3, 10, inputList_.at(2)));
+    inputList_.at(3)->setValidator(new QRegExpValidator(QRegExp(QString("ja"), Qt::CaseSensitive, QRegExp::FixedString)));
+    inputList_.at(4)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
+    inputList_.at(5)->setValidator(new QIntValidator(0, 20, inputList_.at(5)));
+    inputList_.at(6)->setValidator(new QIntValidator(0, 100, inputList_.at(6)));
+  }
+
+  else if (analysis_ == "Läufer")
+  {
+    inputList_.at(0)->setValidator(new QIntValidator(0, 200, inputList_.at(0)));
+    inputList_.at(2)->setValidator(new QIntValidator(0, 40, inputList_.at(2)));
     inputList_.at(3)->setValidator(new QIntValidator(0, 30, inputList_.at(3)));
-    inputList_.at(4)->setValidator(new QIntValidator(0, 20, inputList_.at(4)));
+    inputList_.at(4)->setValidator(new QIntValidator(0, 30, inputList_.at(4)));
     inputList_.at(5)->setValidator(new QIntValidator(0, 100, inputList_.at(5)));
+  }
+
+  else
+  {
+    // TODO: Ausnahmebehandlung
   }
 }
 //---------------------------------------------------------------------------------------
