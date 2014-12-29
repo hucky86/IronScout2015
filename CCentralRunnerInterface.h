@@ -21,7 +21,7 @@ class CCentralRunnerInterface : public CCentralAbstractInterface
   public:
 // Konstruktoren:
     // leerer Standartkonstruktor
-    CCentralRunnerInterface(QString analysis);
+    CCentralRunnerInterface();
 
   private:
   
@@ -33,6 +33,7 @@ class CCentralRunnerInterface : public CCentralAbstractInterface
     
 //Memberfunktionen:
     void buildInputValidators();
+    virtual CGroup* newGroup(QString name, int number);
 
 private slots:
     

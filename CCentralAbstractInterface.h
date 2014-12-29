@@ -38,7 +38,7 @@ class CCentralAbstractInterface : public QWidget
   public:
 // Konstruktoren:
     // leerer Standartkonstruktor
-    CCentralAbstractInterface(QString analysis);
+    CCentralAbstractInterface();
 
  
   protected:
@@ -68,8 +68,6 @@ class CCentralAbstractInterface : public QWidget
     QGridLayout* gLayout_;
     
 //Membervariablen:
-    // Zugehörigkeit der Auswertungsart
-    QString analysis_;
     // Parametersatz dieses Widgets
     QStringList parameter_;
     // Hält die Referenzen zu allen Eingabeparametern
@@ -78,8 +76,6 @@ class CCentralAbstractInterface : public QWidget
 //Memberfunktionen:
     // bauen des GridLayouts mit allen Eingabefeldern
     void buildInputLayout();
-    // setzen der erlaubten Eingabemethoden
-    //virtual void buildInputValidators() = 0;
     // Leeren der Inputfelder
     void emptyInput();
     // Ändern der Button Aktivität von bEdit_ und bInputNew_
@@ -88,7 +84,8 @@ class CCentralAbstractInterface : public QWidget
     void writeToTable();
     // Schreiben der table Daten in das Input Format
     void writeToInput();
-  
+    // Neue Gruppe anlegen
+    virtual CGroup* newGroup(QString name, int number) = 0;
 
 private slots:
     

@@ -1,10 +1,10 @@
 #include "CCentralRunnerInterface.h"
 
-CCentralRunnerInterface::CCentralRunnerInterface (QString analysis) : CCentralAbstractInterface(analysis)
+CCentralRunnerInterface::CCentralRunnerInterface () : CCentralAbstractInterface()
 {
   // Festlegung der benötigten Parameter
   parameter_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 'Spielidee'" 
-  << "Punkte 'Spielausführung'" << "Punkte 'Atmosphäre'" << "Punkte Gesamt";
+  << QString(QStringLiteral("Punkte 'Spielausführung'")) << QString(QStringLiteral("Punkte 'Atmosphäre'")) << "Punkte Gesamt";
 
   buildInputLayout();
   buildInputValidators();
@@ -20,4 +20,12 @@ void CCentralRunnerInterface::buildInputValidators()
   inputList_.at(5)->setValidator(new QIntValidator(0, 100, inputList_.at(5)));
 
   inputList_.at(5)->setDisabled(true);
+}
+//---------------------------------------------------------------------------------------
+
+CGroup* CCentralRunnerInterface::newGroup(QString name, int number)
+{
+  CGroup* newGroup = new CRunner(parameter_, name, number);
+
+  return newGroup;
 }

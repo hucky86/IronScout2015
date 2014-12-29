@@ -1,10 +1,7 @@
 #include "CCentralAbstractInterface.h"
 
-CCentralAbstractInterface::CCentralAbstractInterface(QString analysis)
+CCentralAbstractInterface::CCentralAbstractInterface()
 { 
-  // Auswahl der Analyse (Station oder Läufer?)
-  analysis_ = analysis;
-  
   // Anlegen der Layouts
   hLayout_ = new QHBoxLayout;
   vLayout_ = new QVBoxLayout;
@@ -13,8 +10,8 @@ CCentralAbstractInterface::CCentralAbstractInterface(QString analysis)
   
   // Anlegen der Widgets
   dropDown_ = new QComboBox;
-  bNew_ = new QPushButton("Neu: " + analysis_);
-  bDelete_ = new QPushButton("Löschen: " + analysis_);
+  bNew_ = new QPushButton("Neue Gruppe");
+  bDelete_ = new QPushButton("Gruppe löschen");
   bInputDelete_ = new QPushButton("Eintrag löschen");
   
   // Konfigurieren der Layouts
@@ -41,11 +38,11 @@ void CCentralAbstractInterface::addGroup()
   CGroup* newGroup;
 
   // Eingabeauforderung der neuen Stationsnummer
-  int number = QInputDialog::getInt(this, tr("Erstellung einer neuen: ") + analysis_,
+  int number = QInputDialog::getInt(this, tr("Erstellung einer neuen Gruppe"),
                                        tr("neue Nummer:"),0,1,200,1,&ok_number);
   
   // Eingabeauforderung des neuen Stationsnamens
-  QString name = QInputDialog::getText(this, tr("Erstellung einer neuen: ") + analysis_,
+  QString name = QInputDialog::getText(this, tr("Erstellung einer neuen Gruppe"),
                                        tr("neuer Name:"), QLineEdit::Normal,QString(),&ok_name);
   
   // Text im stacked Layout
@@ -59,17 +56,9 @@ void CCentralAbstractInterface::addGroup()
     // Hinzufügen des items und aktiv setzen
     dropDown_->addItem(text);
     dropDown_->setCurrentIndex(dropDown_->count() - 1);
-    
-    // Unterscheidung ob es sich um eine Stations- oder Läuferauswertung handelt
-    if(analysis_ == "Station")
-    {
-      newGroup = new CStation(parameter_, name, number);
-    }
-    
-    else if(analysis_ == "Läufer")
-    {
-      newGroup = new CRunner(parameter_, name, number);
-    }
+
+    // Anlegen der neuen Gruppe
+    newGroup = this->newGroup(name, number);
     
     // Hinzufügen zum stacked Layout
     sLayout_->addWidget(newGroup);

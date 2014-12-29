@@ -22,7 +22,7 @@ class CCentralStationInterface : public CCentralAbstractInterface
   public:
 // Konstruktoren:
     // leerer Standartkonstruktor
-    CCentralStationInterface(QString analysis);
+    CCentralStationInterface();
  
   private:
   
@@ -34,6 +34,7 @@ class CCentralStationInterface : public CCentralAbstractInterface
     
 //Memberfunktionen:
     void buildInputValidators();
+    virtual CGroup* newGroup(QString name, int number);
 
 private slots:
     

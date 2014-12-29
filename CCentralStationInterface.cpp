@@ -1,6 +1,6 @@
 #include "CCentralStationInterface.h"
 
-CCentralStationInterface::CCentralStationInterface (QString analysis) : CCentralAbstractInterface(analysis)
+CCentralStationInterface::CCentralStationInterface () : CCentralAbstractInterface()
 {
   // Festlegung der benötigten Parameter
   parameter_ = QStringList() << QString(QStringLiteral("Läufernr.")) << QString(QStringLiteral("Läufername")) << QString(QStringLiteral("Läuferanzahl")) 
@@ -23,4 +23,13 @@ void CCentralStationInterface::buildInputValidators()
   inputList_.at(6)->setDisabled(true);
 
   connect(inputList_.at(3), SIGNAL(textChanged(QString)), this, SLOT(setJoker(QString)));
+}
+
+//---------------------------------------------------------------------------------------
+
+CGroup* CCentralStationInterface::newGroup(QString name, int number)
+{
+  CGroup* newGroup = new CStation(parameter_, name, number);
+
+  return newGroup;
 }

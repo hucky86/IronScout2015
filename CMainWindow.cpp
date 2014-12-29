@@ -6,8 +6,8 @@ CMainWindow::CMainWindow()
   menu_ = createMenuBar();
   centralWidget_ = new QWidget;
   centralLayout_ = new QStackedLayout;
-  centralStation_ = new CCentralStationInterface("Station");
-  centralRunner_ = new CCentralRunnerInterface("Läufer");
+  centralStation_ = new CCentralStationInterface;
+  centralRunner_ = new CCentralRunnerInterface;
   
   setMenuBar(menu_);
   centralLayout_->addWidget(centralStation_);
