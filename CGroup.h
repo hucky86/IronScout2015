@@ -36,6 +36,8 @@ public:
     void addTableEntry (const QList<QLineEdit*> list);
     // Löschen des aktuellen Tabelleneintrages
     void deleteTableEntry ();
+    // Prüft ob eine Gruppe bereits vorhanden ist
+    bool checkGroupExist(int number);
 
   private:
 

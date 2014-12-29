@@ -153,11 +153,27 @@ void CCentralAbstractInterface::addEntry()
     return;
   }
   
-  // Eintrag hinzufügen
-  group->addTableEntry(inputList_);
+  // auf bereits vorhandenem Eintrag prüfen
+  if(group->checkGroupExist(inputList_.at(0)->text().toInt()))
+  {
+    // Warnung ausgeben
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Diese Gruppe ist bereits vorhanden!");
+    msgBox.setInformativeText("Eintrag wird nicht hinzugefügt");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    int ret = msgBox.exec();
+  }
+
+  else
+  {
+    // Eintrag hinzufügen
+    group->addTableEntry(inputList_);
   
-  // Input leeren
-  emptyInput();
+    // Input leeren
+    emptyInput();
+  }
 }
 //---------------------------------------------------------------------------------------
 //TODO: In CGroup auslagern
@@ -316,3 +332,4 @@ void CCentralAbstractInterface::checkGroupName(QString number)
     }
   }
 }
+//---------------------------------------------------------------------------------------

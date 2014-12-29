@@ -68,6 +68,22 @@ void CGroup::deleteTableEntry()
 {  
   table_->removeRow(table_->currentRow());
 }
+//---------------------------------------------------------------------------------------
+
+bool CGroup::checkGroupExist(int number)
+{
+  // Durch alle Tabelleneinträge der aktuellen Gruppe
+  for (int i = 0; i < table_->rowCount(); i++)
+  {
+    // Wenn vorhandener Eintrag == number
+    if (table_->item(i, 0)->text().toInt() == number)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 
 
