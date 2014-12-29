@@ -154,26 +154,19 @@ void CCentralAbstractInterface::addEntry()
   }
   
   // auf bereits vorhandenem Eintrag prüfen
-  if(group->checkGroupExist(inputList_.at(0)->text().toInt()))
-  {
-    // Warnung ausgeben
-    QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setText("Diese Gruppe ist bereits vorhanden!");
-    msgBox.setInformativeText("Eintrag wird nicht hinzugefügt");
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.setDefaultButton(QMessageBox::Ok);
-    int ret = msgBox.exec();
-  }
-
+  if (throwDoubleEntry());
   else
   {
     // Eintrag hinzufügen
     group->addTableEntry(inputList_);
   
+    // Input für Gruppennamen wieder freigeben
+    inputList_.at(1)->setDisabled(false);
+
     // Input leeren
     emptyInput();
   }
+  
 }
 //---------------------------------------------------------------------------------------
 //TODO: In CGroup auslagern
@@ -239,12 +232,16 @@ void CCentralAbstractInterface::changeToEditStatus(bool editStatus)
   {
     bInputNew_->setDisabled(true);
     bEdit_->setDisabled(false);
+    inputList_.at(1)->setDisabled(true);
+    inputList_.at(0)->setDisabled(true);
   }
   
   else
   {
     bInputNew_->setDisabled(false);
     bEdit_->setDisabled(true);
+    inputList_.at(1)->setDisabled(false);
+    inputList_.at(0)->setDisabled(false);
   }
 }
 //---------------------------------------------------------------------------------------
@@ -333,3 +330,23 @@ void CCentralAbstractInterface::checkGroupName(QString number)
   }
 }
 //---------------------------------------------------------------------------------------
+
+bool CCentralAbstractInterface::throwDoubleEntry()
+{
+  // auf bereits vorhandenem Eintrag prüfen
+  if(getCurrentGroup()->checkGroupExist(inputList_.at(0)->text().toInt()))
+  {
+    // Warnung ausgeben
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Diese Gruppe ist bereits vorhanden!");
+    msgBox.setInformativeText("Eintrag wird nicht hinzugefügt");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+
+    return true;
+  }
+
+  return false;
+}

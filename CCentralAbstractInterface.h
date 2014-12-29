@@ -86,6 +86,8 @@ class CCentralAbstractInterface : public QWidget
     void writeToInput();
     // Neue Gruppe anlegen
     virtual CGroup* newGroup(QString name, int number) = 0;
+    // Message Box, welche vor doppelten Einträgen warnt
+    bool throwDoubleEntry();
 
 private slots:
     
