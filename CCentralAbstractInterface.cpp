@@ -138,6 +138,7 @@ void CCentralAbstractInterface::buildInputLayout()
   // connections
   connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
   connect(bEdit_, SIGNAL(clicked()), this, SLOT(sendEditedInput()));
+  connect(inputList_.at(0), SIGNAL(textEdited(QString)), this, SLOT(checkGroupName(QString)));
 }
 //---------------------------------------------------------------------------------------
 
@@ -278,5 +279,40 @@ void CCentralAbstractInterface::setJoker(QString text)
   {
     inputList_.at(4)->setDisabled(false);
     inputList_.at(5)->setDisabled(false);
+  }
+}
+//---------------------------------------------------------------------------------------
+
+void CCentralAbstractInterface::checkGroupName(QString number)
+{
+  // Konvertierung in int
+  int numb = number.toInt();
+
+  // Bearbeitung des Namen Inputfeldes zunächst wieder freigeben
+  inputList_.at(1)->setDisabled(false);
+
+  // Eintrag im Namen Inputfeld wieder löschen
+  inputList_.at(1)->setText("");
+
+  // Überprüfung in allen Gruppen, ob Nummer bereits vergeben
+  for (int i = 0; i < sLayout_->count(); i++)
+  {
+    // Holen der Gruppe
+    CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->widget(i));
+
+    // Überprüfung, ob Nummer "numb" in dieser Gruppe vorhanden
+    for (int row = 0; row < actualGroup->getTable()->rowCount(); row++)
+    {
+      // Wenn "numb" gefunden
+      if (actualGroup->getTable()->item(row, 0)->text().toInt() == numb)
+      {
+        // Namen holen
+        QString name = actualGroup->getTable()->item(row, 1)->text();
+
+        // Namen in Input setzen und weitere Bearbeitung sperren
+        inputList_.at(1)->setText(name);
+        inputList_.at(1)->setDisabled(true);
+      }
+    }
   }
 }

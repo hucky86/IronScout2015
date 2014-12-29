@@ -109,6 +109,8 @@ private slots:
     void sendEditedInput();
     // Wenn Joker auf "ja" gesetzt wird
     void setJoker(QString text);
+    // Überprüft, ob Gruppenname bereits eingegeben wurde
+    void checkGroupName(QString number);
     
 signals:
 };
