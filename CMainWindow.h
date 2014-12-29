@@ -24,7 +24,9 @@
 #include <iostream>
 #include <fstream>
 
-#include "CCentralAbstractInterface.h"
+#include "CCentralStationInterface.h"
+#include "CCentralRunnerInterface.h"
+
 using namespace std;
 
 class CMainWindow : public QMainWindow

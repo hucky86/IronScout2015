@@ -41,7 +41,7 @@ class CCentralAbstractInterface : public QWidget
     CCentralAbstractInterface(QString analysis);
 
  
-  private:
+  protected:
   
 // Widgets:
     // neue Gruppe anlegen
@@ -58,13 +58,13 @@ class CCentralAbstractInterface : public QWidget
     QPushButton* bEdit_;
     
 // Layouts:
-    // QVBoxLayout für dropDown_ und bNew_
+    // QVBoxLayout als zentrales Widget
     QVBoxLayout* vLayout_;
     // QStackedLayout für alle CGroup
     QStackedLayout* sLayout_;
-    // QHBoxLayout für vLayout_ und sLayout_
+    // QHBoxLayout für bNew_, bDelete_ und dropDown_
     QHBoxLayout* hLayout_;
-    // Layout für die Eingabe eines neuen Eintrages
+    // Layout für die Input Daten
     QGridLayout* gLayout_;
     
 //Membervariablen:
@@ -79,7 +79,7 @@ class CCentralAbstractInterface : public QWidget
     // bauen des GridLayouts mit allen Eingabefeldern
     void buildInputLayout();
     // setzen der erlaubten Eingabemethoden
-    void buildInputValidators();
+    //virtual void buildInputValidators() = 0;
     // Leeren der Inputfelder
     void emptyInput();
     // Ändern der Button Aktivität von bEdit_ und bInputNew_

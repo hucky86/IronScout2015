@@ -16,7 +16,6 @@ CCentralAbstractInterface::CCentralAbstractInterface(QString analysis)
   bNew_ = new QPushButton("Neu: " + analysis_);
   bDelete_ = new QPushButton("Löschen: " + analysis_);
   bInputDelete_ = new QPushButton("Eintrag löschen");
-  buildInputLayout();
   
   // Konfigurieren der Layouts
   hLayout_->addWidget(dropDown_);
@@ -32,9 +31,6 @@ CCentralAbstractInterface::CCentralAbstractInterface(QString analysis)
   connect(bNew_, SIGNAL(clicked()), this, SLOT(addGroup()));
   connect(bDelete_, SIGNAL(clicked()), this, SLOT(deleteGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
-  connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
-  connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
-  connect(bEdit_, SIGNAL(clicked()), this, SLOT(sendEditedInput()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -82,6 +78,7 @@ void CCentralAbstractInterface::addGroup()
   
   connect(getCurrentGroup()->getTable(), SIGNAL(cellDoubleClicked(int,int)), this, SLOT(editInput()));
   connect(getCurrentGroup()->getTable(), SIGNAL(cellPressed(int,int)), this, SLOT(resumeEditInput()));
+  connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
 }
 //---------------------------------------------------------------------------------------
 void CCentralAbstractInterface::deleteGroup()
@@ -117,30 +114,6 @@ void CCentralAbstractInterface::changeGroup(int index)
 
 void CCentralAbstractInterface::buildInputLayout()
 {
-  // Hier werden die Parameter der Auswertung festgelegt
-  // TODO: Besser als const in eigene source auslagern...
-  QStringList parameterStation_ = QStringList() << "Läufernr." << "Läufername" << "Läuferanzahl" 
-  << "Joker [ja]" << "Punkte 'Spiel'" << "Punkte 'Teamwork'" << "Punkte Gesamt";
-  
-  QStringList parameterRunner_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 'Spielidee'" 
-  << "Punkte 'Spielausführung'" << "Punkte 'Atmosphäre'" << "Punkte Gesamt";
-  
-  // Auswertung entsprechend anlegen
-  if (analysis_ == "Station")
-  {
-    parameter_ = parameterStation_;
-  }
-  
-  else if (analysis_ == "Läufer")
-  {
-    parameter_ = parameterRunner_;
-  }
-  
-  else
-  {
-    //TODO: Ausnahmefehlerbehandlung
-  }
-  
   // Bauen des Eingabefeldes
   // Hinzufügen der Label
   for (int i = 0; i < parameter_.size(); i++)
@@ -162,9 +135,6 @@ void CCentralAbstractInterface::buildInputLayout()
     inputList_.push_back(dynamic_cast<QLineEdit*>(gLayout_->itemAtPosition(1,i)->widget()));
   }
   
-  // Einfügen der erlaubten Eingabemethoden
-  buildInputValidators();
-  
   // Hinzufügen des Bestätigungs-Buttons
   bInputNew_ = new QPushButton("Eintrag hinzufügen");
   bEdit_ = new QPushButton("Eintrag bearbeiten");
@@ -175,41 +145,10 @@ void CCentralAbstractInterface::buildInputLayout()
   
   //Deaktivieren des Bearbeiten-Buttons
   bEdit_->setDisabled(true);
-}
-//---------------------------------------------------------------------------------------
-// TODO: Unterscheidung zwischen Station und Läufer einfügen.
-// Besser: InputLayout in eigene Klassen auslagern
-void CCentralAbstractInterface::buildInputValidators()
-{
-  if(analysis_ == "Station")
-  {
-    inputList_.at(0)->setValidator(new QIntValidator(0, 200, inputList_.at(0)));
-    inputList_.at(2)->setValidator(new QIntValidator(3, 10, inputList_.at(2)));
-    inputList_.at(3)->setValidator(new QRegExpValidator(QRegExp(QString("ja"), Qt::CaseSensitive, QRegExp::FixedString)));
-    inputList_.at(4)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
-    inputList_.at(5)->setValidator(new QIntValidator(0, 20, inputList_.at(5)));
-    inputList_.at(6)->setValidator(new QIntValidator(0, 100, inputList_.at(6)));
 
-    inputList_.at(6)->setDisabled(true);
-
-    connect(inputList_.at(3), SIGNAL(textChanged(QString)), this, SLOT(setJoker(QString)));
-  }
-
-  else if (analysis_ == "Läufer")
-  {
-    inputList_.at(0)->setValidator(new QIntValidator(0, 200, inputList_.at(0)));
-    inputList_.at(2)->setValidator(new QIntValidator(0, 40, inputList_.at(2)));
-    inputList_.at(3)->setValidator(new QIntValidator(0, 30, inputList_.at(3)));
-    inputList_.at(4)->setValidator(new QIntValidator(0, 30, inputList_.at(4)));
-    inputList_.at(5)->setValidator(new QIntValidator(0, 100, inputList_.at(5)));
-
-    inputList_.at(5)->setDisabled(true);
-  }
-
-  else
-  {
-    // TODO: Ausnahmebehandlung
-  }
+  // connections
+  connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
+  connect(bEdit_, SIGNAL(clicked()), this, SLOT(sendEditedInput()));
 }
 //---------------------------------------------------------------------------------------
 
