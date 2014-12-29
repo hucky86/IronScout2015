@@ -189,6 +189,10 @@ void CCentralWidget::buildInputValidators()
     inputList_.at(4)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
     inputList_.at(5)->setValidator(new QIntValidator(0, 20, inputList_.at(5)));
     inputList_.at(6)->setValidator(new QIntValidator(0, 100, inputList_.at(6)));
+
+    inputList_.at(6)->setDisabled(true);
+
+    connect(inputList_.at(3), SIGNAL(textChanged(QString)), this, SLOT(setJoker(QString)));
   }
 
   else if (analysis_ == "Läufer")
@@ -198,6 +202,8 @@ void CCentralWidget::buildInputValidators()
     inputList_.at(3)->setValidator(new QIntValidator(0, 30, inputList_.at(3)));
     inputList_.at(4)->setValidator(new QIntValidator(0, 30, inputList_.at(4)));
     inputList_.at(5)->setValidator(new QIntValidator(0, 100, inputList_.at(5)));
+
+    inputList_.at(5)->setDisabled(true);
   }
 
   else
@@ -329,3 +335,20 @@ void CCentralWidget::writeToInput()
   }
 }
 //---------------------------------------------------------------------------------------
+
+void CCentralWidget::setJoker(QString text)
+{
+  if(text == "ja")
+  {
+    inputList_.at(4)->setDisabled(true);
+    inputList_.at(4)->setText(QString(""));
+    inputList_.at(5)->setDisabled(true);
+    inputList_.at(5)->setText(QString(""));
+  }
+
+  else
+  {
+    inputList_.at(4)->setDisabled(false);
+    inputList_.at(5)->setDisabled(false);
+  }
+}

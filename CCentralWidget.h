@@ -111,6 +111,8 @@ private slots:
     void resumeEditInput();
     // Absenden der Änderungen
     void sendEditedInput();
+    // Wenn Joker auf "ja" gesetzt wird
+    void setJoker(QString text);
     
 signals:
 };
