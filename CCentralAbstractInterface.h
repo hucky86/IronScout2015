@@ -1,15 +1,14 @@
 // IRON SCOUT AUSWERTUNG
 //************************************************************************
-// Klasse:          CCentralWidget
+// Klasse:          CCentralAbstractInterface
 // 
 // Beschreibung:    Zentrales Widget zur Verwaltung der Ein- und Ausgaben.
-//                  Wird als "Station"- oder "Läufer"-Auswertung
-//                  initialisiert.
+//                  Abstrakte Schnittstelle für Stationen und Läufer
 // 
 //************************************************************************
 
-#ifndef CCENTRALWIDGET_H
-#define CCENTRALWIDGET_H
+#ifndef CCENTRALABSTRACTINTERFACE_H
+#define CCENTRALABSTRACTINTERFACE_H
  
 #include <QWidget>
 #include <QVBoxLayout>
@@ -32,14 +31,14 @@
 #include "CStation.h"
 
  
-class CCentralWidget : public QWidget
+class CCentralAbstractInterface : public QWidget
 {
   Q_OBJECT
  
   public:
 // Konstruktoren:
     // leerer Standartkonstruktor
-    CCentralWidget(QString analysis);
+    CCentralAbstractInterface(QString analysis);
 
  
   private:
@@ -117,4 +116,4 @@ private slots:
 signals:
 };
  
-#endif // CCENTRALWIDGET_H
+#endif // CCENTRALABSTRACTINTERFACE_H

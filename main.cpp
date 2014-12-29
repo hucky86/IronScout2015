@@ -8,7 +8,7 @@
 
 #include <QApplication>
 #include "CMainWindow.h"
-#include "CCentralWidget.h"
+#include "CCentralAbstractInterface.h"
  
 int main( int argc, char *argv[] )
 {

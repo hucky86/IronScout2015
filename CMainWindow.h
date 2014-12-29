@@ -3,7 +3,7 @@
 // Klasse:          CMainWindow
 // 
 // Beschreibung:    Interface zur Verwaltung des Programms. Verwaltung
-//                  der Menüleiste sowie des CCentralWidget.
+//                  der Menüleiste sowie des CCentralAbstractInterface.
 //                  
 //************************************************************************
 
@@ -24,7 +24,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "CCentralWidget.h"
+#include "CCentralAbstractInterface.h"
 using namespace std;
 
 class CMainWindow : public QMainWindow
@@ -43,9 +43,9 @@ private:
   // Basis-Widget
   QWidget* centralWidget_;
   // Stationsauswertung
-  CCentralWidget* centralStation_;
+  CCentralAbstractInterface* centralStation_;
   // Läuferauswertung
-  CCentralWidget* centralRunner_;
+  CCentralAbstractInterface* centralRunner_;
   QMenuBar* menu_;
   
 //Layouts:

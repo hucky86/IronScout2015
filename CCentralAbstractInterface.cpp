@@ -1,6 +1,6 @@
-#include "CCentralWidget.h"
+#include "CCentralAbstractInterface.h"
 
-CCentralWidget::CCentralWidget(QString analysis)
+CCentralAbstractInterface::CCentralAbstractInterface(QString analysis)
 { 
   // Auswahl der Analyse (Station oder Läufer?)
   analysis_ = analysis;
@@ -38,7 +38,7 @@ CCentralWidget::CCentralWidget(QString analysis)
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::addGroup()
+void CCentralAbstractInterface::addGroup()
 {
   bool ok_name;
   bool ok_number;
@@ -84,7 +84,7 @@ void CCentralWidget::addGroup()
   connect(getCurrentGroup()->getTable(), SIGNAL(cellPressed(int,int)), this, SLOT(resumeEditInput()));
 }
 //---------------------------------------------------------------------------------------
-void CCentralWidget::deleteGroup()
+void CCentralAbstractInterface::deleteGroup()
 {
   // Holen der aktuellen Gruppe und den index
   CGroup* delGroup = getCurrentGroup();
@@ -109,13 +109,13 @@ void CCentralWidget::deleteGroup()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::changeGroup(int index)
+void CCentralAbstractInterface::changeGroup(int index)
 {
   sLayout_->setCurrentIndex(index);
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::buildInputLayout()
+void CCentralAbstractInterface::buildInputLayout()
 {
   // Hier werden die Parameter der Auswertung festgelegt
   // TODO: Besser als const in eigene source auslagern...
@@ -179,7 +179,7 @@ void CCentralWidget::buildInputLayout()
 //---------------------------------------------------------------------------------------
 // TODO: Unterscheidung zwischen Station und Läufer einfügen.
 // Besser: InputLayout in eigene Klassen auslagern
-void CCentralWidget::buildInputValidators()
+void CCentralAbstractInterface::buildInputValidators()
 {
   if(analysis_ == "Station")
   {
@@ -213,7 +213,7 @@ void CCentralWidget::buildInputValidators()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::addEntry()
+void CCentralAbstractInterface::addEntry()
 {
   // Holen der aktuellen Gruppe
   CGroup* group = getCurrentGroup();
@@ -232,13 +232,13 @@ void CCentralWidget::addEntry()
 }
 //---------------------------------------------------------------------------------------
 //TODO: In CGroup auslagern
-void CCentralWidget::deleteEntry()
+void CCentralAbstractInterface::deleteEntry()
 {
   getCurrentGroup()->deleteTableEntry();
 }
 //---------------------------------------------------------------------------------------
 
-CGroup* CCentralWidget::getCurrentGroup()
+CGroup* CCentralAbstractInterface::getCurrentGroup()
 {
     // Holen der aktuellen Gruppe
   CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->currentWidget());
@@ -247,7 +247,7 @@ CGroup* CCentralWidget::getCurrentGroup()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::editInput()
+void CCentralAbstractInterface::editInput()
 {
   // Umstellen der Button Aktivität
   changeToEditStatus(true);
@@ -256,7 +256,7 @@ void CCentralWidget::editInput()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::resumeEditInput()
+void CCentralAbstractInterface::resumeEditInput()
 {
   // Umstellen der Button Aktivität
   changeToEditStatus(false);
@@ -265,7 +265,7 @@ void CCentralWidget::resumeEditInput()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::emptyInput()
+void CCentralAbstractInterface::emptyInput()
 {
   QString empty ("");
   
@@ -277,7 +277,7 @@ void CCentralWidget::emptyInput()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::sendEditedInput()
+void CCentralAbstractInterface::sendEditedInput()
 {
   changeToEditStatus(false);
   
@@ -287,7 +287,7 @@ void CCentralWidget::sendEditedInput()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::changeToEditStatus(bool editStatus)
+void CCentralAbstractInterface::changeToEditStatus(bool editStatus)
 {
   // Abfrage des Status
   if(editStatus)
@@ -304,7 +304,7 @@ void CCentralWidget::changeToEditStatus(bool editStatus)
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::writeToTable()
+void CCentralAbstractInterface::writeToTable()
 {
   // Ermittlung der aktivierten Zeile und des aktuellen table
   int row = getCurrentGroup()->getTable()->currentRow();
@@ -320,7 +320,7 @@ void CCentralWidget::writeToTable()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::writeToInput()
+void CCentralAbstractInterface::writeToInput()
 {
   // Ermittlung der aktivierten Zeile und des aktuellen table
   int row = getCurrentGroup()->getTable()->currentRow();
@@ -336,7 +336,7 @@ void CCentralWidget::writeToInput()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralWidget::setJoker(QString text)
+void CCentralAbstractInterface::setJoker(QString text)
 {
   if(text == "ja")
   {
