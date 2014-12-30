@@ -102,7 +102,35 @@ int CGroup::getRow(int number)
   
   return row;
 }
+//---------------------------------------------------------------------------------------
 
+void CGroup::setRedRow(int row)
+{
+  QBrush red;
+  red.setStyle(Qt::SolidPattern);
+  red.setColor(QColor(255,0,0));
+  
+  for (int i = 0; i < table_->columnCount(); i++)
+  {
+    table_->item(row, i)->setBackground(red);
+  }
+}
+//---------------------------------------------------------------------------------------
+
+void CGroup::setWhiteTable()
+{
+  QBrush white;
+  white.setStyle(Qt::SolidPattern);
+  white.setColor(QColor(255,255,255));
+  
+  for (int row = 0; row < table_->rowCount(); row++)
+  {
+    for (int column = 0; column < table_->columnCount(); column++)
+    {
+      table_->item(row, column)->setBackground(white);
+    }
+  }
+}
 
 
 

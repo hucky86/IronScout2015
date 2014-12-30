@@ -40,6 +40,10 @@ public:
     bool checkGroupExist(int number);
     // Gibt die Zeile mit zu einer Gruppennummer zurück
     int getRow (int number);
+    // Markiert die gesamte Zeile rot
+    void setRedRow(int row);
+    // Setzt die gesamte Tabelle weiß
+    void setWhiteTable();
 
   private:
 

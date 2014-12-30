@@ -147,6 +147,9 @@ void CCentralAbstractInterface::addEntry()
   // Holen der aktuellen Gruppe
   CGroup* group = getCurrentGroup();
   
+  // Tabelle wieder auf weiß setzen
+  group->setWhiteTable();
+  
   if (group == NULL)
   {
     // TODO: Execption
@@ -156,12 +159,18 @@ void CCentralAbstractInterface::addEntry()
   // auf bereits vorhandenem Eintrag prüfen
   if (checkDoubleEntry())
   {
+    //Holen der Zeilennummer
+    int row = getCurrentGroup()->getRow(inputList_.at(0)->text().toInt());
+    
     // Überschreiben des existierenden Eintrag
-    writeToTable(getCurrentGroup()->getRow(inputList_.at(0)->text().toInt()));
+    writeToTable(row);
     
     // Input für Gruppennamen wieder freigeben
     inputList_.at(1)->setDisabled(false);
-
+    
+    // Zeile auf rot setzen
+    getCurrentGroup()->setRedRow(row);
+    
     // Input leeren
     emptyInput();
   }
