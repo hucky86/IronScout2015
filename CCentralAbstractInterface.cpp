@@ -154,7 +154,18 @@ void CCentralAbstractInterface::addEntry()
   }
   
   // auf bereits vorhandenem Eintrag prüfen
-  if (throwDoubleEntry());
+  if (checkDoubleEntry())
+  {
+    // Überschreiben des existierenden Eintrag
+    writeToTable(getCurrentGroup()->getRow(inputList_.at(0)->text().toInt()));
+    
+    // Input für Gruppennamen wieder freigeben
+    inputList_.at(1)->setDisabled(false);
+
+    // Input leeren
+    emptyInput();
+  }
+  
   else
   {
     // Eintrag hinzufügen
@@ -219,7 +230,7 @@ void CCentralAbstractInterface::sendEditedInput()
 {
   changeToEditStatus(false);
   
-  writeToTable();
+  writeToTable(getCurrentGroup()->getRow(inputList_.at(0)->text().toInt()));
   
   emptyInput();
 }
@@ -246,10 +257,9 @@ void CCentralAbstractInterface::changeToEditStatus(bool editStatus)
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralAbstractInterface::writeToTable()
+void CCentralAbstractInterface::writeToTable(int row)
 {
-  // Ermittlung der aktivierten Zeile und des aktuellen table
-  int row = getCurrentGroup()->getTable()->currentRow();
+  // Ermittlung des aktuellen table
   QTableWidget* table = getCurrentGroup()->getTable();
   
   // Übertragung der Daten auf die Input Felder
@@ -331,20 +341,11 @@ void CCentralAbstractInterface::checkGroupName(QString number)
 }
 //---------------------------------------------------------------------------------------
 
-bool CCentralAbstractInterface::throwDoubleEntry()
+bool CCentralAbstractInterface::checkDoubleEntry()
 {
   // auf bereits vorhandenem Eintrag prüfen
   if(getCurrentGroup()->checkGroupExist(inputList_.at(0)->text().toInt()))
   {
-    // Warnung ausgeben
-    QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setText("Diese Gruppe ist bereits vorhanden!");
-    msgBox.setInformativeText("Eintrag wird nicht hinzugefügt");
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.setDefaultButton(QMessageBox::Ok);
-    msgBox.exec();
-
     return true;
   }
 

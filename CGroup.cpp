@@ -84,6 +84,25 @@ bool CGroup::checkGroupExist(int number)
 
   return false;
 }
+//---------------------------------------------------------------------------------------
+
+int CGroup::getRow(int number)
+{
+  int row = -1;
+  
+  // Durch alle Tabelleneinträge der aktuellen Gruppe
+  for (int i = 0; i < table_->rowCount(); i++)
+  {
+    // Wenn vorhandener Eintrag == number
+    if (table_->item(i, 0)->text().toInt() == number)
+    {
+      row = i;
+    }
+  }
+  
+  return row;
+}
+
 
 
 

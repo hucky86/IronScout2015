@@ -38,6 +38,8 @@ public:
     void deleteTableEntry ();
     // Prüft ob eine Gruppe bereits vorhanden ist
     bool checkGroupExist(int number);
+    // Gibt die Zeile mit zu einer Gruppennummer zurück
+    int getRow (int number);
 
   private:
 

@@ -81,13 +81,13 @@ class CCentralAbstractInterface : public QWidget
     // Ändern der Button Aktivität von bEdit_ und bInputNew_
     void changeToEditStatus(bool editStatus);
     // Schreiben der Input Daten in das table
-    void writeToTable();
+    void writeToTable(int row);
     // Schreiben der table Daten in das Input Format
     void writeToInput();
     // Neue Gruppe anlegen
     virtual CGroup* newGroup(QString name, int number) = 0;
     // Message Box, welche vor doppelten Einträgen warnt
-    bool throwDoubleEntry();
+    bool checkDoubleEntry();
 
 private slots:
     
