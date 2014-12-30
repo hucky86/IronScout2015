@@ -11,12 +11,16 @@ CRunner::CRunner(QStringList parameter, QString text, int number):CGroup(paramet
   disqualified_ = new QCheckBox;
   // Läufer am Start
   runnerAtStart_ = new QLineEdit;
+  runnerAtStart_->setValidator(new QIntValidator(4, 10, this));
   // Taxischeine im Ziel
   taxiTicket_ = new QLineEdit;
+  taxiTicket_->setValidator(new QIntValidator(0, 10, this));
   // Startzeit
   startTime_ = new QDateTimeEdit;
+  startTime_->setDateTime(QDateTime(QDate(2015,10,9), QTime(13,0)));
   // Zielzeit
   destinationTime_ = new QDateTimeEdit;
+  destinationTime_->setDateTime(QDateTime(QDate(2015,10,10), QTime(20,0)));
   
   // Zusammenbau des Gruppenspezifischen Widget
   gLayout_->addWidget(new QLabel("Disqualifiziert"),0,0);
