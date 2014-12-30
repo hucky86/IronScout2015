@@ -20,7 +20,14 @@ class CStation : public CGroup
   public:
     CStation(QStringList parameter, QString text, int number);
 
+    // Aufrufen der Eingabeaufforderung der Gruppenspezifischen Eingaben
+    virtual void openProperties();
+    
   private:
+    
+  public slots:
+    
+  signals:
     
 };
  

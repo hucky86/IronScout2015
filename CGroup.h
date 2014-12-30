@@ -44,6 +44,8 @@ public:
     void setRedRow(int row);
     // Setzt die gesamte Tabelle weiß
     void setWhiteTable();
+    // Aufrufen der Eingabeaufforderung der Gruppenspezifischen Eingaben
+    virtual void openProperties() = 0;
 
   private:
 
@@ -68,8 +70,18 @@ protected:
 //Widgets:
     // Table Widget zur Speicherung aller Eingaben
     QTableWidget* table_;
+    // Widget zu Eingabe der Gruppenspezifischen Parameter
+    QWidget* properties_;
+    // OK Bestätigung der properties
+    QPushButton* ok_;
     
-private slots:
+// Layouts:
+    // Grid Layout für die properties
+    QGridLayout* gLayout_;
+    
+public slots:
+    // Properties Fenster wieder schließen
+    void closeProperties ();
   
 signals:
     

@@ -52,13 +52,16 @@ void CCentralAbstractInterface::addGroup()
   
   // Wenn durch "ok" bestätigt
   if (ok_number && ok_name)
-  {
+  { 
     // Hinzufügen des items und aktiv setzen
     dropDown_->addItem(text);
     dropDown_->setCurrentIndex(dropDown_->count() - 1);
 
     // Anlegen der neuen Gruppe
     newGroup = this->newGroup(name, number);
+    
+    // Aufrufen der Gruppenspezifischen Eingaben
+    newGroup->openProperties();
     
     // Hinzufügen zum stacked Layout
     sLayout_->addWidget(newGroup);

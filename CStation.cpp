@@ -6,5 +6,10 @@ CStation::CStation(QStringList parameter, QString text, int number):CGroup(param
 
 }
 
+void CStation::openProperties()
+{
+
+}
+
 
 

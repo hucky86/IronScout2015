@@ -24,8 +24,6 @@ class CCentralRunnerInterface : public CCentralAbstractInterface
     CCentralRunnerInterface();
 
   private:
-  
-// Widgets:
 
 // Layouts:
     

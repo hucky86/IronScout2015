@@ -14,6 +14,13 @@ CGroup::CGroup(QStringList parameter, QString name, int number)
   vLayout_->addWidget(table_);
   
   setLayout(vLayout_);
+  
+  // Ok Button für Gruppenspezifische Eingaben
+  ok_ = new QPushButton;
+  ok_->setText("OK");
+  
+  // connections
+  connect(ok_, SIGNAL(clicked()), this, SLOT(closeProperties()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -131,6 +138,13 @@ void CGroup::setWhiteTable()
     }
   }
 }
+//---------------------------------------------------------------------------------------
+
+void CGroup::closeProperties()
+{
+  properties_->close();
+}
+
 
 
 
