@@ -77,7 +77,7 @@ void CGroup::deleteTableEntry()
 }
 //---------------------------------------------------------------------------------------
 
-bool CGroup::checkGroupExist(int number)
+bool CGroup::checkEntryExist(int number)
 {
   // Durch alle Tabelleneinträge der aktuellen Gruppe
   for (int i = 0; i < table_->rowCount(); i++)
@@ -143,6 +143,12 @@ void CGroup::setWhiteTable()
 void CGroup::closeProperties()
 {
   properties_->close();
+}
+//---------------------------------------------------------------------------------------
+
+int CGroup::getNumber()
+{
+  return number_;
 }
 
 

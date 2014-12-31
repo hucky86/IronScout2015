@@ -53,6 +53,21 @@ void CCentralAbstractInterface::addGroup()
   // Wenn durch "ok" bestätigt
   if (ok_number && ok_name)
   { 
+    // Abfrage ob Gruppe bereits vorhanden ist
+    if (checkDoubleGroup(number))
+    {
+      // Warnung ausgeben
+      QMessageBox msgBox;
+      msgBox.setIcon(QMessageBox::Warning);
+      msgBox.setText("Diese Gruppe ist bereits vorhanden!");
+      msgBox.setInformativeText("Gruppe wird nicht hinzugefügt");
+      msgBox.setStandardButtons(QMessageBox::Ok);
+      msgBox.setDefaultButton(QMessageBox::Ok);
+      msgBox.exec();
+
+      return;
+    }
+
     // Hinzufügen des items und aktiv setzen
     dropDown_->addItem(text);
     dropDown_->setCurrentIndex(dropDown_->count() - 1);
@@ -159,7 +174,7 @@ void CCentralAbstractInterface::addEntry()
     return;
   }
   
-  // auf bereits vorhandenem Eintrag prüfen
+  // auf bereits vorhandenen Eintrag prüfen
   if (checkDoubleEntry())
   {
     //Holen der Zeilennummer
@@ -355,11 +370,34 @@ void CCentralAbstractInterface::checkGroupName(QString number)
 
 bool CCentralAbstractInterface::checkDoubleEntry()
 {
-  // auf bereits vorhandenem Eintrag prüfen
-  if(getCurrentGroup()->checkGroupExist(inputList_.at(0)->text().toInt()))
+  // auf bereits vorhandenen Eintrag prüfen
+  if(getCurrentGroup()->checkEntryExist(inputList_.at(0)->text().toInt()))
   {
     return true;
   }
 
   return false;
+}
+//---------------------------------------------------------------------------------------
+
+bool CCentralAbstractInterface::checkDoubleGroup(int number)
+{
+  for (int i = 0; i < sLayout_->count(); i++)
+  {
+    if (getGroupAt(i)->getNumber() == number)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+//---------------------------------------------------------------------------------------
+
+CGroup* CCentralAbstractInterface::getGroupAt(int index)
+{
+      // Holen der aktuellen Gruppe
+  CGroup* GroupAt = dynamic_cast<CGroup*>(sLayout_->widget(index));
+  
+  return GroupAt;
 }

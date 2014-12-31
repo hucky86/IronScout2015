@@ -37,7 +37,7 @@ public:
     // Löschen des aktuellen Tabelleneintrages
     void deleteTableEntry ();
     // Prüft ob eine Gruppe bereits vorhanden ist
-    bool checkGroupExist(int number);
+    bool checkEntryExist(int number);
     // Gibt die Zeile mit zu einer Gruppennummer zurück
     int getRow (int number);
     // Markiert die gesamte Zeile rot
@@ -46,6 +46,8 @@ public:
     void setWhiteTable();
     // Aufrufen der Eingabeaufforderung der Gruppenspezifischen Eingaben
     virtual void openProperties() = 0;
+    // Rückgabe der Gruppennummer
+    int getNumber();
 
   private:
 

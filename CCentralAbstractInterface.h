@@ -86,8 +86,10 @@ class CCentralAbstractInterface : public QWidget
     void writeToInput();
     // Neue Gruppe anlegen
     virtual CGroup* newGroup(QString name, int number) = 0;
-    // Message Box, welche vor doppelten Einträgen warnt
+    // Überprüft, ob Eintrag bereits vorhanden ist
     bool checkDoubleEntry();
+    // Überprüft, ob Gruppe bereits vorhanden ist
+    bool checkDoubleGroup(int number);
 
 private slots:
     
@@ -103,6 +105,8 @@ private slots:
     void deleteEntry();
     // Aktuelle CGroup
     CGroup* getCurrentGroup();
+    // CGroup bei index
+    CGroup* getGroupAt(int index);
     // Bearbeiten-Modus öffnen
     void editInput();
     // Bearbeiten-Modus schließen
