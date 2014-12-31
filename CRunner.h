@@ -20,10 +20,6 @@ class CRunner : public CGroup
  
   public:
     CRunner(QStringList parameter, QString text, int number);
-    
-    // Aufrufen der Eingabeaufforderung der Gruppenspezifischen Eingaben
-    virtual void openProperties();
-
  
   private:
 // Widgets:

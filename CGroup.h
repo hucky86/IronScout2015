@@ -45,7 +45,7 @@ public:
     // Setzt die gesamte Tabelle weiß
     void setWhiteTable();
     // Aufrufen der Eingabeaufforderung der Gruppenspezifischen Eingaben
-    virtual void openProperties() = 0;
+    virtual void openProperties();
     // Rückgabe der Gruppennummer
     int getNumber();
 

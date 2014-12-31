@@ -38,9 +38,3 @@ CRunner::CRunner(QStringList parameter, QString text, int number):CGroup(paramet
   properties_->setLayout(gLayout_);
 }
 
-void CRunner::openProperties()
-{
-  properties_->setWindowFlags(Qt::WindowStaysOnTopHint);
-  properties_->show();
-}
-

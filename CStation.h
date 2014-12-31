@@ -11,6 +11,7 @@
 #define CSTATION_H
 
 #include <QLineEdit>
+#include <QCheckBox>
 
 #include "CGroup.h"
  
@@ -19,11 +20,14 @@ class CStation : public CGroup
  
   public:
     CStation(QStringList parameter, QString text, int number);
-
-    // Aufrufen der Eingabeaufforderung der Gruppenspezifischen Eingaben
-    virtual void openProperties();
     
   private:
+//Widgets:
+    // Disqualifiziert?
+    QCheckBox* disqualified_;
+    // Anzahl der Personen an der Station
+    QLineEdit* numberPeople_;
+
     
   public slots:
     

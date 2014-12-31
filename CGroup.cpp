@@ -150,6 +150,13 @@ int CGroup::getNumber()
 {
   return number_;
 }
+//---------------------------------------------------------------------------------------
+
+void CGroup::openProperties()
+{
+  properties_->setWindowFlags(Qt::WindowStaysOnTopHint);
+  properties_->show();
+}
 
 
 

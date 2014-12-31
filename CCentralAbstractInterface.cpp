@@ -396,7 +396,7 @@ bool CCentralAbstractInterface::checkDoubleGroup(int number)
 
 CGroup* CCentralAbstractInterface::getGroupAt(int index)
 {
-      // Holen der aktuellen Gruppe
+  // Holen der aktuellen Gruppe
   CGroup* GroupAt = dynamic_cast<CGroup*>(sLayout_->widget(index));
   
   return GroupAt;
