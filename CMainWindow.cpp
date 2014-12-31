@@ -37,14 +37,21 @@ QMenuBar* CMainWindow::createMenuBar()
   fileMenu->addAction("Datei speichern", this, SLOT(saveFile()));
   fileMenu->addAction("Programm beenden", this, SLOT(closeWindow()));
   
-  // Hinzufügen des Eintrages "Auswertungsmodus"
-  QMenu* modus = new QMenu("Auswertungsmodus");
+  // Hinzufügen des Eintrages "Eingabemodus"
+  QMenu* modus = new QMenu("Eingabemodus");
   
-  modus->addAction("Stationsbögen auswerten", this, SLOT(changeToStation()));
-  modus->addAction("Läuferbögen auswerten", this, SLOT(changeToRunner()));
+  modus->addAction("Stationsbögen eingeben", this, SLOT(changeToStation()));
+  modus->addAction("Läuferbögen eingeben", this, SLOT(changeToRunner()));
+
+  // Hinzufügen des Eintrages "Eingabemodus"
+  QMenu* analysis = new QMenu("Auswertung");
+
+  analysis->addAction("Stationen auswerten", this, SLOT());
+  analysis->addAction("Läufer auswerten", this, SLOT());
   
   mbar->addMenu(fileMenu);
   mbar->addMenu(modus);
+  mbar->addMenu(analysis);
   
   return mbar;
 }
