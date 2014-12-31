@@ -35,7 +35,7 @@ void CCentralAbstractInterface::addGroup()
 {
   bool ok_name;
   bool ok_number;
-  CGroup* newGroup;
+  CGroupInterface* newGroup;
 
   // Eingabeauforderung der neuen Stationsnummer
   int number = QInputDialog::getInt(this, tr("Erstellung einer neuen Gruppe"),
@@ -91,7 +91,7 @@ void CCentralAbstractInterface::addGroup()
 void CCentralAbstractInterface::deleteGroup()
 {
   // Holen der aktuellen Gruppe und den index
-  CGroup* delGroup = getCurrentGroup();
+  CGroupInterface* delGroup = getCurrentGroup();
   int index = sLayout_->indexOf(delGroup);
   
   // Konfigurieren der Sicherheitsnachfrage
@@ -163,7 +163,7 @@ void CCentralAbstractInterface::buildInputLayout()
 void CCentralAbstractInterface::addEntry()
 {
   // Holen der aktuellen Gruppe
-  CGroup* group = getCurrentGroup();
+  CGroupInterface* group = getCurrentGroup();
   
   // Tabelle wieder auf weiß setzen
   group->setWhiteTable();
@@ -207,17 +207,17 @@ void CCentralAbstractInterface::addEntry()
   
 }
 //---------------------------------------------------------------------------------------
-//TODO: In CGroup auslagern
+//TODO: In CGroupInterface auslagern
 void CCentralAbstractInterface::deleteEntry()
 {
   getCurrentGroup()->deleteTableEntry();
 }
 //---------------------------------------------------------------------------------------
 
-CGroup* CCentralAbstractInterface::getCurrentGroup()
+CGroupInterface* CCentralAbstractInterface::getCurrentGroup()
 {
     // Holen der aktuellen Gruppe
-  CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->currentWidget());
+  CGroupInterface* actualGroup = dynamic_cast<CGroupInterface*>(sLayout_->currentWidget());
   
   return actualGroup;
 }
@@ -348,7 +348,7 @@ void CCentralAbstractInterface::checkGroupName(QString number)
   for (int i = 0; i < sLayout_->count(); i++)
   {
     // Holen der Gruppe
-    CGroup* actualGroup = dynamic_cast<CGroup*>(sLayout_->widget(i));
+    CGroupInterface* actualGroup = dynamic_cast<CGroupInterface*>(sLayout_->widget(i));
 
     // Überprüfung, ob Nummer "numb" in dieser Gruppe vorhanden
     for (int row = 0; row < actualGroup->getTable()->rowCount(); row++)
@@ -394,10 +394,10 @@ bool CCentralAbstractInterface::checkDoubleGroup(int number)
 }
 //---------------------------------------------------------------------------------------
 
-CGroup* CCentralAbstractInterface::getGroupAt(int index)
+CGroupInterface* CCentralAbstractInterface::getGroupAt(int index)
 {
   // Holen der aktuellen Gruppe
-  CGroup* GroupAt = dynamic_cast<CGroup*>(sLayout_->widget(index));
+  CGroupInterface* GroupAt = dynamic_cast<CGroupInterface*>(sLayout_->widget(index));
   
   return GroupAt;
 }

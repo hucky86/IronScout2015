@@ -1,6 +1,6 @@
-#include "CGroup.h"
+#include "CGroupInterface.h"
 
-CGroup::CGroup(QStringList parameter, QString name, int number)
+CGroupInterface::CGroupInterface(QStringList parameter, QString name, int number)
 {
   number_ = number;
   parameter_ = parameter;
@@ -24,13 +24,13 @@ CGroup::CGroup(QStringList parameter, QString name, int number)
 }
 //---------------------------------------------------------------------------------------
 
-QTableWidget* CGroup::getTable()
+QTableWidget* CGroupInterface::getTable()
 {
   return table_;
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::buildTable()
+void CGroupInterface::buildTable()
 {
   // Table anlegen
   table_ = new QTableWidget;
@@ -52,7 +52,7 @@ void CGroup::buildTable()
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::addTableEntry(const QList<QLineEdit*> list)
+void CGroupInterface::addTableEntry(const QList<QLineEdit*> list)
 {
   // Neue Zeile hinzufügen
   table_->insertRow(table_->rowCount());
@@ -71,13 +71,13 @@ void CGroup::addTableEntry(const QList<QLineEdit*> list)
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::deleteTableEntry()
+void CGroupInterface::deleteTableEntry()
 {  
   table_->removeRow(table_->currentRow());
 }
 //---------------------------------------------------------------------------------------
 
-bool CGroup::checkEntryExist(int number)
+bool CGroupInterface::checkEntryExist(int number)
 {
   // Durch alle Tabelleneinträge der aktuellen Gruppe
   for (int i = 0; i < table_->rowCount(); i++)
@@ -93,7 +93,7 @@ bool CGroup::checkEntryExist(int number)
 }
 //---------------------------------------------------------------------------------------
 
-int CGroup::getRow(int number)
+int CGroupInterface::getRow(int number)
 {
   int row = -1;
   
@@ -111,7 +111,7 @@ int CGroup::getRow(int number)
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::setRedRow(int row)
+void CGroupInterface::setRedRow(int row)
 {
   QBrush red;
   red.setStyle(Qt::SolidPattern);
@@ -124,7 +124,7 @@ void CGroup::setRedRow(int row)
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::setWhiteTable()
+void CGroupInterface::setWhiteTable()
 {
   QBrush white;
   white.setStyle(Qt::SolidPattern);
@@ -140,19 +140,19 @@ void CGroup::setWhiteTable()
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::closeProperties()
+void CGroupInterface::closeProperties()
 {
   properties_->close();
 }
 //---------------------------------------------------------------------------------------
 
-int CGroup::getNumber()
+int CGroupInterface::getNumber()
 {
   return number_;
 }
 //---------------------------------------------------------------------------------------
 
-void CGroup::openProperties()
+void CGroupInterface::openProperties()
 {
   properties_->setWindowFlags(Qt::WindowStaysOnTopHint);
   properties_->show();

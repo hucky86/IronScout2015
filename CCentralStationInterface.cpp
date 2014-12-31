@@ -27,9 +27,9 @@ void CCentralStationInterface::buildInputValidators()
 
 //---------------------------------------------------------------------------------------
 
-CGroup* CCentralStationInterface::newGroup(QString name, int number)
+CGroupInterface* CCentralStationInterface::newGroup(QString name, int number)
 {
-  CGroup* newGroup = new CStation(parameter_, name, number);
+  CGroupInterface* newGroup = new CStationInterface(parameter_, name, number);
 
   return newGroup;
 }

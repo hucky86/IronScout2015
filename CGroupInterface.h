@@ -1,15 +1,15 @@
 // IRON SCOUT AUSWERTUNG
 //************************************************************************
-// Klasse:          CGroup
+// Klasse:          CGroupInterface
 // 
 // Beschreibung:    Abstrakte Basisklasse des Interfaces der Ein- und 
-//                  Ausgabe für Gruppen. Abgeleitete Klassen CRunner und
-//                  CStation. 
+//                  Ausgabe für Gruppen. Abgeleitete Klassen CRunnerInterface und
+//                  CStationInterface. 
 //                  
 //************************************************************************
 
-#ifndef CGROUP_H
-#define CGROUP_H
+#ifndef CGroupInterface_H
+#define CGroupInterface_H
 
 #include <QLabel>
 #include <QVBoxLayout>
@@ -20,14 +20,14 @@
 #include <QFlag>
 #include <QAbstractItemView>
  
-class CGroup : public QWidget
+class CGroupInterface : public QWidget
 {
   Q_OBJECT
  
 public:
   
 // Konstruktoren:
-    CGroup(QStringList parameter, QString name, int number);
+    CGroupInterface(QStringList parameter, QString name, int number);
     
 // Memberfunktionen:
     // get Funktionen
@@ -89,4 +89,4 @@ signals:
     
 };
  
-#endif // CGROUP_H
+#endif // CGroupInterface_H

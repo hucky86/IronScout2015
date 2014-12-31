@@ -1,25 +1,25 @@
 // IRON SCOUT AUSWERTUNG
 //************************************************************************
-// Klasse:          CStation
+// Klasse:          CStationInterface
 // 
 // Beschreibung:    Verwaltung des Interfaces der Ein- und Ausgabe für 
 //                  Stationsgruppen.
 //                  
 //************************************************************************
 
-#ifndef CSTATION_H
-#define CSTATION_H
+#ifndef CStationInterface_H
+#define CStationInterface_H
 
 #include <QLineEdit>
 #include <QCheckBox>
 
-#include "CGroup.h"
+#include "CGroupInterface.h"
  
-class CStation : public CGroup
+class CStationInterface : public CGroupInterface
 {
  
   public:
-    CStation(QStringList parameter, QString text, int number);
+    CStationInterface(QStringList parameter, QString text, int number);
     
   private:
 //Widgets:
@@ -35,4 +35,4 @@ class CStation : public CGroup
     
 };
  
-#endif // CSTATION_H
+#endif // CStationInterface_H

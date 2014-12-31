@@ -23,9 +23,9 @@ void CCentralRunnerInterface::buildInputValidators()
 }
 //---------------------------------------------------------------------------------------
 
-CGroup* CCentralRunnerInterface::newGroup(QString name, int number)
+CGroupInterface* CCentralRunnerInterface::newGroup(QString name, int number)
 {
-  CGroup* newGroup = new CRunner(parameter_, name, number);
+  CGroupInterface* newGroup = new CRunnerInterface(parameter_, name, number);
 
   return newGroup;
 }

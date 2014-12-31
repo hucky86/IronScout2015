@@ -26,9 +26,9 @@
 #include <QStringList>
 #include <QMessageBox>
 
-#include "CGroup.h"
-#include "CRunner.h"
-#include "CStation.h"
+#include "CGroupInterface.h"
+#include "CRunnerInterface.h"
+#include "CStationInterface.h"
 
  
 class CCentralAbstractInterface : public QWidget
@@ -60,7 +60,7 @@ class CCentralAbstractInterface : public QWidget
 // Layouts:
     // QVBoxLayout als zentrales Widget
     QVBoxLayout* vLayout_;
-    // QStackedLayout für alle CGroup
+    // QStackedLayout für alle CGroupInterface
     QStackedLayout* sLayout_;
     // QHBoxLayout für bNew_, bDelete_ und dropDown_
     QHBoxLayout* hLayout_;
@@ -85,7 +85,7 @@ class CCentralAbstractInterface : public QWidget
     // Schreiben der table Daten in das Input Format
     void writeToInput();
     // Neue Gruppe anlegen
-    virtual CGroup* newGroup(QString name, int number) = 0;
+    virtual CGroupInterface* newGroup(QString name, int number) = 0;
     // Überprüft, ob Eintrag bereits vorhanden ist
     bool checkDoubleEntry();
     // Überprüft, ob Gruppe bereits vorhanden ist
@@ -103,10 +103,10 @@ private slots:
     void addEntry();
     // Eintrag im table löschen
     void deleteEntry();
-    // Aktuelle CGroup
-    CGroup* getCurrentGroup();
-    // CGroup bei index
-    CGroup* getGroupAt(int index);
+    // Aktuelle CGroupInterface
+    CGroupInterface* getCurrentGroup();
+    // CGroupInterface bei index
+    CGroupInterface* getGroupAt(int index);
     // Bearbeiten-Modus öffnen
     void editInput();
     // Bearbeiten-Modus schließen

@@ -34,7 +34,7 @@ class CCentralStationInterface : public CCentralAbstractInterface
     
 //Memberfunktionen:
     void buildInputValidators();
-    virtual CGroup* newGroup(QString name, int number);
+    virtual CGroupInterface* newGroup(QString name, int number);
 
 private slots:
     

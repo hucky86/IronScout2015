@@ -1,7 +1,7 @@
 
-#include "CRunner.h"
+#include "CRunnerInterface.h"
 
-CRunner::CRunner(QStringList parameter, QString text, int number):CGroup(parameter, text, number)
+CRunnerInterface::CRunnerInterface(QStringList parameter, QString text, int number):CGroupInterface(parameter, text, number)
 {
   // Widget für Gruppenspezifische Eingaben
   properties_ = new QWidget;

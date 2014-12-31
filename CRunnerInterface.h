@@ -1,25 +1,25 @@
 // IRON SCOUT AUSWERTUNG
 //************************************************************************
-// Klasse:          CRunner
+// Klasse:          CRunnerInterface
 // 
 // Beschreibung:    Verwaltung des Interfaces der Ein- und Ausgabe für 
 //                  Läufergruppen.
 //                  
 //************************************************************************
 
-#ifndef CRUNNER_H
-#define CRUNNER_H
+#ifndef CRunnerInterface_H
+#define CRunnerInterface_H
 
 #include <QDateTimeEdit>
 #include <QCheckBox>
 
-#include "CGroup.h"
+#include "CGroupInterface.h"
  
-class CRunner : public CGroup
+class CRunnerInterface : public CGroupInterface
 {
  
   public:
-    CRunner(QStringList parameter, QString text, int number);
+    CRunnerInterface(QStringList parameter, QString text, int number);
  
   private:
 // Widgets:
@@ -43,4 +43,4 @@ class CRunner : public CGroup
     
 };
  
-#endif // CRUNNER_H
+#endif // CRunnerInterface_H

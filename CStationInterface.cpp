@@ -1,7 +1,7 @@
 
-#include "CStation.h"
+#include "CStationInterface.h"
 
-CStation::CStation(QStringList parameter, QString text, int number):CGroup(parameter, text, number)
+CStationInterface::CStationInterface(QStringList parameter, QString text, int number):CGroupInterface(parameter, text, number)
 {  
   // Widget für Gruppenspezifische Eingaben
   properties_ = new QWidget;
