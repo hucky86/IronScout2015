@@ -315,24 +315,6 @@ void CCentralAbstractInterface::writeToInput()
 }
 //---------------------------------------------------------------------------------------
 
-void CCentralAbstractInterface::setJoker(QString text)
-{
-  if(text == "ja")
-  {
-    inputList_.at(4)->setDisabled(true);
-    inputList_.at(4)->setText(QString(""));
-    inputList_.at(5)->setDisabled(true);
-    inputList_.at(5)->setText(QString(""));
-  }
-
-  else
-  {
-    inputList_.at(4)->setDisabled(false);
-    inputList_.at(5)->setDisabled(false);
-  }
-}
-//---------------------------------------------------------------------------------------
-
 void CCentralAbstractInterface::checkGroupName(QString number)
 {
   // Konvertierung in int

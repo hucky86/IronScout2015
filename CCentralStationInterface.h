@@ -37,6 +37,8 @@ class CCentralStationInterface : public CCentralAbstractInterface
     virtual CGroupInterface* newGroup(QString name, int number);
 
 private slots:
+    // Wenn Joker auf "ja" gesetzt wird
+    void setJoker(QString text);
     
 signals:
 

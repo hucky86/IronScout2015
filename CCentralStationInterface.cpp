@@ -4,7 +4,7 @@ CCentralStationInterface::CCentralStationInterface () : CCentralAbstractInterfac
 {
   // Festlegung der benötigten Parameter
   parameter_ = QStringList() << QString(QStringLiteral("Läufernr.")) << QString(QStringLiteral("Läufername")) << QString(QStringLiteral("Läuferanzahl")) 
-  << "Joker [ja]" << "Punkte 'Spiel'" << "Punkte 'Teamwork'" << "Punkte Gesamt";
+  << "Joker [ja]" << "Punkte 'Spiel'" << "Punkte 'Teamwork'";
 
   buildInputLayout();
   buildInputValidators();
@@ -18,9 +18,6 @@ void CCentralStationInterface::buildInputValidators()
   inputList_.at(3)->setValidator(new QRegExpValidator(QRegExp(QString("ja"), Qt::CaseSensitive, QRegExp::FixedString)));
   inputList_.at(4)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
   inputList_.at(5)->setValidator(new QIntValidator(0, 20, inputList_.at(5)));
-  inputList_.at(6)->setValidator(new QIntValidator(0, 100, inputList_.at(6)));
-
-  inputList_.at(6)->setDisabled(true);
 
   connect(inputList_.at(3), SIGNAL(textChanged(QString)), this, SLOT(setJoker(QString)));
 }
@@ -32,4 +29,22 @@ CGroupInterface* CCentralStationInterface::newGroup(QString name, int number)
   CGroupInterface* newGroup = new CStationInterface(parameter_, name, number);
 
   return newGroup;
+}
+//---------------------------------------------------------------------------------------
+
+void CCentralStationInterface::setJoker(QString text)
+{
+  if(text == "ja")
+  {
+    inputList_.at(4)->setDisabled(true);
+    inputList_.at(4)->setText(QString(""));
+    inputList_.at(5)->setDisabled(true);
+    inputList_.at(5)->setText(QString(""));
+  }
+
+  else
+  {
+    inputList_.at(4)->setDisabled(false);
+    inputList_.at(5)->setDisabled(false);
+  }
 }

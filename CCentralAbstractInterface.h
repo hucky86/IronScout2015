@@ -113,8 +113,6 @@ private slots:
     void resumeEditInput();
     // Absenden der Änderungen
     void sendEditedInput();
-    // Wenn Joker auf "ja" gesetzt wird
-    void setJoker(QString text);
     // Überprüft, ob Gruppenname bereits eingegeben wurde
     void checkGroupName(QString number);
     
