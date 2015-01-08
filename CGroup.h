@@ -10,6 +10,12 @@
 
 #ifndef CGROUP_H
 #define CGROUP_H
+
+#include <iostream>
+#include <fstream>
+#include <map>
+ 
+ using namespace std;
  
 class CGroup
 {
@@ -17,13 +23,18 @@ class CGroup
 public:
   
 // Konstruktoren:
+    CGroup(string name, int number);
     
 // Memberfunktionen:
 
   private:
 
 //Membervariablen:
-    
+    // Gruppenname
+    string name_;
+    // Gruppennummer;
+    int number_;
+
 //Memberfunktionen:
     
 protected:
