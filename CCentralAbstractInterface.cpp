@@ -383,3 +383,13 @@ CGroupInterface* CCentralAbstractInterface::getGroupAt(int index)
   
   return GroupAt;
 }
+//---------------------------------------------------------------------------------------
+
+int CCentralAbstractInterface::getGroupNumber()
+{
+  int size = 0;
+  
+  size = sLayout_->count();
+  
+  return size;
+}

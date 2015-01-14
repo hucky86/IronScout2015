@@ -13,6 +13,10 @@
 #include <iostream>
 #include <fstream>
 
+#include "CGroup.h"
+#include "CCentralAbstractInterface.h"
+#include "CGroupInterface.h"
+
  using namespace std;
  
 class CAnalysis
@@ -21,12 +25,14 @@ class CAnalysis
 public:
   
 // Konstruktoren:
+  CAnalysis(CCentralAbstractInterface* interface);
     
 // Memberfunktionen:
 
   private:
 
 //Membervariablen:
+    map<int, CGroup> groupList_;
 
 //Memberfunktionen:
     

@@ -157,6 +157,15 @@ void CGroupInterface::openProperties()
   properties_->setWindowFlags(Qt::WindowStaysOnTopHint);
   properties_->show();
 }
+//---------------------------------------------------------------------------------------
+
+int CGroupInterface::getNumberAt(int row)
+{
+  int number = table_->item(row,0)->text().toInt();
+  
+  return number;
+}
+
 
 
 

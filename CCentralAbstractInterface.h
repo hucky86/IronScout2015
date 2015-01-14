@@ -39,7 +39,10 @@ class CCentralAbstractInterface : public QWidget
 // Konstruktoren:
     // leerer Standartkonstruktor
     CCentralAbstractInterface();
-
+    
+// Get/Set-Funktionen
+    // Rückgabe der Gruppenanzahl
+    int getGroupNumber ();
  
   protected:
   
@@ -91,6 +94,10 @@ class CCentralAbstractInterface : public QWidget
     // Überprüft, ob Gruppe bereits vorhanden ist
     bool checkDoubleGroup(int number);
 
+public slots:
+    // CGroupInterface bei index
+    CGroupInterface* getGroupAt(int index);
+    
 private slots:
     
     // hinzufügen einer Gruppe
@@ -105,8 +112,6 @@ private slots:
     void deleteEntry();
     // Aktuelle CGroupInterface
     CGroupInterface* getCurrentGroup();
-    // CGroupInterface bei index
-    CGroupInterface* getGroupAt(int index);
     // Bearbeiten-Modus öffnen
     void editInput();
     // Bearbeiten-Modus schließen

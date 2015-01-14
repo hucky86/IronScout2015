@@ -38,7 +38,7 @@ public:
     void deleteTableEntry ();
     // Prüft ob eine Gruppe bereits vorhanden ist
     bool checkEntryExist(int number);
-    // Gibt die Zeile mit zu einer Gruppennummer zurück
+    // Gibt die Zeile zu einer Gruppennummer zurück
     int getRow (int number);
     // Markiert die gesamte Zeile rot
     void setRedRow(int row);
@@ -48,6 +48,8 @@ public:
     virtual void openProperties();
     // Rückgabe der Gruppennummer
     int getNumber();
+    // Gibt die Gruppennummer zu einer Zeile
+    int getNumberAt(int row);
 
   private:
 
