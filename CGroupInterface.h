@@ -50,6 +50,8 @@ public:
     int getNumber();
     // Gibt die Gruppennummer zu einer Zeile
     int getNumberAt(int row);
+    // Gibt die Gesamtanzahl der Tabelleneinträge zurück
+    int getRowCount();
 
   private:
 

@@ -165,7 +165,15 @@ int CGroupInterface::getNumberAt(int row)
   
   return number;
 }
+//---------------------------------------------------------------------------------------
 
+int CGroupInterface::getRowCount()
+{
+  int count = table_->rowCount();
+
+  return count;
+}
+//---------------------------------------------------------------------------------------
 
 
 
