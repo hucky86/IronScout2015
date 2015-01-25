@@ -26,6 +26,7 @@
 
 #include "CCentralStationInterface.h"
 #include "CCentralRunnerInterface.h"
+#include "CAnalysis.h"
 
 using namespace std;
 
@@ -64,6 +65,8 @@ private slots:
   void loadFile();
   void changeToStation();
   void changeToRunner();
+  void analyseRunner();
+  void analyseStation();
   
   
 signals:

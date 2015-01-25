@@ -46,8 +46,8 @@ QMenuBar* CMainWindow::createMenuBar()
   // Hinzufügen des Eintrages "Eingabemodus"
   QMenu* analysis = new QMenu("Auswertung");
 
-  analysis->addAction("Stationen auswerten", this, SLOT());
-  analysis->addAction("Läufer auswerten", this, SLOT());
+  analysis->addAction("Stationen auswerten", this, SLOT(analyseStation()));
+  analysis->addAction("Läufer auswerten", this, SLOT(analyseRunner()));
   
   mbar->addMenu(fileMenu);
   mbar->addMenu(modus);
@@ -106,5 +106,18 @@ void CMainWindow::changeToRunner()
   }
 }
 //---------------------------------------------------------------------------------------
+
+void CMainWindow::analyseRunner()
+{
+  CAnalysis runnerAnalyse (centralStation_);
+}
+//---------------------------------------------------------------------------------------
+
+void CMainWindow::analyseStation()
+{
+
+}
+
+
 
 

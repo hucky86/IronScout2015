@@ -14,7 +14,7 @@ CAnalysis::CAnalysis(CCentralAbstractInterface* interface)
       string name = group->getTable()->item(j,1)->text().toStdString();
       
       // Überprüfung, ob Gruppe vorhanden ist
-      if (groupList_.find(number) != groupList_.end())
+      if (groupList_.count(number) == 0)
       {
         groupList_.insert(groupList_.begin(),pair<int, CGroup> (number, CGroup(name, number)));
       }
