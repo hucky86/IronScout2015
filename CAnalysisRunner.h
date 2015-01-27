@@ -13,6 +13,7 @@
 #define CANALYSISRUNNER_H
 
 #include "CAnalysis.h"
+#include "CCentralStationInterface.h"
 
 class CAnalysisRunner : public CAnalysis
 {
@@ -26,6 +27,7 @@ public:
 
 private:
 //Membervariablen:
+  CCentralStationInterface* station_;
 
 //Memberfunktionen:
   // Holt alle Daten aus dem Interface
