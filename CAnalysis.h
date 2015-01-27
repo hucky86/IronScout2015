@@ -32,9 +32,13 @@ public:
   private:
 
 //Membervariablen:
+    // Map zum Speichern der Gruppen
     map<int, CGroup> groupList_;
+    // Enthält alle Informationen aus der Eingabe
+    CCentralAbstractInterface* interface_;
 
 //Memberfunktionen:
+    virtual void getData() = 0;
     
 protected:
  

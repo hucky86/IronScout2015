@@ -1,6 +1,13 @@
 #include "CAnalysisRunner.h"
 
-CAnalysisRunner::CAnalysisRunner()
+CAnalysisRunner::CAnalysisRunner(CCentralAbstractInterface* interface):CAnalysis(interface)
 {
 
 }
+//---------------------------------------------------------------------------------------
+
+void CAnalysisRunner::getData()
+{
+
+}
+

@@ -109,7 +109,7 @@ void CMainWindow::changeToRunner()
 
 void CMainWindow::analyseRunner()
 {
-  CAnalysis runnerAnalyse (centralStation_);
+  CAnalysisRunner runnerAnalyse(centralStation_);
 }
 //---------------------------------------------------------------------------------------
 

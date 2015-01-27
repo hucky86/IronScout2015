@@ -2,10 +2,12 @@
 
 CAnalysis::CAnalysis(CCentralAbstractInterface* interface)
 {
+  interface_=interface;
+  
   // Durch alle Gruppen iterieren und groupList_ anlegen
-  for (int i=0; i < interface->getGroupNumber(); i++)
+  for (int i=0; i < interface_->getGroupNumber(); i++)
   {
-    CGroupInterface* group = interface->getGroupAt(i);
+    CGroupInterface* group = interface_->getGroupAt(i);
     
     // Durch alle Gruppeneinträge iterieren
     for (int j=0; j < group->getRowCount(); j++)
