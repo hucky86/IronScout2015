@@ -11,4 +11,11 @@ void CAnalysisRunner::getData()
 {
   // Holen der Daten und Abspeichern
 }
+//---------------------------------------------------------------------------------------
+
+CGroup* CAnalysisRunner::newGroup(string name, int number)
+{
+  return new CRunner(name, number);
+}
+
 

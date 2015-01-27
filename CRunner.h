@@ -23,7 +23,7 @@ class CRunner : public CGroup
 public:
   
 // Konstruktoren:
-    
+    CRunner(string name, int number);
 // Memberfunktionen:
 
 private:

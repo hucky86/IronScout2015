@@ -3,7 +3,11 @@
 CAnalysis::CAnalysis(CCentralAbstractInterface* interface)
 {
   interface_=interface;
-  
+}
+//---------------------------------------------------------------------------------------
+
+void CAnalysis::buildGroups()
+{
   // Durch alle Gruppen iterieren und groupList_ anlegen
   for (int i=0; i < interface_->getGroupNumber(); i++)
   {
@@ -18,8 +22,9 @@ CAnalysis::CAnalysis(CCentralAbstractInterface* interface)
       // Überprüfung, ob Gruppe vorhanden ist
       if (groupList_.count(number) == 0)
       {
-        groupList_.insert(groupList_.begin(),pair<int, CGroup> (number, CGroup(name, number)));
+        groupList_.insert(groupList_.begin(),pair<int, CGroup*> (number, newGroup(name, number)));
       }
     }
   }
 }
+
