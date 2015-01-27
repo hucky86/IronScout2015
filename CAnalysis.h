@@ -44,6 +44,8 @@ public:
     virtual void getData() = 0;
     // Neue Gruppe anlegen
     virtual CGroup* newGroup (string name, int number) = 0;
+    // Alle Gruppen löschen
+    void deleteGroups();
     
 protected:
  

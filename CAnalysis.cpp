@@ -27,4 +27,18 @@ void CAnalysis::buildGroups()
     }
   }
 }
+//---------------------------------------------------------------------------------------
+
+void CAnalysis::deleteGroups()
+{
+  // Zunächst alle Pointer löschen
+  for (map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
+  {
+    delete it->second;
+  }
+  
+  // Gruppenliste löschen
+  groupList_.clear();
+}
+
 
