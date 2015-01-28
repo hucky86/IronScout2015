@@ -33,7 +33,7 @@ public:
     // Alle Gruppen zusammen bauen
     void buildGroups();
     // Holt alle Daten aus dem Interface für die Auswertung
-    virtual void getData() = 0;
+    void getData();
 
   private:
 
@@ -44,6 +44,8 @@ public:
 //Memberfunktionen:
     // Neue Gruppe anlegen
     virtual CGroup* newGroup (string name, int number) = 0;
+    // Speichert Daten in groupList_ einer Gruppe ab
+    virtual void mapData() = 0;
     
 protected:
 // Membervariablen

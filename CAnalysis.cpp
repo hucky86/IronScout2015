@@ -40,5 +40,31 @@ void CAnalysis::deleteGroups()
   // Gruppenliste löschen
   groupList_.clear();
 }
+//---------------------------------------------------------------------------------------
+
+void CAnalysis::getData()
+{
+  // Holen der Daten und Abspeichern
+  for(map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
+  {
+    // Durch alle Stationen iterieren
+    for(int i = 0; i < interface_->getGroupNumber(); i++)
+    {
+      CGroupInterface* station = interface_->getGroupAt(i);
+      
+      // Durch alle Einträge der Station iterieren, um Gruppe zu finden
+      for(int j = 0; j < station->getNumber(); j++)
+      {
+        // Wenn die Gruppe gefunden wurde
+        if(station->getNumberAt(j) == it->second->getNumber())
+        {
+          // Abspeichern der Daten
+          mapData();
+        }
+      }
+    }
+  }
+}
+
 
 
