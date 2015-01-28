@@ -28,6 +28,12 @@ public:
   CAnalysis(CCentralAbstractInterface* interface);
     
 // Memberfunktionen:
+    // Alle Gruppen löschen
+    void deleteGroups();
+    // Alle Gruppen zusammen bauen
+    void buildGroups();
+    // Holt alle Daten aus dem Interface für die Auswertung
+    virtual void getData() = 0;
 
   private:
 
@@ -38,14 +44,8 @@ public:
     CCentralAbstractInterface* interface_;
 
 //Memberfunktionen:
-    // Alle Gruppen zusammen bauen
-    void buildGroups();
-    // Holt alle Daten aus dem Interface für die Auswertung
-    virtual void getData() = 0;
     // Neue Gruppe anlegen
     virtual CGroup* newGroup (string name, int number) = 0;
-    // Alle Gruppen löschen
-    void deleteGroups();
     
 protected:
  

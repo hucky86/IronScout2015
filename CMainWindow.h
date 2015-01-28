@@ -27,6 +27,7 @@
 #include "CCentralStationInterface.h"
 #include "CCentralRunnerInterface.h"
 #include "CAnalysisRunner.h"
+#include "CAnalysis.h"
 
 using namespace std;
 

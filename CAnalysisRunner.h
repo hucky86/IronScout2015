@@ -25,14 +25,14 @@ public:
   CAnalysisRunner(CCentralAbstractInterface* interface);
     
 // Memberfunktionen:
+  // Holt alle Daten aus dem Interface
+  virtual void getData();
 
 private:
 //Membervariablen:
   CCentralStationInterface* station_;
 
 //Memberfunktionen:
-  // Holt alle Daten aus dem Interface
-  virtual void getData();
   // Neue Gruppe anlegen
   virtual CGroup* newGroup (string name, int number);
   

@@ -109,7 +109,17 @@ void CMainWindow::changeToRunner()
 
 void CMainWindow::analyseRunner()
 {
+  // Auswertung der Läufergruppen
   CAnalysisRunner runnerAnalyse(centralStation_);
+  
+  // Zunächst Map löschen
+  runnerAnalyse.deleteGroups();
+  
+  // Gruppenstruktir aufbauen
+  runnerAnalyse.buildGroups();
+  
+  // Daten holen
+  runnerAnalyse.getData();
 }
 //---------------------------------------------------------------------------------------
 
