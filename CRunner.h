@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <list>
 
 #include "CGroup.h"
  
@@ -29,6 +30,14 @@ public:
 private:
 
 //Membervariablen:
+  // Punkte "Spiel"
+  list<int> game_;
+  // Punkte "Teamwork"
+  list<int> teamwork_;
+  // "Joker" ja oder nein
+  list<bool> joker_;
+  // Punkte "alle Läufer anwesend"
+  list<int> nRunner_;
 
 //Memberfunktionen:
     

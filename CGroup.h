@@ -25,6 +25,8 @@ public:
     CGroup(string name, int number);
     
 // Memberfunktionen:
+    // Rückgabe der Gruppennummer
+    int getNumber();
 
   private:
 

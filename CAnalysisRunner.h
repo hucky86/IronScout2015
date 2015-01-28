@@ -15,6 +15,7 @@
 #include "CAnalysis.h"
 #include "CCentralStationInterface.h"
 #include "CRunner.h"
+#include "CGroupInterface.h"
 
 class CAnalysisRunner : public CAnalysis
 {
@@ -30,7 +31,7 @@ public:
 
 private:
 //Membervariablen:
-  CCentralStationInterface* station_;
+  CCentralStationInterface* stationInterface_;
 
 //Memberfunktionen:
   // Neue Gruppe anlegen
