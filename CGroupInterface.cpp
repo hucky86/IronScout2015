@@ -167,6 +167,14 @@ int CGroupInterface::getNumberAt(int row)
 }
 //---------------------------------------------------------------------------------------
 
+std::string CGroupInterface::getNameAt(int row)
+{
+  std:: string name = table_->item(row,1)->text().toStdString();
+  
+  return name;
+}
+//---------------------------------------------------------------------------------------
+
 int CGroupInterface::getRowCount()
 {
   int count = table_->rowCount();

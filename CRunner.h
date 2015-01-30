@@ -26,6 +26,7 @@ public:
 // Konstruktoren:
     CRunner(string name, int number);
 // Memberfunktionen:
+    void setTableEntries();
 
 private:
 

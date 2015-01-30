@@ -27,6 +27,9 @@ public:
 // Memberfunktionen:
     // Rückgabe der Gruppennummer
     int getNumber();
+    
+    // Setzen der Tabelleneinträge
+    virtual void setTableEntries() = 0;
 
   private:
 
