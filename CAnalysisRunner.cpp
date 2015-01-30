@@ -24,13 +24,13 @@ void CAnalysisRunner::getData()
       CStationInterface* station = dynamic_cast<CStationInterface*>(interface_->getGroupAt(i));
       
       // Durch alle Einträge der Station iterieren, um Gruppe zu finden
-      for(int j = 0; j < station->getNumber(); j++)
+      for(int row = 0; row < station->getNumber(); row++)
       {
         // Wenn die Gruppe gefunden wurde
-        if(station->getNumberAt(j) == it->second->getNumber())
+        if(station->getNumberAt(row) == it->second->getNumber())
         {
           // Abspeichern der Daten
-          
+          it->second->setTableEntries(station, row);
         }
       }
     }

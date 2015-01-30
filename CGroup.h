@@ -13,6 +13,8 @@
 
 #include <iostream>
 #include <fstream>
+
+#include "CGroupInterface.h"
  
  using namespace std;
  
@@ -29,7 +31,7 @@ public:
     int getNumber();
     
     // Setzen der Tabelleneinträge
-    virtual void setTableEntries() = 0;
+    virtual void setTableEntries(CGroupInterface* interface, int row) = 0;
 
   private:
 

@@ -15,6 +15,7 @@
 #include <list>
 
 #include "CGroup.h"
+#include "CStationInterface.h"
  
 using namespace std;
  
@@ -26,13 +27,13 @@ public:
 // Konstruktoren:
     CRunner(string name, int number);
 // Memberfunktionen:
-    void setTableEntries();
+    void setTableEntries(CGroupInterface* interface, int row);
 
 private:
 
 //Membervariablen:
   // Punkte "Spiel"
-  list<int> game_;
+  list<int> points_;
   // Punkte "Teamwork"
   list<int> teamwork_;
   // "Joker" ja oder nein
