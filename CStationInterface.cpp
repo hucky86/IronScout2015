@@ -22,6 +22,46 @@ CStationInterface::CStationInterface(QStringList parameter, QString text, int nu
   
   properties_->setLayout(gLayout_);
 }
+//---------------------------------------------------------------------------------------
 
+int CStationInterface::getNumberRunnerAt(int row)
+{
+  int number = table_->item(row,2)->text().toInt();
+  
+  return number;
+}
+//---------------------------------------------------------------------------------------
 
+bool CStationInterface::getJokerAt(int row)
+{
+  // Text im Feld Joker holen
+  std::string joker_text = table_->item(row,3)->text().toStdString();
+  
+  // Überprüfen ob Joker benutzt wurde
+  if (joker_text == "ja")
+  {
+    return true;
+  }
+  
+  else
+  {
+    return false;
+  }
+}
+//---------------------------------------------------------------------------------------
+
+int CStationInterface::getPointsAt(int row)
+{
+  int points = table_->item(row,4)->text().toInt();
+  
+  return points;
+}
+//---------------------------------------------------------------------------------------
+
+int CStationInterface::getTeamworkAt(int row)
+{
+  int teamwork = table_->item(row,5)->text().toInt();
+  
+  return teamwork;
+}
 

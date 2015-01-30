@@ -21,6 +21,15 @@ class CStationInterface : public CGroupInterface
   public:
     CStationInterface(QStringList parameter, QString text, int number);
     
+    // Gibt die Anzahl der Läufer, die an der Station angekommen sind
+    int getNumberRunnerAt(int row);
+    // Gibt zurück, ob Joker benutzt wurde
+    bool getJokerAt(int row);
+    // Gibt Punkte zur Bewertung "Spiel" zurück
+    int getPointsAt(int row);
+    // Gibt Punkte zur Bewertung "Teamwork" zurück
+    int getTeamworkAt(int row);
+    
   private:
 //Widgets:
     // Disqualifiziert?
