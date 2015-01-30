@@ -395,7 +395,4 @@ int CCentralAbstractInterface::getGroupNumber()
 }
 //---------------------------------------------------------------------------------------
 
-int CCentralAbstractInterface::getGroupNumberAt(int index)
-{
-  return inputList_.at(0)->text().toInt();
-}
+

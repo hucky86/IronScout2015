@@ -16,6 +16,7 @@
 #include "CCentralStationInterface.h"
 #include "CRunner.h"
 #include "CGroupInterface.h"
+#include "CStationInterface.h"
 
 class CAnalysisRunner : public CAnalysis
 {
@@ -26,15 +27,15 @@ public:
   CAnalysisRunner(CCentralAbstractInterface* interface);
     
 // Memberfunktionen:
-
+  // Holt alle Daten aus dem Interface für die Auswertung
+  virtual void getData();
+  
 private:
 //Membervariablen:
 
 //Memberfunktionen:
   // Neue Gruppe anlegen
   virtual CGroup* newGroup (string name, int number);
-  // Speichert Daten in groupList_ einer Gruppe ab
-  virtual void mapData();
   
 protected:
  

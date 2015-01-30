@@ -43,8 +43,6 @@ class CCentralAbstractInterface : public QWidget
 // Get/Set-Funktionen
     // Rückgabe der Gruppenanzahl
     int getGroupNumber ();
-    // Rückgabe der Gruppennummer
-    int getGroupNumberAt(int index);
  
   protected:
   

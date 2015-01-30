@@ -12,9 +12,29 @@ CGroup* CAnalysisRunner::newGroup(string name, int number)
 }
 //---------------------------------------------------------------------------------------
 
-void CAnalysisRunner::mapData()
+void CAnalysisRunner::getData()
 {
-
+  // Holen der Daten und Abspeichern
+  for(map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
+  {
+    // Durch alle Stationen iterieren
+    for(int i = 0; i < interface_->getGroupNumber(); i++)
+    {
+      CStationInterface* station = dynamic_cast<CStationInterface*>(interface_->getGroupAt(i));
+      
+      // Durch alle Einträge der Station iterieren, um Gruppe zu finden
+      for(int j = 0; j < station->getNumber(); j++)
+      {
+        // Wenn die Gruppe gefunden wurde
+        if(station->getNumberAt(j) == it->second->getNumber())
+        {
+          // Abspeichern der Daten
+          
+        }
+      }
+    }
+  }
 }
+
 
 
