@@ -37,4 +37,32 @@ CRunnerInterface::CRunnerInterface(QStringList parameter, QString text, int numb
   
   properties_->setLayout(gLayout_);
 }
+//---------------------------------------------------------------------------------------
+
+bool CRunnerInterface::isdisqualified()
+{
+  bool disqualified = disqualified_->isChecked();
+  
+  return disqualified;
+}
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::runnerAtStart()
+{
+  return runnerAtStart_->text().toInt();
+}
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::taxiTicket()
+{
+  return taxiTicket_->text().toInt();
+}
+//---------------------------------------------------------------------------------------
+
+unsigned int CRunnerInterface::usedTime()
+{
+  unsigned int time = destinationTime_->time().minute() - startTime_->time().minute();
+  
+  return time;
+}
 

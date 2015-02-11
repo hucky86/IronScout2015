@@ -4,7 +4,7 @@ CCentralRunnerInterface::CCentralRunnerInterface () : CCentralAbstractInterface(
 {
   // Festlegung der benötigten Parameter
   parameter_ = QStringList() << "Stationsnr." << "Stationsname" << "Punkte 'Spielidee'" 
-  << QString(QStringLiteral("Punkte 'Spielausführung'")) << QString(QStringLiteral("Punkte 'Atmosphäre'"));
+  << "Punkte 'Spielausfuehrung'" << "Punkte 'Atmosphaere'";
 
   buildInputLayout();
   buildInputValidators();

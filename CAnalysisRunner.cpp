@@ -14,7 +14,7 @@ CGroup* CAnalysisRunner::newGroup(string name, int number)
 
 void CAnalysisRunner::getData()
 {
-  // Holen der Daten und Abspeichern
+  // Holen der Daten aus den Tabelleneinträgenn und Abspeichern
   // Durch alle bereits gefundenen Gruppen
   for(map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
   {

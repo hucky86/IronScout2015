@@ -20,6 +20,16 @@ class CRunnerInterface : public CGroupInterface
  
   public:
     CRunnerInterface(QStringList parameter, QString text, int number);
+    
+// Memberfunktionen:
+    // Gibt den Status der Disqualifizierung zurück
+    bool isdisqualified();
+    // Gibt die Anzahl der Läufer am Start zurück
+    int runnerAtStart();
+    // Anzahl der Taxischeine im Ziel
+    int taxiTicket();
+    // Gibt die benötigte Zeit zurück
+    unsigned int usedTime();
  
   private:
 // Widgets:

@@ -3,7 +3,7 @@
 CCentralStationInterface::CCentralStationInterface () : CCentralAbstractInterface()
 {
   // Festlegung der benötigten Parameter
-  parameter_ = QStringList() << QString(QStringLiteral("Läufernr.")) << QString(QStringLiteral("Läufername")) << QString(QStringLiteral("Läuferanzahl")) 
+  parameter_ = QStringList() << "Laeufernr." << "Laeufername" << "Laeuferanzahl"
   << "Joker [ja]" << "Punkte 'Spiel'" << "Punkte 'Teamwork'";
 
   buildInputLayout();
