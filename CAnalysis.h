@@ -34,6 +34,8 @@ public:
     void buildGroups();
     // Holt alle Daten aus dem Interface für die Auswertung
     void getData();
+    // Auswerten
+    void evaluate();
 
   private:
 

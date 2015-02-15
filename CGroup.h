@@ -34,6 +34,11 @@ public:
     virtual void setTableEntries(CGroupInterface* interface, int row) = 0;
     // Setzen der Gruppenspezifischen Einträge
     virtual void setGroupEntries(CGroupInterface* interface) = 0;
+    // Starten der Auswertung
+    virtual void evaluate() = 0;
+    
+    // Membervariablen:
+    int pointSum_;
 
   private:
 

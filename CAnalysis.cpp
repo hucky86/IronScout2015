@@ -80,6 +80,14 @@ void CAnalysis::getData()
     }
   }
 }
+//---------------------------------------------------------------------------------------
 
-
+void CAnalysis::evaluate()
+{
+  // Durch alle Gruppen
+  for (map<int, CGroup*>::iterator it = groupList_.begin(); it != groupList_.end(); it++)
+  {
+    it->second->evaluate();
+  }
+}
 

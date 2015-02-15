@@ -42,4 +42,43 @@ void CRunner::setGroupEntries(CGroupInterface* interface)
   // Benutzte Taxischeine
   taxiTicket_ = runner->taxiTicket();
 }
+//---------------------------------------------------------------------------------------
+
+void CRunner::evaluate()
+{
+  int point1;
+  int point2;
+  
+  // Durch alle erreichten Stationen
+  for (int i = 0; i < points_.size(); i++)
+  {
+    // Punkte für das Erreichen
+    point1 = 30 - ((runnerAtStart_ - nRunner_.at(i)) * 10);
+    
+    // Es gibt kein Punktabzug
+    if (point1 < 0)
+    {
+      point1 = 0;
+    }
+    
+    // Wenn ein Joker benutzt wurde
+    if (joker_.at(i))
+    {
+      point2 = 70;
+    }
+    
+    // Wenn der Joker nicht benutzt wurde
+    else
+    {
+      point2 = points_.at(i) + teamwork_.at(i);
+    }
+    
+    // Addieren
+    pointSum_ += (point1 + point2);
+  }
+  
+  // Abzüge für fehlende Taxischeine
+  pointSum_ -= (((runnerAtStart_ - 3) - taxiTicket_) * 40); 
+
+}
 

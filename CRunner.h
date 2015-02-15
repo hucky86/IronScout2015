@@ -30,9 +30,9 @@ public:
 // Memberfunktionen:
     void setTableEntries(CGroupInterface* interface, int row);
     void setGroupEntries(CGroupInterface* interface);
+    void evaluate();
 
 private:
-
 //Membervariablen:
   // Benötigte Zeit
   unsigned int time_;
@@ -41,13 +41,13 @@ private:
   // Taxischeine im Ziel
   int taxiTicket_;
   // Punkte "Spiel"
-  list<int> points_;
+  vector<int> points_;
   // Punkte "Teamwork"
-  list<int> teamwork_;
+  vector<int> teamwork_;
   // "Joker" ja oder nein
-  list<bool> joker_;
+  vector<bool> joker_;
   // Punkte "alle Läufer anwesend"
-  list<int> nRunner_;
+  vector<int> nRunner_;
 
 //Memberfunktionen:
     

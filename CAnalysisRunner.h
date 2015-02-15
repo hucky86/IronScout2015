@@ -15,6 +15,7 @@
 #include "CAnalysis.h"
 #include "CCentralStationInterface.h"
 #include "CRunner.h"
+#include "CGroup.h"
 #include "CGroupInterface.h"
 #include "CStationInterface.h"
 #include "CCentralRunnerInterface.h"
