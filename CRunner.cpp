@@ -27,6 +27,19 @@ void CRunner::setTableEntries(CGroupInterface* interface, int row)
 
 void CRunner::setGroupEntries(CGroupInterface* interface)
 {
-
+  // Cast zu einem RunnerInterface
+  CRunnerInterface* runner = dynamic_cast<CRunnerInterface*>(interface);
+  
+  // Disqualifiziert
+  disqualified_ = runner->isdisqualified();
+  
+  // Läufer beim Start
+  runnerAtStart_ = runner->runnerAtStart();
+  
+  // Benötigte Zeit
+  time_ = runner->usedTime();
+  
+  // Benutzte Taxischeine
+  taxiTicket_ = runner->taxiTicket();
 }
 

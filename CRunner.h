@@ -16,6 +16,7 @@
 
 #include "CGroup.h"
 #include "CStationInterface.h"
+#include "CRunnerInterface.h"
  
 using namespace std;
  

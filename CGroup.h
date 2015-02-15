@@ -38,8 +38,6 @@ public:
   private:
 
 //Membervariablen:
-    // Disqualifiziert
-    bool disqualified_;
     // Gruppenname
     string name_;
     // Gruppennummer;
@@ -48,6 +46,8 @@ public:
 //Memberfunktionen:
     
 protected:
+    // Disqualifiziert
+    bool disqualified_;
  
 };
  
