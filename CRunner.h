@@ -32,6 +32,12 @@ public:
 private:
 
 //Membervariablen:
+  // Benötigte Zeit
+  unsigned int time_;
+  // Läufer am Start
+  int runnerAtStart_;
+  // Taxischeine im Ziel
+  int taxiTicket_;
   // Punkte "Spiel"
   list<int> points_;
   // Punkte "Teamwork"

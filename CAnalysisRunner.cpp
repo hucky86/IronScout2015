@@ -34,6 +34,9 @@ void CAnalysisRunner::getData()
         }
       }
     }
+    
+    // Durch alle Läuferbögen iterieren und Gruppenspezifische Einträge holen
+    
   }
 }
 

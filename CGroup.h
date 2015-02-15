@@ -36,6 +36,8 @@ public:
   private:
 
 //Membervariablen:
+    // Disqualifiziert
+    bool disqualified_;
     // Gruppenname
     string name_;
     // Gruppennummer;
