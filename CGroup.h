@@ -32,6 +32,8 @@ public:
     
     // Setzen der Tabelleneinträge
     virtual void setTableEntries(CGroupInterface* interface, int row) = 0;
+    // Setzen der Gruppenspezifischen Einträge
+    virtual void setGroupEntries(CGroupInterface* interface) = 0;
 
   private:
 

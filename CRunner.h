@@ -28,6 +28,7 @@ public:
     CRunner(string name, int number);
 // Memberfunktionen:
     void setTableEntries(CGroupInterface* interface, int row);
+    void setGroupEntries(CGroupInterface* interface);
 
 private:
 

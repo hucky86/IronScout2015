@@ -37,7 +37,17 @@ void CAnalysisRunner::getData()
     }
     
     // Durch alle Läuferbögen iterieren und Gruppenspezifische Einträge holen
-    
+    for (int i = 0; i < secondInterface_->getGroupNumber(); i++)
+    {
+      CRunnerInterface* runner = dynamic_cast<CRunnerInterface*>(secondInterface_->getGroupAt(i));
+      
+      // Wenn Gruppe gefunden
+      if(runner->getNumber() == it->second->getNumber())
+      {
+        //Abspeichern der Daten
+        it->second->setGroupEntries(runner);
+      }
+    }
   }
 }
 

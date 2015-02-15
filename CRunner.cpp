@@ -23,4 +23,10 @@ void CRunner::setTableEntries(CGroupInterface* interface, int row)
   // Anzahl der Läufer bei Station
   nRunner_.push_back(station->getNumberRunnerAt(row));
 }
+//---------------------------------------------------------------------------------------
+
+void CRunner::setGroupEntries(CGroupInterface* interface)
+{
+
+}
 
