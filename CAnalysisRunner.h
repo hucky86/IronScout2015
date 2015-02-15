@@ -25,11 +25,9 @@ class CAnalysisRunner : public CAnalysis
 public:
   
 // Konstruktoren:
-  CAnalysisRunner(CCentralAbstractInterface* interface, CCentralRunnerInterface* secondInterface);
+  CAnalysisRunner(CCentralAbstractInterface* firstInterface, CCentralAbstractInterface* secondInterface);
     
 // Memberfunktionen:
-  // Holt alle Daten aus dem Interface für die Auswertung
-  virtual void getData();
   
 private:
 //Membervariablen:

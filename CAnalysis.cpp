@@ -1,17 +1,18 @@
 #include "CAnalysis.h"
 
-CAnalysis::CAnalysis(CCentralAbstractInterface* interface)
+CAnalysis::CAnalysis(CCentralAbstractInterface* firstInterface, CCentralAbstractInterface* secondInterface)
 {
-  interface_=interface;
+  firstInterface_=firstInterface;
+  secondInterface_=secondInterface;
 }
 //---------------------------------------------------------------------------------------
 
 void CAnalysis::buildGroups()
 {
   // Durch alle Gruppen iterieren und groupList_ anlegen
-  for (int i=0; i < interface_->getGroupNumber(); i++)
+  for (int i=0; i < firstInterface_->getGroupNumber(); i++)
   {
-    CGroupInterface* group = interface_->getGroupAt(i);
+    CGroupInterface* group = firstInterface_->getGroupAt(i);
     
     // Durch alle Gruppeneinträge iterieren
     for (int j=0; j < group->getRowCount(); j++)
@@ -42,6 +43,43 @@ void CAnalysis::deleteGroups()
 }
 //---------------------------------------------------------------------------------------
 
+void CAnalysis::getData()
+{
+  // Holen der Daten aus den Tabelleneinträgenn und Abspeichern
+  // Durch alle bereits gefundenen Gruppen
+  for(map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
+  {
+    // Durch alle Stationen iterieren
+    for(int i = 0; i < firstInterface_->getGroupNumber(); i++)
+    {
+      CGroupInterface* group = firstInterface_->getGroupAt(i);
+      
+      // Durch alle Einträge der Station iterieren, um Gruppe zu finden
+      for(int row = 0; row < group->getNumber(); row++)
+      {
+        // Wenn die Gruppe gefunden wurde
+        if(group->getNumberAt(row) == it->second->getNumber())
+        {
+          // Abspeichern der Daten
+          it->second->setTableEntries(group, row);
+        }
+      }
+    }
+    
+    // Durch alle Läuferbögen iterieren und Gruppenspezifische Einträge holen
+    for (int i = 0; i < secondInterface_->getGroupNumber(); i++)
+    {
+      CGroupInterface* group = secondInterface_->getGroupAt(i);
+      
+      // Wenn Gruppe gefunden
+      if(group->getNumber() == it->second->getNumber())
+      {
+        //Abspeichern der Daten
+        it->second->setGroupEntries(group);
+      }
+    }
+  }
+}
 
 
 

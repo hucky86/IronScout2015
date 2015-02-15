@@ -25,7 +25,7 @@ class CAnalysis
 public:
   
 // Konstruktoren:
-  CAnalysis(CCentralAbstractInterface* interface);
+  CAnalysis(CCentralAbstractInterface* firstInterface, CCentralAbstractInterface* secondInterface);
     
 // Memberfunktionen:
     // Alle Gruppen löschen
@@ -33,7 +33,7 @@ public:
     // Alle Gruppen zusammen bauen
     void buildGroups();
     // Holt alle Daten aus dem Interface für die Auswertung
-    virtual void getData() = 0;
+    void getData();
 
   private:
 
@@ -49,7 +49,8 @@ protected:
     map<int, CGroup*> groupList_;
     
     // Enthält alle Informationen aus der Eingabe
-    CCentralAbstractInterface* interface_;
+    CCentralAbstractInterface* firstInterface_;
+    CCentralAbstractInterface* secondInterface_;
  
 };
 
