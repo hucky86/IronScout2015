@@ -17,6 +17,7 @@
 #include "CRunner.h"
 #include "CGroupInterface.h"
 #include "CStationInterface.h"
+#include "CCentralRunnerInterface.h"
 
 class CAnalysisRunner : public CAnalysis
 {
@@ -24,7 +25,7 @@ class CAnalysisRunner : public CAnalysis
 public:
   
 // Konstruktoren:
-  CAnalysisRunner(CCentralAbstractInterface* interface);
+  CAnalysisRunner(CCentralAbstractInterface* interface, CCentralRunnerInterface* secondInterface);
     
 // Memberfunktionen:
   // Holt alle Daten aus dem Interface für die Auswertung
@@ -32,6 +33,8 @@ public:
   
 private:
 //Membervariablen:
+  // Enthält Gruppenspezifische Eingaben vom Deckblatt
+  CCentralRunnerInterface* secondInterface_;
 
 //Memberfunktionen:
   // Neue Gruppe anlegen

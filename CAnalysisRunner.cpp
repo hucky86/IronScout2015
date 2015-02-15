@@ -1,8 +1,9 @@
 #include "CAnalysisRunner.h"
 
-CAnalysisRunner::CAnalysisRunner(CCentralAbstractInterface* interface):CAnalysis(interface)
+CAnalysisRunner::CAnalysisRunner(CCentralAbstractInterface* interface, CCentralRunnerInterface* secondInterface)
+:CAnalysis(interface)
 {
-
+  secondInterface_=secondInterface;
 }
 //---------------------------------------------------------------------------------------
 

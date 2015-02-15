@@ -109,8 +109,10 @@ void CMainWindow::changeToRunner()
 
 void CMainWindow::analyseRunner()
 {
+  // Casten des Interface
+  CCentralRunnerInterface* centralRunner = dynamic_cast<CCentralRunnerInterface*>(centralRunner_);
   // Auswertung der Läufergruppen
-  CAnalysisRunner runnerAnalyse(centralStation_);
+  CAnalysisRunner runnerAnalyse(centralStation_, centralRunner);
   
   // Zunächst Map löschen
   runnerAnalyse.deleteGroups();
