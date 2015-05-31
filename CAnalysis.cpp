@@ -1,4 +1,5 @@
 #include "CAnalysis.h"
+#include <fstream>
 
 CAnalysis::CAnalysis(CCentralAbstractInterface* firstInterface, CCentralAbstractInterface* secondInterface)
 {
@@ -92,4 +93,20 @@ void CAnalysis::evaluate()
     it->second->evaluate();
   }
 }
+//---------------------------------------------------------------------------------------
+
+void CAnalysis::writeResult()
+{
+  fstream out;
+  
+  out.open("Ergebnisse.txt", ios::out);
+  
+  for (map<int, CGroup*>::iterator it = groupList_.begin(); it != groupList_.end(); it++)
+  {
+    out << it->second->getNumber() << "\t" << it->second->getName() << "\t" << it->second->pointSum_ << endl;
+  }
+
+  out.close();
+}
+
 

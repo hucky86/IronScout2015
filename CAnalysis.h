@@ -36,6 +36,8 @@ public:
     void getData();
     // Auswerten
     void evaluate();
+    // Schreibt Ergebnisliste
+    void writeResult();
 
   private:
 

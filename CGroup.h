@@ -30,6 +30,8 @@ public:
     // Rückgabe der Gruppennummer
     int getNumber();
     
+    string getName();
+    
     // Setzen der Tabelleneinträge
     virtual void setTableEntries(CGroupInterface* interface, int row) = 0;
     // Setzen der Gruppenspezifischen Einträge

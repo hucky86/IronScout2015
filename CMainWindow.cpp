@@ -123,6 +123,9 @@ void CMainWindow::analyseRunner()
   
   // Auswerten
   runnerAnalyse.evaluate();
+  
+  // Schreiben der Ergebnisse
+  runnerAnalyse.writeResult();
 }
 //---------------------------------------------------------------------------------------
 

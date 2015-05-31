@@ -13,4 +13,11 @@ int CGroup::getNumber()
 {
   return number_;
 }
+//---------------------------------------------------------------------------------------
+
+string CGroup::getName()
+{
+  return name_;
+}
+
 
