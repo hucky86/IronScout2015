@@ -18,7 +18,7 @@ void CRunner::setTableEntries(CGroupInterface* interface, int row)
   teamwork_.push_back(station->getTeamworkAt(row));
   
   // Joker
-  teamwork_.push_back(station->getJokerAt(row));
+  joker_.push_back(station->getJokerAt(row));
   
   // Anzahl der Läufer bei Station
   nRunner_.push_back(station->getNumberRunnerAt(row));
@@ -64,6 +64,7 @@ void CRunner::evaluate()
     // Wenn ein Joker benutzt wurde
     if (joker_.at(i))
     {
+      // TODO: Unterscheidung ob der zweite Joker benutzt wurde
       point2 = 70;
     }
     
@@ -79,6 +80,9 @@ void CRunner::evaluate()
   
   // Abzüge für fehlende Taxischeine
   pointSum_ -= (((runnerAtStart_ - 3) - taxiTicket_) * 40); 
+  
+  // TODO: unbemannte Posten aufnehmen
+  
 
 }
 

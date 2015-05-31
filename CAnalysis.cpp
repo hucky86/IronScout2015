@@ -45,6 +45,8 @@ void CAnalysis::deleteGroups()
 
 void CAnalysis::getData()
 {
+  //TODO: Überprüfung ob auch zu jedem Eintrag in firstInterface ein Entrag in secondInterface vorliegt!
+    
   // Holen der Daten aus den Tabelleneinträgenn und Abspeichern
   // Durch alle bereits gefundenen Gruppen
   for(map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
@@ -55,7 +57,7 @@ void CAnalysis::getData()
       CGroupInterface* group = firstInterface_->getGroupAt(i);
       
       // Durch alle Einträge der Station iterieren, um Gruppe zu finden
-      for(int row = 0; row < group->getNumber(); row++)
+      for(int row = 0; row < group->getRowCount(); row++)
       {
         // Wenn die Gruppe gefunden wurde
         if(group->getNumberAt(row) == it->second->getNumber())

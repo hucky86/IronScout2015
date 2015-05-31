@@ -115,11 +115,14 @@ void CMainWindow::analyseRunner()
   // Zunächst Map löschen
   runnerAnalyse.deleteGroups();
   
-  // Gruppenstruktir aufbauen
+  // Gruppenstruktur aufbauen
   runnerAnalyse.buildGroups();
   
   // Daten holen
   runnerAnalyse.getData();
+  
+  // Auswerten
+  runnerAnalyse.evaluate();
 }
 //---------------------------------------------------------------------------------------
 
