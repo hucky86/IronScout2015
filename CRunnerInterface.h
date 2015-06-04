@@ -30,9 +30,15 @@ class CRunnerInterface : public CGroupInterface
     int taxiTicket();
     // Gibt die benötigte Zeit zurück
     unsigned int usedTime();
+    // Baut die Eingabe für Gruppenspezifische Angaben
+    void buildProperties();
+    // Baut die Eingabe der unbemannten Posten
+    void buildUncrewedStation();
  
   private:
 // Widgets:
+    // Dialog für unbemante Stationen
+    QWidget* uncrewedStation_;
     // Disqualifiziert?
     QCheckBox* disqualified_;
     // Läufer am Start

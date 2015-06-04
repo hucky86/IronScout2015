@@ -3,6 +3,42 @@
 
 CRunnerInterface::CRunnerInterface(QStringList parameter, QString text, int number):CGroupInterface(parameter, text, number)
 {
+  buildProperties();
+  
+  buildUncrewedStation();
+}
+//---------------------------------------------------------------------------------------
+
+bool CRunnerInterface::isdisqualified()
+{
+  bool disqualified = disqualified_->isChecked();
+  
+  return disqualified;
+}
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::runnerAtStart()
+{
+  return runnerAtStart_->text().toInt();
+}
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::taxiTicket()
+{
+  return taxiTicket_->text().toInt();
+}
+//---------------------------------------------------------------------------------------
+
+unsigned int CRunnerInterface::usedTime()
+{
+  unsigned int time = destinationTime_->time().minute() - startTime_->time().minute();
+  
+  return time;
+}
+//---------------------------------------------------------------------------------------
+
+void CRunnerInterface::buildProperties()
+{
   // Widget für Gruppenspezifische Eingaben
   properties_ = new QWidget;
   gLayout_ = new QGridLayout;
@@ -33,36 +69,30 @@ CRunnerInterface::CRunnerInterface(QStringList parameter, QString text, int numb
   gLayout_->addWidget(startTime_,3,1);
   gLayout_->addWidget(new QLabel("Ankunftszeit"),4,0);
   gLayout_->addWidget(destinationTime_,4,1);
-  gLayout_->addWidget(ok_,5,0);
+  gLayout_->addWidget(new QLabel("Unbemannte Posten erreicht und beantwortet?"),5,0);
   
   properties_->setLayout(gLayout_);
 }
 //---------------------------------------------------------------------------------------
 
-bool CRunnerInterface::isdisqualified()
+void CRunnerInterface::buildUncrewedStation()
 {
-  bool disqualified = disqualified_->isChecked();
+  // Anzahl der unbemannten Posten
+  int nUncrewedStations = 10;
+  int infos = gLayout_->rowCount();
   
-  return disqualified;
-}
-//---------------------------------------------------------------------------------------
-
-int CRunnerInterface::runnerAtStart()
-{
-  return runnerAtStart_->text().toInt();
-}
-//---------------------------------------------------------------------------------------
-
-int CRunnerInterface::taxiTicket()
-{
-  return taxiTicket_->text().toInt();
-}
-//---------------------------------------------------------------------------------------
-
-unsigned int CRunnerInterface::usedTime()
-{
-  unsigned int time = destinationTime_->time().minute() - startTime_->time().minute();
+  // Für jede unbemannte Station ein Eintrag
+  for (int i = 1; i < nUncrewedStations; i++)
+  {
+    int row = i+infos;
+    QString text = "Nr " + QString::number(i) + ":";
+    
+    gLayout_->addWidget(new QLabel(text),row,0);
+    gLayout_->addWidget(new QCheckBox,row,1);
+  }
   
-  return time;
+  gLayout_->addWidget(ok_,infos+nUncrewedStations,0);
+  
 }
+
 
