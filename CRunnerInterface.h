@@ -37,8 +37,6 @@ class CRunnerInterface : public CGroupInterface
  
   private:
 // Widgets:
-    // Dialog für unbemante Stationen
-    QWidget* uncrewedStation_;
     // Disqualifiziert?
     QCheckBox* disqualified_;
     // Läufer am Start
@@ -49,6 +47,8 @@ class CRunnerInterface : public CGroupInterface
     QDateTimeEdit* startTime_;
     // Zielzeit
     QDateTimeEdit* destinationTime_;
+    // Pointer auf die unbemannten Posten
+    std::vector<QCheckBox*> uncrewedStation_;
     
   protected:
     

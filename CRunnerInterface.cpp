@@ -84,11 +84,15 @@ void CRunnerInterface::buildUncrewedStation()
   // Für jede unbemannte Station ein Eintrag
   for (int i = 1; i < nUncrewedStations; i++)
   {
+    // Anlegen der Referenzen
+    uncrewedStation_.push_back(new QCheckBox);
+    
+    // Anlegen der Einträge
     int row = i+infos;
     QString text = "Nr " + QString::number(i) + ":";
     
     gLayout_->addWidget(new QLabel(text),row,0);
-    gLayout_->addWidget(new QCheckBox,row,1);
+    gLayout_->addWidget(uncrewedStation_.back(),row,1);
   }
   
   gLayout_->addWidget(ok_,infos+nUncrewedStations,0);
