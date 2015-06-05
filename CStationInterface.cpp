@@ -1,4 +1,3 @@
-
 #include "CStationInterface.h"
 
 CStationInterface::CStationInterface(QStringList parameter, QString text, int number):CGroupInterface(parameter, text, number)

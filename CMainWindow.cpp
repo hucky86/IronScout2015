@@ -70,13 +70,13 @@ void CMainWindow::saveFile()
 {
   QString path = QFileDialog::getSaveFileName();
   
-  ofstream file;
-  file.open(path.toStdString().c_str());
+  ofstream saveFile;
+  saveFile.open(path.toStdString().c_str());
   
-  QString test ("bla12");
-  int foo = test.toInt();
+  centralStation_->save(saveFile);
+  centralRunner_->save(saveFile);
   
-  file.close();
+  saveFile.close();
 }
 //---------------------------------------------------------------------------------------
 

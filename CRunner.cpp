@@ -41,6 +41,9 @@ void CRunner::setGroupEntries(CGroupInterface* interface)
   
   // Benutzte Taxischeine
   taxiTicket_ = runner->taxiTicket();
+  
+  // unbemannte Stationen
+  uncrewedStations_ = runner->uncrewedStations();
 }
 //---------------------------------------------------------------------------------------
 

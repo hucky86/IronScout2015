@@ -19,6 +19,7 @@
 #include <QLineEdit>
 #include <QFlag>
 #include <QAbstractItemView>
+#include <fstream>
  
 class CGroupInterface : public QWidget
 {
@@ -54,6 +55,8 @@ public:
     std::string getNameAt(int row);
     // Gibt die Gesamtanzahl der Tabelleneinträge zurück
     int getRowCount();
+    // Speichert relevante Daten für ein SaveFile
+    void save(std::ofstream& saveFile);
 
   private:
 

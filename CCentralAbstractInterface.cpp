@@ -394,5 +394,13 @@ int CCentralAbstractInterface::getGroupNumber()
   return size;
 }
 //---------------------------------------------------------------------------------------
+void CCentralAbstractInterface::save(std::ofstream& saveFile)
+{
+  for(int i = 0; i < getGroupNumber(); i++)
+  {  
+    getGroupAt(i)->save(saveFile);
+  }
+}
+//---------------------------------------------------------------------------------------
 
 

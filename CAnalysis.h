@@ -38,8 +38,6 @@ public:
     void evaluate();
     // Schreibt Ergebnisliste
     void writeResult();
-    // Schreibt saveFile
-    void writeSaveFile();
 
   private:
 
