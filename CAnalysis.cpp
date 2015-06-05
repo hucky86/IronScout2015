@@ -108,5 +108,11 @@ void CAnalysis::writeResult()
 
   out.close();
 }
+//---------------------------------------------------------------------------------------
+
+void CAnalysis::writeSaveFile()
+{
+  
+}
 
 

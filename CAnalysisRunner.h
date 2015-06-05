@@ -32,8 +32,6 @@ public:
   
 private:
 //Membervariablen:
-  // Enthält Gruppenspezifische Eingaben vom Deckblatt
-  CCentralRunnerInterface* secondInterface_;
 
 //Memberfunktionen:
   // Neue Gruppe anlegen

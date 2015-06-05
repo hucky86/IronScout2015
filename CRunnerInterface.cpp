@@ -37,6 +37,19 @@ unsigned int CRunnerInterface::usedTime()
 }
 //---------------------------------------------------------------------------------------
 
+std::vector<bool> CRunnerInterface::uncrewedStations()
+{
+  std::vector<bool> uncrewedStation;
+  
+  for(int i = 0; i < uncrewedStation_.size(); i++)
+  {
+    uncrewedStation.push_back(uncrewedStation_.at(i)->isChecked());
+  }
+  
+  return uncrewedStation;
+}
+//---------------------------------------------------------------------------------------
+
 void CRunnerInterface::buildProperties()
 {
   // Widget für Gruppenspezifische Eingaben

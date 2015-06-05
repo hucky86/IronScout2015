@@ -30,6 +30,8 @@ class CRunnerInterface : public CGroupInterface
     int taxiTicket();
     // Gibt die benötigte Zeit zurück
     unsigned int usedTime();
+    // Gibt die unbemannten Stationen zurück
+    std::vector<bool> uncrewedStations();
     // Baut die Eingabe für Gruppenspezifische Angaben
     void buildProperties();
     // Baut die Eingabe der unbemannten Posten

@@ -48,6 +48,8 @@ private:
   vector<bool> joker_;
   // Punkte "alle Läufer anwesend"
   vector<int> nRunner_;
+  // Unbemannte Stationen
+  vector<bool> uncrewedStations_;
 
 //Memberfunktionen:
     
