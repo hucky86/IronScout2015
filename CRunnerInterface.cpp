@@ -1,4 +1,3 @@
-
 #include "CRunnerInterface.h"
 
 CRunnerInterface::CRunnerInterface(QStringList parameter, QString text, int number):CGroupInterface(parameter, text, number)
@@ -6,14 +5,6 @@ CRunnerInterface::CRunnerInterface(QStringList parameter, QString text, int numb
   buildProperties();
   
   buildUncrewedStation();
-}
-//---------------------------------------------------------------------------------------
-
-bool CRunnerInterface::isdisqualified()
-{
-  bool disqualified = disqualified_->isChecked();
-  
-  return disqualified;
 }
 //---------------------------------------------------------------------------------------
 
@@ -111,5 +102,26 @@ void CRunnerInterface::buildUncrewedStation()
   gLayout_->addWidget(ok_,infos+nUncrewedStations,0);
   
 }
+//---------------------------------------------------------------------------------------
+void CRunnerInterface::saveProperties(std::ofstream& saveFile)
+{
+  std::string startTime;
+  std::string destinationTime;
+  
+  startTime = startTime_->dateTime().toString().toStdString();
+  destinationTime = destinationTime_->dateTime().toString().toStdString();
+  
+  saveFile << isdisqualified() << "\t" << startTime << "\t" << destinationTime << "\t"
+    << runnerAtStart() << "\t" << taxiTicket() << "\t";
+    
+    for(int i = 0; i < uncrewedStation_.size(); i++)
+    {
+      saveFile << "\t";
+      saveFile << uncrewedStations().at(i);
+    }
+  
+  saveFile << std::endl;
+}
+
 
 

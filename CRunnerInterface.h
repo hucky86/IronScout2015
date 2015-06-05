@@ -11,7 +11,6 @@
 #define CRunnerInterface_H
 
 #include <QDateTimeEdit>
-#include <QCheckBox>
 
 #include "CGroupInterface.h"
  
@@ -22,8 +21,6 @@ class CRunnerInterface : public CGroupInterface
     CRunnerInterface(QStringList parameter, QString text, int number);
     
 // Memberfunktionen:
-    // Gibt den Status der Disqualifizierung zurück
-    bool isdisqualified();
     // Gibt die Anzahl der Läufer am Start zurück
     int runnerAtStart();
     // Anzahl der Taxischeine im Ziel
@@ -36,11 +33,11 @@ class CRunnerInterface : public CGroupInterface
     void buildProperties();
     // Baut die Eingabe der unbemannten Posten
     void buildUncrewedStation();
+    // Speichert Gruppenspezifische Daten
+    virtual void saveProperties(std::ofstream& saveFile);
  
   private:
 // Widgets:
-    // Disqualifiziert?
-    QCheckBox* disqualified_;
     // Läufer am Start
     QLineEdit* runnerAtStart_;
     // Taxischeine im Ziel

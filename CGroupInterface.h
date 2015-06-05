@@ -20,6 +20,7 @@
 #include <QFlag>
 #include <QAbstractItemView>
 #include <fstream>
+#include <QCheckBox>
  
 class CGroupInterface : public QWidget
 {
@@ -55,8 +56,12 @@ public:
     std::string getNameAt(int row);
     // Gibt die Gesamtanzahl der Tabelleneinträge zurück
     int getRowCount();
+    // Gibt den Status der Disqualifizierung zurück
+    bool isdisqualified();
     // Speichert relevante Daten für ein SaveFile
     void save(std::ofstream& saveFile);
+    // Speichert Gruppenspezifische Daten
+    virtual void saveProperties(std::ofstream& saveFile) = 0;
 
   private:
 
@@ -85,6 +90,8 @@ protected:
     QWidget* properties_;
     // OK Bestätigung der properties
     QPushButton* ok_;
+    // Disqualifiziert?
+    QCheckBox* disqualified_;
     
 // Layouts:
     // Grid Layout für die properties

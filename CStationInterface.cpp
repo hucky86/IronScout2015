@@ -63,4 +63,11 @@ int CStationInterface::getTeamworkAt(int row)
   
   return teamwork;
 }
+//---------------------------------------------------------------------------------------
+
+void CStationInterface::saveProperties(std::ofstream& saveFile)
+{
+
+}
+
 

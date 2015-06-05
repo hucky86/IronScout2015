@@ -152,6 +152,14 @@ int CGroupInterface::getNumber()
 }
 //---------------------------------------------------------------------------------------
 
+bool CGroupInterface::isdisqualified()
+{
+  bool disqualified = disqualified_->isChecked();
+  
+  return disqualified;
+}
+
+//---------------------------------------------------------------------------------------
 void CGroupInterface::openProperties()
 {
   properties_->setWindowFlags(Qt::WindowStaysOnTopHint);
@@ -197,6 +205,8 @@ void CGroupInterface::save(std::ofstream& saveFile)
     
     saveFile << std::endl;
   }
+  
+  saveProperties(saveFile);
 }
 //---------------------------------------------------------------------------------------
 

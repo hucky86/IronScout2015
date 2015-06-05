@@ -11,7 +11,6 @@
 #define CStationInterface_H
 
 #include <QLineEdit>
-#include <QCheckBox>
 
 #include "CGroupInterface.h"
  
@@ -29,11 +28,11 @@ class CStationInterface : public CGroupInterface
     int getPointsAt(int row);
     // Gibt Punkte zur Bewertung "Teamwork" zurück
     int getTeamworkAt(int row);
+    // Speichert Gruppenspezifische Daten
+    virtual void saveProperties(std::ofstream& saveFile);
     
   private:
 //Widgets:
-    // Disqualifiziert?
-    QCheckBox* disqualified_;
     // Anzahl der Personen an der Station
     QLineEdit* numberPeople_;
 
