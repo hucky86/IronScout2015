@@ -396,22 +396,35 @@ int CCentralAbstractInterface::getGroupNumber()
 //---------------------------------------------------------------------------------------
 void CCentralAbstractInterface::save(std::ofstream& saveFile)
 {
+  //Baum öffnen
+  saveFile << "CCentralAbstractInterface" << "\t" << std::endl;
+  
+  // Alle Gruppen schreiben
   for(int i = 0; i < getGroupNumber(); i++)
   { 
     getGroupAt(i)->save(saveFile);
   }
+  
+  // Baum schließen
+  saveFile << "CCentralAbstractInterface" << "\t" << std::endl;
 }
 //---------------------------------------------------------------------------------------
 
 void CCentralAbstractInterface::load(std::stringstream& stream)
 {
-  std::string der;
+  std::string parser;
+  getline(stream, parser, '\t');
   
-  while(!stream.eof())
+  // Schauen, ob Baum geöffnet wird
+  if(!stream.eof() && parser == "CCentralAbstractInterface")
   {
-    getline(stream, der, '\t');
+    //Nächste Zeile holen
+    getline(stream, parser, '\t');
     
-    qDebug() << der.c_str();
+    while(!stream.eof() && parser != "CCentralAbstractInterface")
+    {
+      getline(stream, parser, '\t');
+    }
   }
 }
 //---------------------------------------------------------------------------------------

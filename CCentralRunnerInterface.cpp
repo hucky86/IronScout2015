@@ -26,3 +26,5 @@ CGroupInterface* CCentralRunnerInterface::newGroup(QString name, int number)
 
   return newGroup;
 }
+//---------------------------------------------------------------------------------------
+

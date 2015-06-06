@@ -192,9 +192,16 @@ int CGroupInterface::getRowCount()
 //---------------------------------------------------------------------------------------
 void CGroupInterface::save(std::ofstream& saveFile)
 {
+  // Baum öffnen
+  saveFile << "CGroupInterface" << "\t" << std::endl;
+  
   // Nummer und Name des Tables
   saveFile << number_ << "\t" << description_->text().toStdString() << "\t" << std::endl;
   
+  // Gruppenspezifische Daten speichern
+  saveProperties(saveFile);
+  
+  // Alle Tabelleneinträge speichern
   for(int i = 0; i < getRowCount(); i++)
   { 
     // Alle Einträge abspeichern
@@ -206,7 +213,8 @@ void CGroupInterface::save(std::ofstream& saveFile)
     saveFile << std::endl;
   }
   
-  saveProperties(saveFile);
+  // Baum schließen
+  saveFile << "CGroupInterface" << "\t" << std::endl;
 }
 //---------------------------------------------------------------------------------------
 

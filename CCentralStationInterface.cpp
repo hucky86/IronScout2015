@@ -48,3 +48,5 @@ void CCentralStationInterface::setJoker(QString text)
     inputList_.at(5)->setDisabled(false);
   }
 }
+//---------------------------------------------------------------------------------------
+
