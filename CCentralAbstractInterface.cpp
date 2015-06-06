@@ -35,7 +35,6 @@ void CCentralAbstractInterface::addGroup()
 {
   bool ok_name;
   bool ok_number;
-  CGroupInterface* newGroup;
 
   // Eingabeauforderung der neuen Stationsnummer
   int number = QInputDialog::getInt(this, tr("Erstellung einer neuen Gruppe"),
@@ -44,11 +43,6 @@ void CCentralAbstractInterface::addGroup()
   // Eingabeauforderung des neuen Stationsnamens
   QString name = QInputDialog::getText(this, tr("Erstellung einer neuen Gruppe"),
                                        tr("neuer Name:"), QLineEdit::Normal,QString(),&ok_name);
-  
-  // Text im stacked Layout
-  QString text (QString::number(number));
-  text.append(": ");
-  text.append(name);
   
   // Wenn durch "ok" bestätigt
   if (ok_number && ok_name)
@@ -67,26 +61,35 @@ void CCentralAbstractInterface::addGroup()
 
       return;
     }
-
-    // Hinzufügen des items und aktiv setzen
-    dropDown_->addItem(text);
-    dropDown_->setCurrentIndex(dropDown_->count() - 1);
-
-    // Anlegen der neuen Gruppe
-    newGroup = this->newGroup(name, number);
+    
+    // Hinzufügen der Gruppe
+    addGroup(number, name);
     
     // Aufrufen der Gruppenspezifischen Eingaben
-    newGroup->openProperties();
-    
-    // Hinzufügen zum stacked Layout
-    sLayout_->addWidget(newGroup);
-    sLayout_->setCurrentWidget(newGroup);
+    getCurrentGroup()->openProperties();
   }
+}
+//---------------------------------------------------------------------------------------
+void CCentralAbstractInterface::addGroup(int number, QString name)
+{
+  CGroupInterface* newGroup;
+  
+  // Hinzufügen des items und aktiv setzen
+  dropDown_->addItem(name);
+  dropDown_->setCurrentIndex(dropDown_->count() - 1);
+
+  // Anlegen der neuen Gruppe
+  newGroup = this->newGroup(name, number);
+  
+  // Hinzufügen zum stacked Layout
+  sLayout_->addWidget(newGroup);
+  sLayout_->setCurrentWidget(newGroup);
   
   connect(getCurrentGroup()->getTable(), SIGNAL(cellDoubleClicked(int,int)), this, SLOT(editInput()));
   connect(getCurrentGroup()->getTable(), SIGNAL(cellPressed(int,int)), this, SLOT(resumeEditInput()));
   connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
 }
+
 //---------------------------------------------------------------------------------------
 void CCentralAbstractInterface::deleteGroup()
 {

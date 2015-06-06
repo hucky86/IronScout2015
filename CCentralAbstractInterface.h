@@ -109,6 +109,8 @@ private slots:
     
     // hinzufügen einer Gruppe
     void addGroup();
+    // hinzufügen einer Grppe mit Namen und Nummer
+    void addGroup(int number, QString name);
     // löschen der aktuellen Gruppe
     void deleteGroup();
     // ändern der angewählten Gruppe
