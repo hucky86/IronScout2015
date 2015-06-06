@@ -74,7 +74,21 @@ int CStationInterface::getNumberPeople()
 
 void CStationInterface::saveProperties(std::ofstream& saveFile)
 {
-  saveFile << isdisqualified() << "\t" << getNumberPeople() << "\t" << std::endl;
+  saveFile << isdisqualified() << "\t" << getNumberPeople() << std::endl;
 }
+//---------------------------------------------------------------------------------------
+
+void CStationInterface::loadProperties(std::stringstream& stream)
+{ 
+  std::string parser;
+  
+  // Disqualifiziert?
+  getline(stream,parser,'\t');
+  disqualified_->setChecked(strcasecmp("true",parser.c_str()) == 0);
+  
+  getline(stream,parser,'\n');
+  numberPeople_->setText(QString(parser.c_str()));
+}
+
 
 

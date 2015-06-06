@@ -62,6 +62,8 @@ public:
     void save(std::ofstream& saveFile);
     // Speichert Gruppenspezifische Daten
     virtual void saveProperties(std::ofstream& saveFile) = 0;
+    // Laden Gruppenspezifischer Daten
+    virtual void loadProperties(std::stringstream& stream) = 0;
 
   private:
 

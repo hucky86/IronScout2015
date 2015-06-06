@@ -4,7 +4,7 @@ CGroupInterface::CGroupInterface(QStringList parameter, QString name, int number
 {
   number_ = number;
   parameter_ = parameter;
-  description_ = new QLabel(QString::number(number_) + ": " + name);
+  description_ = new QLabel(name);
   vLayout_ = new QVBoxLayout;
   
    // Bauen des TableWidget
@@ -193,10 +193,10 @@ int CGroupInterface::getRowCount()
 void CGroupInterface::save(std::ofstream& saveFile)
 {
   // Baum öffnen
-  saveFile << "CGroupInterface" << "\t" << std::endl;
+  saveFile << "CGroupInterface" << std::endl;
   
   // Nummer und Name des Tables
-  saveFile << number_ << "\t" << description_->text().toStdString() << "\t" << std::endl;
+  saveFile << number_ << "\t" << description_->text().toStdString() << std::endl;
   
   // Gruppenspezifische Daten speichern
   saveProperties(saveFile);
@@ -205,16 +205,17 @@ void CGroupInterface::save(std::ofstream& saveFile)
   for(int i = 0; i < getRowCount(); i++)
   { 
     // Alle Einträge abspeichern
-    for(int j = 0; j < parameter_.size(); j++)
+    for(int j = 0; j < parameter_.size() - 1; j++)
     {
       saveFile << table_->item(i,j)->text().toStdString() << "\t";
     }
     
-    saveFile << std::endl;
+    saveFile << table_->item(i,parameter_.size() - 1)->text().toStdString()
+      << std::endl;
   }
   
   // Baum schließen
-  saveFile << "CGroupInterface" << "\t" << std::endl;
+  saveFile << "CGroupInterface" << std::endl;
 }
 //---------------------------------------------------------------------------------------
 

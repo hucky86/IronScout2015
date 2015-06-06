@@ -35,6 +35,8 @@ class CRunnerInterface : public CGroupInterface
     void buildUncrewedStation();
     // Speichert Gruppenspezifische Daten
     virtual void saveProperties(std::ofstream& saveFile);
+    // Laden Gruppenspezifischer Daten
+    virtual void loadProperties(std::stringstream& stream);
  
   private:
 // Widgets:

@@ -400,7 +400,7 @@ int CCentralAbstractInterface::getGroupNumber()
 void CCentralAbstractInterface::save(std::ofstream& saveFile)
 {
   //Baum öffnen
-  saveFile << "CCentralAbstractInterface" << "\t" << std::endl;
+  saveFile << "CCentralAbstractInterface" << std::endl;
   
   // Alle Gruppen schreiben
   for(int i = 0; i < getGroupNumber(); i++)
@@ -409,24 +409,49 @@ void CCentralAbstractInterface::save(std::ofstream& saveFile)
   }
   
   // Baum schließen
-  saveFile << "CCentralAbstractInterface" << "\t" << std::endl;
+  saveFile << "CCentralAbstractInterface" << std::endl;
 }
 //---------------------------------------------------------------------------------------
 
 void CCentralAbstractInterface::load(std::stringstream& stream)
 {
   std::string parser;
-  getline(stream, parser, '\t');
+  getline(stream, parser, '\n');
   
   // Schauen, ob Baum geöffnet wird
   if(!stream.eof() && parser == "CCentralAbstractInterface")
   {
     //Nächste Zeile holen
-    getline(stream, parser, '\t');
+    getline(stream, parser, '\n');
     
     while(!stream.eof() && parser != "CCentralAbstractInterface")
     {
-      getline(stream, parser, '\t');
+      if(!stream.eof() && parser == "CGroupInterface")
+      { 
+        int number;
+        std::string name;
+        
+        getline(stream,parser,'\t');
+        number = atoi(parser.c_str());
+        
+        getline(stream,name,'\n');
+        
+        // Neues groupInterface anlegen
+        addGroup(number, QString(name.c_str()));
+        
+        // Laden der openProperties
+        getCurrentGroup()->loadProperties(stream);
+        
+        // Alle Tabelleneinträge laden
+        
+        
+      }
+      else
+      {
+        qDebug() << "Loading file failed";
+        
+        return;
+      }
     }
   }
 }

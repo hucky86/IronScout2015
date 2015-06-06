@@ -11,6 +11,9 @@
 #define CStationInterface_H
 
 #include <QLineEdit>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 #include "CGroupInterface.h"
  
@@ -32,6 +35,8 @@ class CStationInterface : public CGroupInterface
     int getNumberPeople();
     // Speichert Gruppenspezifische Daten
     virtual void saveProperties(std::ofstream& saveFile);
+    // Laden Gruppenspezifischer Daten
+    virtual void loadProperties(std::stringstream& stream);
     
   private:
 //Widgets:

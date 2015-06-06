@@ -103,6 +103,7 @@ void CRunnerInterface::buildUncrewedStation()
   
 }
 //---------------------------------------------------------------------------------------
+
 void CRunnerInterface::saveProperties(std::ofstream& saveFile)
 {
   std::string startTime;
@@ -112,7 +113,7 @@ void CRunnerInterface::saveProperties(std::ofstream& saveFile)
   destinationTime = destinationTime_->dateTime().toString().toStdString();
   
   saveFile << isdisqualified() << "\t" << startTime << "\t" << destinationTime << "\t"
-    << runnerAtStart() << "\t" << taxiTicket() << "\t";
+    << runnerAtStart() << "\t" << taxiTicket();
     
     for(int i = 0; i < uncrewedStation_.size(); i++)
     {
@@ -122,6 +123,13 @@ void CRunnerInterface::saveProperties(std::ofstream& saveFile)
   
   saveFile << std::endl;
 }
+//---------------------------------------------------------------------------------------
+
+void CRunnerInterface::loadProperties(std::stringstream& stream)
+{
+
+}
+
 
 
 
