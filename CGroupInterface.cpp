@@ -193,7 +193,7 @@ int CGroupInterface::getRowCount()
 void CGroupInterface::save(std::ofstream& saveFile)
 {
   // Nummer und Name des Tables
-  saveFile << number_ << "\t" << description_->text().toStdString() << std::endl;
+  saveFile << number_ << "\t" << description_->text().toStdString() << "\t" << std::endl;
   
   for(int i = 0; i < getRowCount(); i++)
   { 

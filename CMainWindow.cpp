@@ -84,8 +84,12 @@ void CMainWindow::loadFile()
 {
   QString path = QFileDialog::getOpenFileName();
   
-  //TODO: Algorithmus zum Laden einfügen
-  qDebug() << path;
+  std::ifstream loadFile(path.toStdString().c_str(), std::ifstream::binary);
+  std::stringstream stream; 
+  stream << loadFile.rdbuf();
+  
+  centralStation_->load(stream);
+  centralRunner_->load(stream);
 }
 //---------------------------------------------------------------------------------------
 

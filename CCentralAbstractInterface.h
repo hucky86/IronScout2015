@@ -25,6 +25,9 @@
 #include <QGridLayout>
 #include <QStringList>
 #include <QMessageBox>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 #include "CGroupInterface.h"
 #include "CRunnerInterface.h"
@@ -45,6 +48,8 @@ class CCentralAbstractInterface : public QWidget
     int getGroupNumber ();
     // Speichern der Einträge
     void save(std::ofstream& saveFile);
+    // Laden der Einträge
+    void load(std::stringstream& loadFile);
  
   protected:
   

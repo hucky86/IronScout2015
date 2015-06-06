@@ -28,6 +28,8 @@ class CStationInterface : public CGroupInterface
     int getPointsAt(int row);
     // Gibt Punkte zur Bewertung "Teamwork" zurück
     int getTeamworkAt(int row);
+    // Gibt die Anzahl der Stationsmitglieder zurück
+    int getNumberPeople();
     // Speichert Gruppenspezifische Daten
     virtual void saveProperties(std::ofstream& saveFile);
     

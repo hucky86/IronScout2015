@@ -397,10 +397,22 @@ int CCentralAbstractInterface::getGroupNumber()
 void CCentralAbstractInterface::save(std::ofstream& saveFile)
 {
   for(int i = 0; i < getGroupNumber(); i++)
-  {  
+  { 
     getGroupAt(i)->save(saveFile);
   }
 }
 //---------------------------------------------------------------------------------------
 
+void CCentralAbstractInterface::load(std::stringstream& stream)
+{
+  std::string der;
+  
+  while(!stream.eof())
+  {
+    getline(stream, der, '\t');
+    
+    qDebug() << der.c_str();
+  }
+}
+//---------------------------------------------------------------------------------------
 

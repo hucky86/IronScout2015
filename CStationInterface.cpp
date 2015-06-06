@@ -65,9 +65,16 @@ int CStationInterface::getTeamworkAt(int row)
 }
 //---------------------------------------------------------------------------------------
 
+int CStationInterface::getNumberPeople()
+{
+  return numberPeople_->text().toInt();
+}
+
+//---------------------------------------------------------------------------------------
+
 void CStationInterface::saveProperties(std::ofstream& saveFile)
 {
-
+  saveFile << isdisqualified() << "\t" << getNumberPeople() << "\t" << std::endl;
 }
 
 
