@@ -113,12 +113,12 @@ void CRunnerInterface::saveProperties(std::ofstream& saveFile)
   destinationTime = destinationTime_->dateTime().toString().toStdString();
   
   saveFile << isdisqualified() << "\t" << startTime << "\t" << destinationTime << "\t"
-    << runnerAtStart() << "\t" << taxiTicket();
+    << runnerAtStart() << "\t" << taxiTicket() << "\t";
     
     for(int i = 0; i < uncrewedStation_.size(); i++)
     {
-      saveFile << "\t";
       saveFile << uncrewedStations().at(i);
+      saveFile << "\t";
     }
   
   saveFile << std::endl;
@@ -127,7 +127,16 @@ void CRunnerInterface::saveProperties(std::ofstream& saveFile)
 
 void CRunnerInterface::loadProperties(std::stringstream& stream)
 {
-
+  std::string parser;
+  QDateTime dateTime;
+  
+  // Disqualifiziert?
+  getline(stream,parser,'\t');
+  disqualified_->setChecked(strcasecmp("true",parser.c_str()) == 0);
+  
+  //Startzeit
+  getline(stream,parser,'\t');
+  startTime_->setDateTime(dateTime.fromString(QString(parser.c_str())));
 }
 
 

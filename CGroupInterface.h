@@ -20,6 +20,8 @@
 #include <QFlag>
 #include <QAbstractItemView>
 #include <fstream>
+#include <string>
+#include <sstream>
 #include <QCheckBox>
  
 class CGroupInterface : public QWidget
@@ -64,6 +66,8 @@ public:
     virtual void saveProperties(std::ofstream& saveFile) = 0;
     // Laden Gruppenspezifischer Daten
     virtual void loadProperties(std::stringstream& stream) = 0;
+    // Laden der Tabelleneinträge im TableWidget
+    void loadTable(std::stringstream& stream);
 
   private:
 

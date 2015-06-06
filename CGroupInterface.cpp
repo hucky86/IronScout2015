@@ -193,10 +193,10 @@ int CGroupInterface::getRowCount()
 void CGroupInterface::save(std::ofstream& saveFile)
 {
   // Baum öffnen
-  saveFile << "CGroupInterface" << std::endl;
+  saveFile << "CGroupInterface" << "\t";
   
   // Nummer und Name des Tables
-  saveFile << number_ << "\t" << description_->text().toStdString() << std::endl;
+  saveFile << number_ << "\t" << description_->text().toStdString() << "\t";
   
   // Gruppenspezifische Daten speichern
   saveProperties(saveFile);
@@ -205,20 +205,44 @@ void CGroupInterface::save(std::ofstream& saveFile)
   for(int i = 0; i < getRowCount(); i++)
   { 
     // Alle Einträge abspeichern
-    for(int j = 0; j < parameter_.size() - 1; j++)
+    for(int j = 0; j < parameter_.size(); j++)
     {
       saveFile << table_->item(i,j)->text().toStdString() << "\t";
     }
-    
-    saveFile << table_->item(i,parameter_.size() - 1)->text().toStdString()
-      << std::endl;
   }
   
   // Baum schließen
-  saveFile << "CGroupInterface" << std::endl;
+  saveFile << "CGroupInterface" << "\t";
 }
 //---------------------------------------------------------------------------------------
 
+void CGroupInterface::loadTable(std::stringstream& stream)
+{
+  while(true)
+  {
+    // Hält alle Tabelleneinträge
+    QList<QLineEdit*> list;
+    
+    for(int i = 0; i < parameter_.size(); i++)
+    {    
+      // Laden der Einträge
+      std::string parser;
+      getline(stream,parser,'\t');
+      
+      // Abbruch wenn Ende der Tabelle erreicht
+      if(parser == "CGroupInterface")
+      {
+        return;
+      }
+      
+      list.push_back(new QLineEdit(QString(parser.c_str())));
+    }
+    
+    // Anlegen des Tabelleneintrages
+    addTableEntry(list);
+  }
+}
 
+//---------------------------------------------------------------------------------------
 
 
