@@ -7,12 +7,14 @@ CCentralAbstractInterface::CCentralAbstractInterface()
   vLayout_ = new QVBoxLayout;
   sLayout_ = new QStackedLayout;
   gLayout_ = new QGridLayout;
+  editLayout_ = new QHBoxLayout;
   
   // Anlegen der Widgets
   dropDown_ = new QComboBox;
   bNew_ = new QPushButton("Neue Gruppe");
   bDelete_ = new QPushButton("Gruppe löschen");
   bInputDelete_ = new QPushButton("Eintrag löschen");
+  editProperties_ = new QPushButton("Eigenschaften bearbeiten");
   
   // Konfigurieren der Layouts
   hLayout_->addWidget(dropDown_);
@@ -21,13 +23,16 @@ CCentralAbstractInterface::CCentralAbstractInterface()
   vLayout_->addLayout(hLayout_);
   vLayout_->addLayout(gLayout_);
   vLayout_->addLayout(sLayout_);
-  vLayout_->addWidget(bInputDelete_,0,Qt::AlignRight);
+  editLayout_->addWidget(editProperties_);
+  editLayout_->addWidget(bInputDelete_);
+  vLayout_->addLayout(editLayout_);
   this->setLayout(vLayout_);
   
   // setzen der connections
   connect(bNew_, SIGNAL(clicked()), this, SLOT(addGroup()));
   connect(bDelete_, SIGNAL(clicked()), this, SLOT(deleteGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
+  connect(editProperties_, SIGNAL(clicked()), this, SLOT(openProperties()));
 }
 //---------------------------------------------------------------------------------------
 
@@ -452,4 +457,10 @@ void CCentralAbstractInterface::load(std::stringstream& stream)
   }
 }
 //---------------------------------------------------------------------------------------
+
+void CCentralAbstractInterface::openProperties()
+{
+  // Öffnet Properties
+  getCurrentGroup()->openProperties();
+}
 

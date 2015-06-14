@@ -66,6 +66,8 @@ class CCentralAbstractInterface : public QWidget
     QPushButton* bInputDelete_;
     // Button zum Bearbeiten eines Eintrages in der Tabelle
     QPushButton* bEdit_;
+    // Button zum Bearbeiten der properties der aktuellen Gruppe
+    QPushButton* editProperties_;
     
 // Layouts:
     // QVBoxLayout als zentrales Widget
@@ -74,6 +76,8 @@ class CCentralAbstractInterface : public QWidget
     QStackedLayout* sLayout_;
     // QHBoxLayout für bNew_, bDelete_ und dropDown_
     QHBoxLayout* hLayout_;
+    // QHBoxLayout für Eigenschaften und Eintrag löschen
+    QHBoxLayout* editLayout_;
     // Layout für die Input Daten
     QGridLayout* gLayout_;
     
@@ -129,6 +133,8 @@ private slots:
     void sendEditedInput();
     // Überprüft, ob Gruppenname bereits eingegeben wurde
     void checkGroupName(QString number);
+    // Öffnet die Properties der aktuellen Gruppe
+    void openProperties();
     
 signals:
 };
