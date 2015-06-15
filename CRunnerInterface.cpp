@@ -128,7 +128,6 @@ void CRunnerInterface::saveProperties(std::ofstream& saveFile)
 void CRunnerInterface::loadProperties(std::stringstream& stream)
 {
   std::string parser;
-  QDateTime dateTime;
   
   // Disqualifiziert?
   getline(stream,parser,'\t');
@@ -136,7 +135,27 @@ void CRunnerInterface::loadProperties(std::stringstream& stream)
   
   //Startzeit
   getline(stream,parser,'\t');
-  startTime_->setDateTime(dateTime.fromString(QString(parser.c_str())));
+  startTime_->setDateTime(QDateTime::fromString(QString(parser.c_str())));
+  
+  //Ankunftszeit
+  getline(stream,parser,'\t');
+  destinationTime_->setDateTime(QDateTime::fromString(QString(parser.c_str())));
+  
+  //Läufer am Start
+  getline(stream,parser,'\t');
+  runnerAtStart_->setText(QString(parser.c_str()));
+  
+  //Taxi Scheine im Ziel
+  getline(stream,parser,'\t');
+  taxiTicket_->setText(QString(parser.c_str()));
+  
+  // unbemannte Posten
+  for(int i = 0; i < uncrewedStation_.size(); i++)
+  {
+    getline(stream,parser,'\t');
+    uncrewedStation_.at(i)->setChecked(strcasecmp(toStdString(Qt::Checked),parser.c_str()) == 0);
+  }
+  
 }
 
 
