@@ -87,7 +87,7 @@ void CRunnerInterface::buildUncrewedStation()
   
   // Für jede unbemannte Station ein Eintrag
   for (int i = 1; i < nUncrewedStations; i++)
-  {
+  { 
     // Anlegen der Referenzen
     uncrewedStation_.push_back(new QCheckBox);
     
@@ -153,7 +153,12 @@ void CRunnerInterface::loadProperties(std::stringstream& stream)
   for(int i = 0; i < uncrewedStation_.size(); i++)
   {
     getline(stream,parser,'\t');
-    uncrewedStation_.at(i)->setChecked(strcasecmp(toStdString(Qt::Checked),parser.c_str()) == 0);
+    
+    // Muss hier über Abfrage geschehen. Keine Ahnung warum
+    if(parser == "1")
+    {
+      uncrewedStation_.at(i)->setChecked(true);
+    }
   }
   
 }
