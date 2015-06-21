@@ -459,8 +459,20 @@ void CCentralAbstractInterface::load(std::stringstream& stream)
 //---------------------------------------------------------------------------------------
 
 void CCentralAbstractInterface::openProperties()
-{
-  // Öffnet Properties
-  getCurrentGroup()->openProperties();
+{  
+  if(sLayout_->count() > 0)
+  {
+    // Öffnet Properties
+    getCurrentGroup()->openProperties();
+  }
+  else
+  {
+    // Warnung ausgeben
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Noch keine Gruppe vorhanden!");
+    msgBox.setInformativeText("Eigenschaften werden nicht angezeigt");
+    msgBox.exec();
+  }
 }
 
