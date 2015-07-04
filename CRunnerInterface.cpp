@@ -97,6 +97,7 @@ void CRunnerInterface::buildUncrewedStation()
     
     gLayout_->addWidget(new QLabel(text),row,0);
     gLayout_->addWidget(uncrewedStation_.back(),row,1);
+    uncrewedStation_.back()->setTristate();
   }
   
   gLayout_->addWidget(ok_,infos+nUncrewedStations,0);
