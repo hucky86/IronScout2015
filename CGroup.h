@@ -3,7 +3,7 @@
 // Klasse:          CGroup
 // 
 // Beschreibung:    Abstrakte Basisklasse für gespeicherte Daten einer 
-//                  Gruppe für die Ausertung. Abgeleitete Klassen CRunner
+//                  Gruppe für die Auswertung. Abgeleitete Klassen CRunner
 //                  und CStation.
 //                  
 //************************************************************************

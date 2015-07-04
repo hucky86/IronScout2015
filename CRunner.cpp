@@ -51,6 +51,7 @@ void CRunner::evaluate()
 {
   int point1;
   int point2;
+  bool joker_reminder = false;
   
   // Durch alle erreichten Stationen
   for (int i = 0; i < points_.size(); i++)
@@ -67,8 +68,18 @@ void CRunner::evaluate()
     // Wenn ein Joker benutzt wurde
     if (joker_.at(i))
     {
-      // TODO: Unterscheidung ob der zweite Joker benutzt wurde
-      point2 = 70;
+      if(joker_reminder == false)
+      {
+        // Erster Joker
+        point2 = 40;
+        
+        joker_reminder = true;
+      }
+      else
+      {
+        // Zweiter Joker
+        point2 = 20;
+      }
     }
     
     // Wenn der Joker nicht benutzt wurde
@@ -85,7 +96,13 @@ void CRunner::evaluate()
   pointSum_ -= (((runnerAtStart_ - 3) - taxiTicket_) * 40); 
   
   // TODO: unbemannte Posten aufnehmen
-  
+  for(int i = 0; i < uncrewedStations_.size(); i++)
+  {
+    if(uncrewedStations_.at(i))
+    {
+      pointSum_ += 30;
+    }
+  }
 
 }
 
