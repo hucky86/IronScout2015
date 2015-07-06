@@ -98,10 +98,7 @@ void CRunner::evaluate()
   // TODO: unbemannte Posten aufnehmen
   for(int i = 0; i < uncrewedStations_.size(); i++)
   {
-    if(uncrewedStations_.at(i))
-    {
-      pointSum_ += 30;
-    }
+    
   }
 
 }

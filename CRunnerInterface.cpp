@@ -28,13 +28,13 @@ unsigned int CRunnerInterface::usedTime()
 }
 //---------------------------------------------------------------------------------------
 
-std::vector<bool> CRunnerInterface::uncrewedStations()
+std::vector<Qt::CheckState> CRunnerInterface::uncrewedStations()
 {
-  std::vector<bool> uncrewedStation;
+  std::vector<Qt::CheckState> uncrewedStation;
   
   for(int i = 0; i < uncrewedStation_.size(); i++)
   {
-    uncrewedStation.push_back(uncrewedStation_.at(i)->isChecked());
+    uncrewedStation.push_back(uncrewedStation_.at(i)->checkState());
   }
   
   return uncrewedStation;

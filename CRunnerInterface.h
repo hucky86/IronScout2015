@@ -28,7 +28,7 @@ class CRunnerInterface : public CGroupInterface
     // Gibt die benötigte Zeit zurück
     unsigned int usedTime();
     // Gibt die unbemannten Stationen zurück
-    std::vector<bool> uncrewedStations();
+    std::vector<Qt::CheckState> uncrewedStations();
     // Baut die Eingabe für Gruppenspezifische Angaben
     void buildProperties();
     // Baut die Eingabe der unbemannten Posten
