@@ -51,6 +51,7 @@ void CRunner::evaluate()
 {
   int point1;
   int point2;
+  int pointSum = 0;
   bool joker_reminder = false;
   
   // Durch alle erreichten Stationen
@@ -89,11 +90,11 @@ void CRunner::evaluate()
     }
     
     // Addieren
-    pointSum_ += (point1 + point2);
+    pointSum += (point1 + point2);
   }
   
   // Abzüge für fehlende Taxischeine
-  pointSum_ -= (((runnerAtStart_ - 3) - taxiTicket_) * 40); 
+  pointSum -= (((runnerAtStart_ - 3) - taxiTicket_) * 40); 
   
   // Unbemannte Posten aufnehmen
   for(int i = 0; i < uncrewedStations_.size(); i++)
@@ -105,12 +106,12 @@ void CRunner::evaluate()
     
     if(uncrewedStations_.at(i) == Qt::PartiallyChecked)
     {
-      pointSum_ -= 20;
+      pointSum -= 20;
     }
     
     if(uncrewedStations_.at(i) == Qt::Checked)
     {
-      pointSum_ += 30;
+      pointSum += 30;
     }
   }
   
@@ -120,9 +121,11 @@ void CRunner::evaluate()
   // Zur Verfügung stehende Gesamtzeit: 22h
   const int totalTime = 1320;
   
-  if(time_ - totalTime > 5)  {pointSum_ -= 25;}
-  if(time_ - totalTime > 15) {pointSum_ -= 50;}
-  if(time_ - totalTime > 30) {pointSum_ -= 100;}
+  if(time_ - totalTime > 5)  {pointSum -= 25;}
+  if(time_ - totalTime > 15) {pointSum -= 50;}
+  if(time_ - totalTime > 30) {pointSum -= 100;}
   if(time_ - totalTime > 60)  {disqualified_ = true;}
+  
+  pointSum_ = pointSum;
 }
 

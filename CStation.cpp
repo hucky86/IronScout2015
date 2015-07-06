@@ -38,5 +38,24 @@ void CStation::setGroupEntries(CGroupInterface* interface)
 
 void CStation::evaluate()
 {
-
+  int pointSum = 0;
+  
+  // Durch alle empfangenen Läufergruppen
+  for(int i = 0; i < gameIdea_.size(); i++)
+  {
+    pointSum += gameIdea_.at(i) 
+               + gameDesign_.at(i)
+               + atmophere_.at(i);
+  }
+  
+  // Durchschnitt bilden
+  pointSum_ = pointSum / gameIdea_.size();
+  
+  // Abzug für zu viele Stationsbetreuer
+  if(peopleAtStation_ > 12)
+  {
+    int tooManyPeople = peopleAtStation_ -12;
+    
+    pointSum_ -= tooManyPeople;
+  }
 }

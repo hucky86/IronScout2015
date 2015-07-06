@@ -31,7 +31,9 @@ CGroup.cpp
 CAnalysis.h 
 CAnalysis.cpp 
 CAnalysisRunner.h 
-CAnalysisRunner.cpp 
+CAnalysisRunner.cpp
+CAnalysisStation.h
+CAnalysisStation.cpp
 CRunner.h 
 CRunner.cpp
 CStation.h

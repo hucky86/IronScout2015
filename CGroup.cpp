@@ -5,7 +5,7 @@ CGroup::CGroup(string name, int number)
   name_ = name;
   number_ = number;
   
-  pointSum_ = 0;
+  pointSum_ = 0.0;
 }
 //---------------------------------------------------------------------------------------
 

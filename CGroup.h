@@ -40,7 +40,7 @@ public:
     virtual void evaluate() = 0;
     
     // Membervariablen:
-    int pointSum_;
+    double pointSum_;
 
   private:
 

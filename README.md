@@ -8,3 +8,4 @@ ToDo:
 --> Globaler Abgleich von Gruppennamen und Nummer.
 --> Fehleingaben beim Joker abfangen.
 --> Falsche Eingabe beim unbemannten Posten muss auch abgefragt werden.
+--> Hat eine Läufergruppe, die einen Joker gezogen hat den Posten auch wirklich nicht bewertet?
