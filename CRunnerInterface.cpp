@@ -118,11 +118,9 @@ void CRunnerInterface::saveProperties(std::ofstream& saveFile)
     
     for(int i = 0; i < uncrewedStation_.size(); i++)
     {
-      saveFile << uncrewedStations().at(i);
+      saveFile << uncrewedStation_.at(i)->checkState();
       saveFile << "\t";
     }
-  
-  saveFile << std::endl;
 }
 //---------------------------------------------------------------------------------------
 
@@ -155,13 +153,8 @@ void CRunnerInterface::loadProperties(std::stringstream& stream)
   {
     getline(stream,parser,'\t');
     
-    // Muss hier über Abfrage geschehen. Keine Ahnung warum
-    if(parser == "1")
-    {
-      uncrewedStation_.at(i)->setChecked(true);
-    }
+    uncrewedStation_.at(i)->setCheckState(static_cast<Qt::CheckState>((atoi(parser.c_str()))));
   }
-  
 }
 
 
