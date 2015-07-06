@@ -95,10 +95,23 @@ void CRunner::evaluate()
   // Abzüge für fehlende Taxischeine
   pointSum_ -= (((runnerAtStart_ - 3) - taxiTicket_) * 40); 
   
-  // TODO: unbemannte Posten aufnehmen
+  // Unbemannte Posten aufnehmen
   for(int i = 0; i < uncrewedStations_.size(); i++)
   {
+    if(uncrewedStations_.at(i) == Qt::Unchecked)
+    {
+      // 0 Punkte Änderung
+    }
     
+    if(uncrewedStations_.at(i) == Qt::PartiallyChecked)
+    {
+      pointSum_ -= 20;
+    }
+    
+    if(uncrewedStations_.at(i) == Qt::Checked)
+    {
+      pointSum_ += 30;
+    }
   }
 
 }
