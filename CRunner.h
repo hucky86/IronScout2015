@@ -35,7 +35,7 @@ public:
 private:
 //Membervariablen:
   // Benötigte Zeit
-  unsigned int time_;
+  int time_;
   // Läufer am Start
   int runnerAtStart_;
   // Taxischeine im Ziel

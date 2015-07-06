@@ -20,9 +20,9 @@ int CRunnerInterface::taxiTicket()
 }
 //---------------------------------------------------------------------------------------
 
-unsigned int CRunnerInterface::usedTime()
+int CRunnerInterface::usedTime()
 {
-  unsigned int time = destinationTime_->time().minute() - startTime_->time().minute();
+  int time = destinationTime_->time().minute() - startTime_->time().minute();
   
   return time;
 }

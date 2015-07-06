@@ -113,6 +113,16 @@ void CRunner::evaluate()
       pointSum_ += 30;
     }
   }
-
+  
+  // Auswertung der Laufzeit
+  // TODO: Verspätete Starter berücksichtigen!
+  
+  // Zur Verfügung stehende Gesamtzeit: 22h
+  const int totalTime = 1320;
+  
+  if(time_ - totalTime > 5)  {pointSum_ -= 25;}
+  if(time_ - totalTime > 15) {pointSum_ -= 50;}
+  if(time_ - totalTime > 30) {pointSum_ -= 100;}
+  if(time_ - totalTime > 60)  {disqualified_ = true;}
 }
 

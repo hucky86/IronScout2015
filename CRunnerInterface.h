@@ -26,7 +26,7 @@ class CRunnerInterface : public CGroupInterface
     // Anzahl der Taxischeine im Ziel
     int taxiTicket();
     // Gibt die benötigte Zeit zurück
-    unsigned int usedTime();
+    int usedTime();
     // Gibt die unbemannten Stationen zurück
     std::vector<Qt::CheckState> uncrewedStations();
     // Baut die Eingabe für Gruppenspezifische Angaben
