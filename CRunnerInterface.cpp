@@ -156,6 +156,31 @@ void CRunnerInterface::loadProperties(std::stringstream& stream)
     uncrewedStation_.at(i)->setCheckState(static_cast<Qt::CheckState>((atoi(parser.c_str()))));
   }
 }
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::getGameIdeaAt(int row)
+{  
+  int idea = table_->item(row,2)->text().toInt();
+  
+  return idea;
+}
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::getGameDesignAt(int row)
+{
+ int design = table_->item(row,3)->text().toInt();
+  
+  return design;
+}
+//---------------------------------------------------------------------------------------
+
+int CRunnerInterface::getAtmosphereAt(int row)
+{
+  int atmosphere = table_->item(row,4)->text().toInt();
+  
+  return atmosphere;
+}
+
 
 
 

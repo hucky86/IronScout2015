@@ -29,6 +29,12 @@ class CRunnerInterface : public CGroupInterface
     int usedTime();
     // Gibt die unbemannten Stationen zurück
     std::vector<Qt::CheckState> uncrewedStations();
+    // Gibt Punkte zur Bewertung "Spielidee"
+    int getGameIdeaAt(int row);
+    // Gibt Punkte zur Bewertung "Spielausführung"
+    int getGameDesignAt(int row);
+    // Gibt Punkte zur Bewertung "Atmosphäre"
+    int getAtmosphereAt(int row);
     // Baut die Eingabe für Gruppenspezifische Angaben
     void buildProperties();
     // Baut die Eingabe der unbemannten Posten
