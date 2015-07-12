@@ -10,7 +10,7 @@ CStationInterface::CStationInterface(QStringList parameter, QString text, int nu
   disqualified_ = new QCheckBox;
   // Anzahl Personen an der Station
   numberPeople_ = new QLineEdit;
-  numberPeople_->setValidator(new QIntValidator(4, 12, this));
+  numberPeople_->setValidator(new QIntValidator(4, 100, this));
   
   // Zusammenbau des Gruppenspezifischen Widget
   gLayout_->addWidget(new QLabel("Disqualifiziert"),0,0);
