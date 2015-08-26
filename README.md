@@ -9,3 +9,4 @@ ToDo:
 --> Fehleingaben beim Joker abfangen.
 --> Falsche Eingabe beim unbemannten Posten muss auch abgefragt werden.
 --> Hat eine Läufergruppe, die einen Joker gezogen hat den Posten auch wirklich nicht bewertet?
+--> Abfrage, ob eine Läufergruppe, die einen Joker gezogen hat, auch nicht den Posten bewertet hat.
