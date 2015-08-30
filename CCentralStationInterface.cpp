@@ -8,6 +8,7 @@ CCentralStationInterface::CCentralStationInterface () : CCentralAbstractInterfac
 
   buildInputLayout();
   buildInputValidators();
+  buildNameLists();
 }
 //---------------------------------------------------------------------------------------
 
@@ -49,4 +50,11 @@ void CCentralStationInterface::setJoker(QString text)
   }
 }
 //---------------------------------------------------------------------------------------
+
+void CCentralStationInterface::assignLists(std::map< int, QString > runner, std::map< int, QString > station)
+{
+  firstNameList_ = station;
+  secondNameList_ = runner;
+}
+
 

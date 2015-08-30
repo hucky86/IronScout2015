@@ -35,6 +35,8 @@ class CCentralStationInterface : public CCentralAbstractInterface
 //Memberfunktionen:
     void buildInputValidators();
     virtual CGroupInterface* newGroup(QString name, int number);
+    // Ordnet dem Interface die Gruppenlisten zu
+    virtual void assignLists(std::map<int,QString> runner,std::map<int,QString> station);
 
 private slots:
     // Wenn Joker auf "ja" gesetzt wird

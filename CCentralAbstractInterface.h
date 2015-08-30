@@ -86,6 +86,10 @@ class CCentralAbstractInterface : public QWidget
     QStringList parameter_;
     // Hält die Referenzen zu allen Eingabeparametern
     QList<QLineEdit*> inputList_;
+    // Liste aller Gruppennamen der Bögen
+    std::map<int, QString> firstNameList_;
+    // Liste aller Gruppennamen der Eingabemaske
+    std::map<int, QString> secondNameList_;
     
 //Memberfunktionen:
     // bauen des GridLayouts mit allen Eingabefeldern
@@ -104,6 +108,10 @@ class CCentralAbstractInterface : public QWidget
     bool checkDoubleEntry();
     // Überprüft, ob Gruppe bereits vorhanden ist
     bool checkDoubleGroup(int number);
+    // Baut die Maps mit allen Gruppennamen
+    void buildNameLists();
+    // Ordnet dem Interface die Gruppenlisten zu
+    virtual void assignLists(std::map<int,QString> runner,std::map<int,QString> station) = 0;
 
 public slots:
     // CGroupInterface bei index

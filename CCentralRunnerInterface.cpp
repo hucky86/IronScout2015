@@ -1,4 +1,5 @@
 #include "CCentralRunnerInterface.h"
+#include <iostream>
 
 CCentralRunnerInterface::CCentralRunnerInterface () : CCentralAbstractInterface()
 {
@@ -8,6 +9,7 @@ CCentralRunnerInterface::CCentralRunnerInterface () : CCentralAbstractInterface(
 
   buildInputLayout();
   buildInputValidators();
+  buildNameLists();
 }
 //---------------------------------------------------------------------------------------
 
@@ -27,4 +29,12 @@ CGroupInterface* CCentralRunnerInterface::newGroup(QString name, int number)
   return newGroup;
 }
 //---------------------------------------------------------------------------------------
+
+void CCentralRunnerInterface::assignLists(std::map<int,QString> runner,std::map<int,QString> station)
+{
+  firstNameList_ = runner;
+  secondNameList_ = station;
+}
+
+
 
