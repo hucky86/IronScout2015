@@ -55,7 +55,7 @@ class CCentralAbstractInterface : public QWidget
   
 // Widgets:
     // neue Gruppe anlegen
-    QPushButton* bNew_;
+    //QPushButton* bNew_;
     // Gruppe löschen
     QPushButton* bDelete_;
     // Gruppe anwählen
@@ -112,6 +112,8 @@ class CCentralAbstractInterface : public QWidget
     void buildNameLists();
     // Ordnet dem Interface die Gruppenlisten zu
     virtual void assignLists(std::map<int,QString> runner,std::map<int,QString> station) = 0;
+    // Baut die Gruppen in das QStackedLayout
+    void buildGroupLists ();
 
 public slots:
     // CGroupInterface bei index

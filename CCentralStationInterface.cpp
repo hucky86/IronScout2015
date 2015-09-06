@@ -9,6 +9,7 @@ CCentralStationInterface::CCentralStationInterface () : CCentralAbstractInterfac
   buildInputLayout();
   buildInputValidators();
   buildNameLists();
+  buildGroupLists();
 }
 //---------------------------------------------------------------------------------------
 

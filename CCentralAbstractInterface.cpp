@@ -11,14 +11,14 @@ CCentralAbstractInterface::CCentralAbstractInterface()
   
   // Anlegen der Widgets
   dropDown_ = new QComboBox;
-  bNew_ = new QPushButton("Neue Gruppe");
+  //bNew_ = new QPushButton("Neue Gruppe");
   bDelete_ = new QPushButton("Gruppe löschen");
   bInputDelete_ = new QPushButton("Eintrag löschen");
   editProperties_ = new QPushButton("Eigenschaften bearbeiten");
   
   // Konfigurieren der Layouts
   hLayout_->addWidget(dropDown_);
-  hLayout_->addWidget(bNew_);
+  //hLayout_->addWidget(bNew_);
   hLayout_->addWidget(bDelete_);
   vLayout_->addLayout(hLayout_);
   vLayout_->addLayout(gLayout_);
@@ -29,13 +29,22 @@ CCentralAbstractInterface::CCentralAbstractInterface()
   this->setLayout(vLayout_);
   
   // setzen der connections
-  connect(bNew_, SIGNAL(clicked()), this, SLOT(addGroup()));
+  //connect(bNew_, SIGNAL(clicked()), this, SLOT(addGroup()));
   connect(bDelete_, SIGNAL(clicked()), this, SLOT(deleteGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
   connect(editProperties_, SIGNAL(clicked()), this, SLOT(openProperties()));
 }
-//---------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------
+void CCentralAbstractInterface::buildGroupLists()
+{  
+  for (std::map<int,QString>::iterator it = firstNameList_.begin(); it != firstNameList_.end(); it++)
+  {
+    addGroup(it->first, it->second);
+  }
+}
+
+//---------------------------------------------------------------------------------------
 void CCentralAbstractInterface::addGroup()
 {
   bool ok_name;
@@ -70,6 +79,7 @@ void CCentralAbstractInterface::addGroup()
     getCurrentGroup()->openProperties();
   }
 }
+
 //---------------------------------------------------------------------------------------
 void CCentralAbstractInterface::addGroup(int number, QString name)
 {
@@ -338,29 +348,6 @@ void CCentralAbstractInterface::checkGroupName(QString number)
     // Weitere Bearbeitung sperren
     inputList_.at(1)->setDisabled(true);
   }
-  
-  
-//   // Überprüfung in allen Gruppen, ob Nummer bereits vergeben
-//   for (int i = 0; i < sLayout_->count(); i++)
-//   {
-//     // Holen der Gruppe
-//     CGroupInterface* actualGroup = dynamic_cast<CGroupInterface*>(sLayout_->widget(i));
-// 
-//     // Überprüfung, ob Nummer "numb" in dieser Gruppe vorhanden
-//     for (int row = 0; row < actualGroup->getTable()->rowCount(); row++)
-//     {
-//       // Wenn "numb" gefunden
-//       if (actualGroup->getTable()->item(row, 0)->text().toInt() == numb)
-//       {
-//         // Namen holen
-//         QString name = actualGroup->getTable()->item(row, 1)->text();
-// 
-//         // Namen in Input setzen und weitere Bearbeitung sperren
-//         inputList_.at(1)->setText(name);
-//         inputList_.at(1)->setDisabled(true);
-//       }
-//     }
-//   }
 }
 //---------------------------------------------------------------------------------------
 

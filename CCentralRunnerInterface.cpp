@@ -10,6 +10,7 @@ CCentralRunnerInterface::CCentralRunnerInterface () : CCentralAbstractInterface(
   buildInputLayout();
   buildInputValidators();
   buildNameLists();
+  buildGroupLists();
 }
 //---------------------------------------------------------------------------------------
 
