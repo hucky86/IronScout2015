@@ -439,7 +439,7 @@ void CCentralAbstractInterface::load(std::stringstream& stream)
       getline(stream,name,'\t');
       
       // Neues groupInterface anlegen
-      addGroup(number, QString(name.c_str()));
+      changeGroup(number);
         
       // Laden der openProperties
       getCurrentGroup()->loadProperties(stream);
