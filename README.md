@@ -11,4 +11,6 @@ ToDo:
 --> Abfrage, ob eine Läufergruppe, die einen Joker gezogen hat, auch nicht den Posten bewertet hat.
 --> Richtige Antworten der unbemannten Posten einfügen.
 --> Wird im Bearbeiten Modus eines Eintrages dieser gelöscht, stürzt das Programm ab.
+--> Rote Markierung wird nich gelöscht, wenn danach bearbeitet wird. Bzw. bearbetetes Feld wird nicht rot markiert.
+--> Eintrag löschen löscht alles.
 

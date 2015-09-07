@@ -179,6 +179,8 @@ void CCentralAbstractInterface::addEntry()
   // Holen der aktuellen Gruppe
   CGroupInterface* group = getCurrentGroup();
   
+  group->getTable()->setSortingEnabled(false);
+  
   // Tabelle wieder auf weiß setzen
   group->setWhiteTable();
   
@@ -218,6 +220,8 @@ void CCentralAbstractInterface::addEntry()
     // Input leeren
     emptyInput();
   }
+  
+  group->getTable()->setSortingEnabled(true);
   
 }
 //---------------------------------------------------------------------------------------

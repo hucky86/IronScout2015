@@ -49,6 +49,10 @@ void CGroupInterface::buildTable()
 
   // Nur Auswahl eines Items im table erlauben
   table_->setSelectionMode(QAbstractItemView::SingleSelection);
+  
+  // Sortieren aktivieren
+  table_->setSortingEnabled(true);
+  table_->sortByColumn(0,Qt::AscendingOrder);
 }
 //---------------------------------------------------------------------------------------
 
@@ -66,7 +70,15 @@ void CGroupInterface::addTableEntry(const QList<QLineEdit*> list)
     
     // Einfügen in die Tabelle
     table_->setItem(table_->rowCount() - 1, i, p);
-    p->setText(list.at(i)->text());
+    
+    if(i == 0)
+    {
+      p->setData(Qt::DisplayRole, list.at(i)->text().toInt());
+    }
+    else
+    {
+      p->setText(list.at(i)->text());
+    }
   }
 }
 //---------------------------------------------------------------------------------------
