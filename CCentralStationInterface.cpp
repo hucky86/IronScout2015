@@ -15,7 +15,7 @@ CCentralStationInterface::CCentralStationInterface () : CCentralAbstractInterfac
 
 void CCentralStationInterface::buildInputValidators()
 {
-  inputList_.at(0)->setValidator(new QIntValidator(0, 200, inputList_.at(0)));
+  inputList_.at(0)->setValidator(new QIntValidator(0, 123, inputList_.at(0)));
   inputList_.at(2)->setValidator(new QIntValidator(3, 10, inputList_.at(2)));
   inputList_.at(3)->setValidator(new QRegExpValidator(QRegExp(QString("ja"), Qt::CaseSensitive, QRegExp::FixedString)));
   inputList_.at(4)->setValidator(new QIntValidator(0, 50, inputList_.at(2)));
