@@ -288,6 +288,7 @@ void CCentralAbstractInterface::changeToEditStatus(bool editStatus)
   {
     bInputNew_->setDisabled(true);
     bEdit_->setDisabled(false);
+    bInputDelete_->setDisabled(true);
     inputList_.at(1)->setDisabled(true);
     inputList_.at(0)->setDisabled(true);
   }
@@ -296,6 +297,7 @@ void CCentralAbstractInterface::changeToEditStatus(bool editStatus)
   {
     bInputNew_->setDisabled(false);
     bEdit_->setDisabled(true);
+    bInputDelete_->setDisabled(false);
     inputList_.at(1)->setDisabled(false);
     inputList_.at(0)->setDisabled(false);
   }
