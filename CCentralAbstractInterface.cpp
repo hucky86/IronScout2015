@@ -33,6 +33,7 @@ CCentralAbstractInterface::CCentralAbstractInterface()
   connect(bDelete_, SIGNAL(clicked()), this, SLOT(deleteGroup()));
   connect(dropDown_, SIGNAL(activated(int)), this, SLOT(changeGroup(int)));
   connect(editProperties_, SIGNAL(clicked()), this, SLOT(openProperties()));
+  connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
 }
 
 //---------------------------------------------------------------------------------------
@@ -98,7 +99,6 @@ void CCentralAbstractInterface::addGroup(int number, QString name)
   
   connect(getCurrentGroup()->getTable(), SIGNAL(cellDoubleClicked(int,int)), this, SLOT(editInput()));
   connect(getCurrentGroup()->getTable(), SIGNAL(cellPressed(int,int)), this, SLOT(resumeEditInput()));
-  connect(bInputDelete_, SIGNAL(clicked()), this, SLOT(deleteEntry()));
 }
 
 //---------------------------------------------------------------------------------------
