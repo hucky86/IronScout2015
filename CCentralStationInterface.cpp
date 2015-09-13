@@ -42,6 +42,8 @@ void CCentralStationInterface::setJoker(QString text)
     inputList_.at(4)->setText(QString(""));
     inputList_.at(5)->setDisabled(true);
     inputList_.at(5)->setText(QString(""));
+    
+    checkForOtherJokers(inputList_.at(0)->text().toInt());
   }
 
   else
@@ -56,6 +58,41 @@ void CCentralStationInterface::assignLists(std::map< int, QString > runner, std:
 {
   firstNameList_ = station;
   secondNameList_ = runner;
+}
+//---------------------------------------------------------------------------------------
+
+void CCentralStationInterface::checkForOtherJokers(int number)
+{
+  int counter = 0;
+  
+  for (int i = 0; i < sLayout_->count(); i++)
+  {
+    CStationInterface* st = dynamic_cast<CStationInterface*>(sLayout_->widget(i));
+    
+    for (int j = 0; j < st->getRowCount(); j++)
+    {
+      if(st->getNumberAt(j) == number && st->getJokerAt(j))
+      {
+        counter++;
+      }
+    }
+  }
+  
+  if(counter > 1)
+  {
+    // Fehlermeldung
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Gruppe hat bereits 2 Joker gesetzt");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    int ret = msgBox.exec();
+    
+    // Zurücksetzen
+    inputList_.at(3)->setText(QString(""));
+    inputList_.at(4)->setDisabled(false);
+    inputList_.at(5)->setDisabled(false);
+  }
 }
 
 

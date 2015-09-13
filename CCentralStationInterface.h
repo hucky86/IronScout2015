@@ -37,6 +37,8 @@ class CCentralStationInterface : public CCentralAbstractInterface
     virtual CGroupInterface* newGroup(QString name, int number);
     // Ordnet dem Interface die Gruppenlisten zu
     virtual void assignLists(std::map<int,QString> runner,std::map<int,QString> station);
+    // Prüfen, ob bereits mehr als 2 Joker benutzt wurden
+    void checkForOtherJokers(int number);
 
 private slots:
     // Wenn Joker auf "ja" gesetzt wird
