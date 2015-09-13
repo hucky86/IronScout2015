@@ -127,8 +127,10 @@ private slots:
     void addGroup(int number, QString name);
     // löschen der aktuellen Gruppe
     void deleteGroup();
-    // ändern der angewählten Gruppe
+    // ändern der angewählten Gruppe gemäß QStackedLayout index
     void changeGroup(int index);
+    // ändern der angewählten Gruppe mithilfe der Gruppennummer
+    void changeGroupByNumber (int number);
     // Eintrag zum table hinzufügen
     void addEntry();
     // Eintrag im table löschen

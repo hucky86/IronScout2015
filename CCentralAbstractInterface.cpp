@@ -133,6 +133,22 @@ void CCentralAbstractInterface::changeGroup(int index)
 }
 //---------------------------------------------------------------------------------------
 
+void CCentralAbstractInterface::changeGroupByNumber(int number)
+{
+  for (int i = 0; i < sLayout_->count(); i++)
+  {
+    CGroupInterface* gr = dynamic_cast<CGroupInterface*> (sLayout_->widget(i));
+    
+    if(gr->getNumber() == number)
+    {
+      sLayout_->setCurrentWidget(gr);
+      
+      return;
+    }
+  }
+}
+//---------------------------------------------------------------------------------------
+
 void CCentralAbstractInterface::buildInputLayout()
 {
   // Bauen des Eingabefeldes
@@ -445,7 +461,7 @@ void CCentralAbstractInterface::load(std::stringstream& stream)
       getline(stream,name,'\t');
       
       // Neues groupInterface anlegen
-      changeGroup(number);
+      changeGroupByNumber(number);
         
       // Laden der openProperties
       getCurrentGroup()->loadProperties(stream);
