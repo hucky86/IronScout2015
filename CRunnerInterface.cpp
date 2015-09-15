@@ -22,7 +22,7 @@ int CRunnerInterface::taxiTicket()
 
 int CRunnerInterface::usedTime()
 {
-  int time = destinationTime_->time().minute() - startTime_->time().minute();
+  int time = startTime_->dateTime().secsTo(destinationTime_->dateTime());
   
   return time;
 }

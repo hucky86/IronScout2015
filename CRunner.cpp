@@ -119,12 +119,14 @@ void CRunner::evaluate()
   // TODO: Verspätete Starter berücksichtigen!
   
   // Zur Verfügung stehende Gesamtzeit: 22h
-  const int totalTime = 1320;
+  const int totalTime = 79200;
+  int usedTime = time_ - totalTime;
   
-  if(time_ - totalTime > 5)  {pointSum -= 25;}
-  if(time_ - totalTime > 15) {pointSum -= 50;}
-  if(time_ - totalTime > 30) {pointSum -= 100;}
-  if(time_ - totalTime > 60)  {disqualified_ = true;}
+  if(usedTime <= 300)  {}
+  if(usedTime > 300 && usedTime <= 900)  {pointSum -= 25;}
+  else if(usedTime > 900 && usedTime <= 1800) {pointSum -= 50;}
+  else if(usedTime > 1800 && usedTime <= 3600) {pointSum -= 100;}
+  else if(usedTime > 3600)  {disqualified_ = true;}
   
   pointSum_ = pointSum;
 }

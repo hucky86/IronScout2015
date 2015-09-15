@@ -629,9 +629,10 @@ void CCentralAbstractInterface::buildNameLists()
   station[10] = "Glück Auf!";
   station[11] = "Insomnia";
   station[12] = "Quest of the Gnapf";
-  station[13] = "2. Wahl";
+  station[13] = "Todesfluch des Stachelhalsbandes";
   station[14] = "Bezirk Paderborn im Legofieber";
   station[15] = "Denn sie wissen nicht was sie tun";
+  station[16] = "Das Beste kommt zum Schluss";
   
   assignLists(runner, station);
 }
