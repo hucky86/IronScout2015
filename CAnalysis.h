@@ -38,6 +38,8 @@ public:
     void evaluate();
     // Schreibt Ergebnisliste
     void writeResult();
+    // Sortierfunktion für die Ausgabe
+    static bool sortResult(CGroup* i, CGroup* j);
 
   private:
 

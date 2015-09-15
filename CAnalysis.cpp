@@ -101,13 +101,32 @@ void CAnalysis::writeResult()
   
   out.open("Ergebnisse.txt", ios::out);
   
+  vector<CGroup*> resultVec;
+  
   for (map<int, CGroup*>::iterator it = groupList_.begin(); it != groupList_.end(); it++)
   {
-    out << it->second->getNumber() << "\t" << it->second->getName() << "\t" << it->second->pointSum_ << endl;
+    resultVec.push_back(it->second);
   }
-
+  
+  std::sort(resultVec.begin(), resultVec.end(), sortResult);
+  
+  out << "Platzierung\tGruppennummer\tGruppenname\tGesamtpunkte" << endl;
+  
+  int i = 1;
+  
+  for (vector<CGroup*>::iterator it = resultVec.begin(); it != resultVec.end(); it++)
+  {
+    out << i << "\t"  << (*it)->getNumber() << "\t" << (*it)->getName() << "\t" << (*it)->pointSum_ << endl;
+  
+    i++;
+  }
+  
   out.close();
 }
 //---------------------------------------------------------------------------------------
 
-
+bool CAnalysis::sortResult(CGroup* i, CGroup* j)
+{
+  return (i->pointSum_ > j->pointSum_);
+}
+//---------------------------------------------------------------------------------------
