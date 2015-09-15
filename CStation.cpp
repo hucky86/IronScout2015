@@ -49,7 +49,7 @@ void CStation::evaluate()
   }
   
   // Durchschnitt bilden
-  pointSum_ = (double) pointSum / (double) (gameIdea_.size() + 1);
+  pointSum_ = (double) pointSum / (double) gameIdea_.size();
   
   // Abzug für zu viele Stationsbetreuer
   if(peopleAtStation_ > 12)
