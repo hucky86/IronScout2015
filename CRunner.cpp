@@ -129,5 +129,10 @@ void CRunner::evaluate()
   else if(usedTime > 3600)  {disqualified_ = true;}
   
   pointSum_ = pointSum;
+  
+  if(disqualified_)
+  {
+    pointSum_ = -1000;
+  }
 }
 

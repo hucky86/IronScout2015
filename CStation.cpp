@@ -58,4 +58,9 @@ void CStation::evaluate()
     
     pointSum_ -= tooManyPeople;
   }
+  
+  if(disqualified_)
+  {
+    pointSum_ = -1000;
+  }
 }
