@@ -49,30 +49,34 @@ void CRunnerInterface::buildProperties()
   
   // Disqualifiziert?
   disqualified_ = new QCheckBox;
+  
   // Läufer am Start
   runnerAtStart_ = new QLineEdit;
   runnerAtStart_->setValidator(new QIntValidator(4, 10, this));
+  
   // Taxischeine im Ziel
   taxiTicket_ = new QLineEdit;
   taxiTicket_->setValidator(new QIntValidator(0, 10, this));
+  
   // Startzeit
   startTime_ = new QDateTimeEdit;
   startTime_->setDateTime(QDateTime(QDate(2015,10,9), QTime(13,0)));
+  
   // Zielzeit
   destinationTime_ = new QDateTimeEdit;
   destinationTime_->setDateTime(QDateTime(QDate(2015,10,10), QTime(20,0)));
   
   // Zusammenbau des Gruppenspezifischen Widget
-  gLayout_->addWidget(new QLabel("Disqualifiziert"),0,0);
-  gLayout_->addWidget(disqualified_,0,1);
-  gLayout_->addWidget(new QLabel("Läufer am Start"),1,0);
-  gLayout_->addWidget(runnerAtStart_,1,1);
+  gLayout_->addWidget(new QLabel("Läufer am Start"),0,0);
+  gLayout_->addWidget(runnerAtStart_,0,1);
+  gLayout_->addWidget(new QLabel("Startzeit"),1,0);
+  gLayout_->addWidget(startTime_,1,1);
   gLayout_->addWidget(new QLabel("Taxischeine im Ziel"),2,0);
   gLayout_->addWidget(taxiTicket_,2,1);
-  gLayout_->addWidget(new QLabel("Startzeit"),3,0);
-  gLayout_->addWidget(startTime_,3,1);
-  gLayout_->addWidget(new QLabel("Ankunftszeit"),4,0);
-  gLayout_->addWidget(destinationTime_,4,1);
+  gLayout_->addWidget(new QLabel("Ankunftszeit"),3,0);
+  gLayout_->addWidget(destinationTime_,3,1);
+  gLayout_->addWidget(new QLabel("Disqualifiziert"),4,0);
+  gLayout_->addWidget(disqualified_,4,1);
   gLayout_->addWidget(new QLabel("Unbemannte Posten erreicht und beantwortet?"),5,0);
   
   properties_->setLayout(gLayout_);
@@ -82,11 +86,11 @@ void CRunnerInterface::buildProperties()
 void CRunnerInterface::buildUncrewedStation()
 {
   // Anzahl der unbemannten Posten
-  int nUncrewedStations = 10;
+  int nUncrewedStations = 9;
   int infos = gLayout_->rowCount();
   
   // Für jede unbemannte Station ein Eintrag
-  for (int i = 1; i < nUncrewedStations; i++)
+  for (int i = 1; i <= nUncrewedStations; i++)
   { 
     // Anlegen der Referenzen
     uncrewedStation_.push_back(new QCheckBox);
