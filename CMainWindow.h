@@ -69,6 +69,7 @@ private slots:
   void changeToRunner();
   void analyseRunner();
   void analyseStation();
+  void compareDatabase();
   
   
 signals:

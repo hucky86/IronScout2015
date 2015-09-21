@@ -50,6 +50,8 @@ class CCentralAbstractInterface : public QWidget
     void save(std::ofstream& saveFile);
     // Laden der Einträge
     void load(std::stringstream& loadFile);
+    // Vergleichen zweier Interfaces
+    void compare (CCentralAbstractInterface* other);
  
   protected:
   

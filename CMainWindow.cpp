@@ -43,15 +43,21 @@ QMenuBar* CMainWindow::createMenuBar()
   modus->addAction("Stationsbögen eingeben", this, SLOT(changeToStation()));
   modus->addAction("Läuferbögen eingeben", this, SLOT(changeToRunner()));
 
-  // Hinzufügen des Eintrages "Eingabemodus"
+  // Hinzufügen des Eintrages "Auswertung"
   QMenu* analysis = new QMenu("Auswertung");
 
   analysis->addAction("Stationen auswerten", this, SLOT(analyseStation()));
   analysis->addAction("Läufer auswerten", this, SLOT(analyseRunner()));
   
+  //Hizufügen des Eintrages "Vergleiche"
+  QMenu* compare = new QMenu("Vergleichen");
+  
+  compare->addAction("Datenbanken vergleichen", this, SLOT(compareDatabase()));
+  
   mbar->addMenu(fileMenu);
   mbar->addMenu(modus);
   mbar->addMenu(analysis);
+  mbar->addMenu(compare);
   
   return mbar;
 }
@@ -153,7 +159,25 @@ void CMainWindow::analyseStation()
   // Schreiben der Ergebnisse
   stationAnalyse.writeResult();
 }
+//---------------------------------------------------------------------------------------
 
-
-
-
+void CMainWindow::compareDatabase()
+{
+  QString path = QFileDialog::getOpenFileName();
+  
+  std::ifstream loadFile(path.toStdString().c_str(), std::ifstream::binary);
+  std::stringstream stream; 
+  stream << loadFile.rdbuf();
+  
+  CCentralStationInterface* centralStation = new CCentralStationInterface;
+  CCentralRunnerInterface* centralRunner = new CCentralRunnerInterface; 
+  
+  centralStation->load(stream);
+  centralRunner->load(stream);
+  
+  centralStation_->compare(centralStation);
+  centralRunner_->compare(centralRunner);
+  
+  delete centralStation;
+  delete centralRunner;
+}

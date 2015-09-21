@@ -490,6 +490,15 @@ void CCentralAbstractInterface::openProperties()
   }
 }
 //---------------------------------------------------------------------------------------
+void CCentralAbstractInterface::compare(CCentralAbstractInterface* other)
+{
+  // Alle Gruppen miteinander vergleichen
+  for (int i = 0; i < getGroupNumber(); i++)
+  {
+    
+  }
+}
+//---------------------------------------------------------------------------------------
 
 void CCentralAbstractInterface::buildNameLists()
 {
