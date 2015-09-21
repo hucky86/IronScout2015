@@ -90,6 +90,23 @@ void CStationInterface::loadProperties(std::stringstream& stream)
   getline(stream,parser,'\t');
   numberPeople_->setText(QString(parser.c_str()));
 }
+//---------------------------------------------------------------------------------------
+
+bool CStationInterface::compareProperties(CGroupInterface* other)
+{
+  CStationInterface* otherStation = dynamic_cast<CStationInterface*>(other);
+  
+  bool test1 = this->isdisqualified();
+  bool test2 = otherStation->isdisqualified();
+  
+  if(this->disqualified_->checkState() != otherStation->disqualified_->checkState() ||
+     this->getNumberPeople() != otherStation->getNumberPeople())
+  {
+    return false;
+  }
+  
+  return true;
+}
 
 
 

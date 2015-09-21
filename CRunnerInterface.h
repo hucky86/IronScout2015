@@ -45,6 +45,12 @@ class CRunnerInterface : public CGroupInterface
     virtual void loadProperties(std::stringstream& stream);
  
   private:
+// Memberfunktionen:
+    // Eigenschaften vergleichen
+    virtual bool compareProperties(CGroupInterface* other);
+    // Unbemannte Stationen vergleichen
+    bool compareUncrewedStations(CRunnerInterface* otherRunner);
+    
 // Widgets:
     // Läufer am Start
     QLineEdit* runnerAtStart_;

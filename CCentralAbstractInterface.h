@@ -51,7 +51,7 @@ class CCentralAbstractInterface : public QWidget
     // Laden der Einträge
     void load(std::stringstream& loadFile);
     // Vergleichen zweier Interfaces
-    void compare (CCentralAbstractInterface* other);
+    bool compare (CCentralAbstractInterface* other);
  
   protected:
   

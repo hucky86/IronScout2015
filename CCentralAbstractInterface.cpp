@@ -490,13 +490,18 @@ void CCentralAbstractInterface::openProperties()
   }
 }
 //---------------------------------------------------------------------------------------
-void CCentralAbstractInterface::compare(CCentralAbstractInterface* other)
+bool CCentralAbstractInterface::compare(CCentralAbstractInterface* other)
 {
   // Alle Gruppen miteinander vergleichen
   for (int i = 0; i < getGroupNumber(); i++)
   {
-    
+    if(getGroupAt(i)->compare(other->getGroupAt(i)) == false)
+    {
+        return false;
+    }
   }
+  
+  return true;
 }
 //---------------------------------------------------------------------------------------
 

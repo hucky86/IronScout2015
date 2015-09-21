@@ -257,4 +257,38 @@ void CGroupInterface::loadTable(std::stringstream& stream)
 
 //---------------------------------------------------------------------------------------
 
-
+bool CGroupInterface::compare(CGroupInterface* other)
+{
+  int thisNumber = this->getNumber();
+  int otherNumber = other->getNumber();
+  
+  // Gruppennummer vergleichen
+  if(thisNumber != otherNumber)
+  {
+    // Meldung
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Gruppennummern stimmen nicht überein");
+    msgBox.setInformativeText("this: " + QString(QString::number(thisNumber))
+      + " ;other: " + QString(QString::number(otherNumber)));
+    msgBox.exec();
+    
+    return false;
+  }
+  
+  // Properties Vergleichen
+  if(this->compareProperties(other) == false)
+  {
+    // Meldung
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Gruppeneigenschaften stimmen nicht überein");
+    msgBox.setInformativeText("this: " + QString(QString::number(thisNumber))
+      + " ;other: " + QString(QString::number(otherNumber)));
+    msgBox.exec();
+    
+    return false;
+  }
+  
+  return true;
+}

@@ -39,6 +39,9 @@ class CStationInterface : public CGroupInterface
     virtual void loadProperties(std::stringstream& stream);
     
   private:
+//Memberfunktionen:
+    virtual bool compareProperties(CGroupInterface* other);
+    
 //Widgets:
     // Anzahl der Personen an der Station
     QLineEdit* numberPeople_;

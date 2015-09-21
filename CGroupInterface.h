@@ -23,6 +23,7 @@
 #include <string>
 #include <sstream>
 #include <QCheckBox>
+#include <QMessageBox>
  
 class CGroupInterface : public QWidget
 {
@@ -68,6 +69,8 @@ public:
     virtual void loadProperties(std::stringstream& stream) = 0;
     // Laden der Tabelleneinträge im TableWidget
     void loadTable(std::stringstream& stream);
+    // Vergleich zweier GroupInterface's
+    bool compare(CGroupInterface* other);
 
   private:
 
@@ -82,6 +85,8 @@ public:
 //Memberfunktionen:
     // Gekapselte Funktion zum Aufbau des QTableWidget
     void buildTable ();
+    // Vergleich der Eigenschaften
+    virtual bool compareProperties(CGroupInterface* other) = 0;
 
 // Layouts:
     // Layout für Name und Tabelle

@@ -184,6 +184,31 @@ int CRunnerInterface::getAtmosphereAt(int row)
   
   return atmosphere;
 }
+//---------------------------------------------------------------------------------------
+
+bool CRunnerInterface::compareProperties(CGroupInterface* other)
+{
+  CRunnerInterface* otherRunner = dynamic_cast<CRunnerInterface*>(other);
+  
+  if(this->runnerAtStart() != otherRunner->runnerAtStart() ||
+     this->taxiTicket() != otherRunner->taxiTicket() ||
+     this->usedTime() != otherRunner->usedTime() ||
+     this->compareUncrewedStations(otherRunner)
+    )
+  {
+    return false;
+  }
+  
+  return true;
+}
+//---------------------------------------------------------------------------------------
+
+bool CRunnerInterface::compareUncrewedStations(CRunnerInterface* otherRunner)
+{
+  return std::equal(uncrewedStation_.begin(), 
+                    uncrewedStation_.end(), 
+                    otherRunner->uncrewedStation_.begin());
+}
 
 
 

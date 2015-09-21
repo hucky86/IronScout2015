@@ -8,4 +8,5 @@ ToDo:
 --> Richtige Antworten der unbemannten Posten einfügen.
 --> Rote Markierung wird nich gelöscht, wenn danach bearbeitet wird. Bzw. bearbetetes Feld wird nicht rot markiert.
 --> Haben sich Station und Läufer gegenseitig bewertet?
+--> Beim Laden abbrechen führt zum Absturz
 
