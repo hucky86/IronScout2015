@@ -96,9 +96,6 @@ bool CStationInterface::compareProperties(CGroupInterface* other)
 {
   CStationInterface* otherStation = dynamic_cast<CStationInterface*>(other);
   
-  bool test1 = this->isdisqualified();
-  bool test2 = otherStation->isdisqualified();
-  
   if(this->disqualified_->checkState() != otherStation->disqualified_->checkState() ||
      this->getNumberPeople() != otherStation->getNumberPeople())
   {

@@ -163,6 +163,11 @@ int CGroupInterface::getNumber()
   return number_;
 }
 //---------------------------------------------------------------------------------------
+QString CGroupInterface::getName()
+{
+  return description_->text();
+}
+//---------------------------------------------------------------------------------------
 
 bool CGroupInterface::isdisqualified()
 {
@@ -270,7 +275,7 @@ bool CGroupInterface::compare(CGroupInterface* other)
     msgBox.setIcon(QMessageBox::Warning);
     msgBox.setText("Gruppennummern stimmen nicht überein");
     msgBox.setInformativeText("this: " + QString(QString::number(thisNumber))
-      + " ;other: " + QString(QString::number(otherNumber)));
+      + "\nother: " + QString(QString::number(otherNumber)));
     msgBox.exec();
     
     return false;
@@ -283,12 +288,57 @@ bool CGroupInterface::compare(CGroupInterface* other)
     QMessageBox msgBox;
     msgBox.setIcon(QMessageBox::Warning);
     msgBox.setText("Gruppeneigenschaften stimmen nicht überein");
-    msgBox.setInformativeText("this: " + QString(QString::number(thisNumber))
-      + " ;other: " + QString(QString::number(otherNumber)));
+    msgBox.setInformativeText("this: " + this->getName()
+      + "\nother: " + other->getName());
     msgBox.exec();
     
     return false;
   }
   
+  // Tabelleneinträge vergleichen
+  if(this->compareTable(other) == false)
+  { 
+    return false;
+  }
+  
   return true;
+}
+//---------------------------------------------------------------------------------------
+
+bool CGroupInterface::compareTable(CGroupInterface* other)
+{
+  //Vergleich, ob die Anzahl der Einträge identisch ist
+  if(this->getRowCount() != other->getRowCount())
+  {
+    // Meldung
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Unterschiedliche Anzahl der Tabelleneinträge");
+    msgBox.setInformativeText("this: " + this->getName()
+      + "\nother: " + other->getName());
+    msgBox.exec();
+    
+    return false;
+  }
+    
+  for(int i = 0; i < table_->rowCount(); i++)
+  {
+    for(int j = 0; j < table_->columnCount(); j++)
+    {
+      if(this->getTable()->item(i,j)->text() != other->getTable()->item(i,j)->text())
+      {
+        // Meldung
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setText("Unterschiedlicher Tabelleneintrag");
+        msgBox.setInformativeText("this: " + this->getName()
+          + "\nother: " + other->getName()
+          + "\n" + "Zeile: " + QString::number(i)
+          + "\nSpalte: " + QString::number(j));
+        msgBox.exec();
+        
+        return false;
+      }
+    }
+  }
 }

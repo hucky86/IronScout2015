@@ -53,6 +53,8 @@ public:
     virtual void openProperties();
     // Rückgabe der Gruppennummer
     int getNumber();
+    // Rückgabe des Gruppennamens
+    QString getName();
     // Gibt die Gruppennummer zu einer Zeile
     int getNumberAt(int row);
     // Gibt den Gruppennamen zu einer Zeile
@@ -87,6 +89,8 @@ public:
     void buildTable ();
     // Vergleich der Eigenschaften
     virtual bool compareProperties(CGroupInterface* other) = 0;
+    // Vergleich der Tabelleneinträge
+    bool compareTable (CGroupInterface* other);
 
 // Layouts:
     // Layout für Name und Tabelle

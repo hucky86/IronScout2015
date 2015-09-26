@@ -86,25 +86,25 @@ void CRunnerInterface::buildProperties()
 void CRunnerInterface::buildUncrewedStation()
 {
   // Anzahl der unbemannten Posten
-  int nUncrewedStations = 9;
+  int nUncrewedStations = 8;
   int infos = gLayout_->rowCount();
   
   // Für jede unbemannte Station ein Eintrag
-  for (int i = 1; i <= nUncrewedStations; i++)
+  for (int i = 0; i < nUncrewedStations; i++)
   { 
     // Anlegen der Referenzen
     uncrewedStation_.push_back(new QCheckBox);
     
     // Anlegen der Einträge
     int row = i+infos;
-    QString text = "Nr " + QString::number(i) + ":";
+    QString text = "Nr " + QString::number(i+1) + ":";
     
     gLayout_->addWidget(new QLabel(text),row,0);
     gLayout_->addWidget(uncrewedStation_.back(),row,1);
     uncrewedStation_.back()->setTristate();
   }
   
-  gLayout_->addWidget(ok_,infos+nUncrewedStations,0);
+  gLayout_->addWidget(ok_,infos+nUncrewedStations+1,0);
   
 }
 //---------------------------------------------------------------------------------------
@@ -193,8 +193,7 @@ bool CRunnerInterface::compareProperties(CGroupInterface* other)
   if(this->runnerAtStart() != otherRunner->runnerAtStart() ||
      this->taxiTicket() != otherRunner->taxiTicket() ||
      this->usedTime() != otherRunner->usedTime() ||
-     this->compareUncrewedStations(otherRunner)
-    )
+     this->compareUncrewedStations(otherRunner) == false)
   {
     return false;
   }
@@ -205,9 +204,15 @@ bool CRunnerInterface::compareProperties(CGroupInterface* other)
 
 bool CRunnerInterface::compareUncrewedStations(CRunnerInterface* otherRunner)
 {
-  return std::equal(uncrewedStation_.begin(), 
-                    uncrewedStation_.end(), 
-                    otherRunner->uncrewedStation_.begin());
+  for(int i = 0; i < this->uncrewedStation_.size(); i++)
+  {
+    if(this->uncrewedStation_[i]->checkState() != otherRunner->uncrewedStation_[i]->checkState())
+    {
+      return false;
+    }
+  }
+  
+  return true;
 }
 
 
