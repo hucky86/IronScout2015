@@ -341,4 +341,5 @@ bool CGroupInterface::compareTable(CGroupInterface* other)
       }
     }
   }
+  return true;
 }

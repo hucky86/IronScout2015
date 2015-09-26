@@ -175,8 +175,15 @@ void CMainWindow::compareDatabase()
   centralStation->load(stream);
   centralRunner->load(stream);
   
-  centralStation_->compare(centralStation);
-  centralRunner_->compare(centralRunner);
+  if(centralStation_->compare(centralStation) &&
+     centralRunner_->compare(centralRunner))
+  {
+    // Bestätigung ausgeben
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Datenbanken identisch!");
+    msgBox.exec();
+  }
   
   delete centralStation;
   delete centralRunner;
