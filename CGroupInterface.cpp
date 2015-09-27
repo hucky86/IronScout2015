@@ -51,7 +51,6 @@ void CGroupInterface::buildTable()
   table_->setSelectionMode(QAbstractItemView::SingleSelection);
   
   // Sortieren aktivieren
-  table_->setSortingEnabled(true);
   table_->sortByColumn(0,Qt::AscendingOrder);
 }
 //---------------------------------------------------------------------------------------
