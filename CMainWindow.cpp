@@ -94,8 +94,11 @@ void CMainWindow::loadFile()
   std::stringstream stream; 
   stream << loadFile.rdbuf();
   
-  centralStation_->load(stream);
-  centralRunner_->load(stream);
+  if(stream != NULL)
+  {
+    centralStation_->load(stream);
+    centralRunner_->load(stream);
+  }
 }
 //---------------------------------------------------------------------------------------
 

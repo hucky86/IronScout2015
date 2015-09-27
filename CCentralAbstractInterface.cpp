@@ -129,6 +129,7 @@ void CCentralAbstractInterface::deleteGroup()
 
 void CCentralAbstractInterface::changeGroup(int index)
 {
+  dropDown_->setCurrentIndex(index);
   sLayout_->setCurrentIndex(index);
 }
 //---------------------------------------------------------------------------------------
@@ -448,6 +449,9 @@ void CCentralAbstractInterface::load(std::stringstream& stream)
       // Abbruch, wenn Ende des Baumes erreicht
       if(parser == "CCentralAbstractInterface")
       {
+        // Aktivieren des ersten Eintrages
+        changeGroup(0);
+        
         return;
       }
     
