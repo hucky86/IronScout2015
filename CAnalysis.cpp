@@ -95,11 +95,12 @@ void CAnalysis::evaluate()
 }
 //---------------------------------------------------------------------------------------
 
-void CAnalysis::writeResult()
+void CAnalysis::writeResult(std::string type)
 {
   fstream out;
+  std::string fileName = "Ergebnisse_" + type + ".txt";
   
-  out.open("Ergebnisse.txt", ios::out);
+  out.open(fileName.c_str(), ios::out);
   
   vector<CGroup*> resultVec;
   

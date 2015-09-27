@@ -37,7 +37,7 @@ public:
     // Auswerten
     void evaluate();
     // Schreibt Ergebnisliste
-    void writeResult();
+    void writeResult(std::string type);
     // Sortierfunktion für die Ausgabe
     static bool sortResult(CGroup* i, CGroup* j);
 

@@ -138,7 +138,7 @@ void CMainWindow::analyseRunner()
   runnerAnalyse.evaluate();
   
   // Schreiben der Ergebnisse
-  runnerAnalyse.writeResult();
+  runnerAnalyse.writeResult("Läufer");
 }
 //---------------------------------------------------------------------------------------
 
@@ -160,7 +160,7 @@ void CMainWindow::analyseStation()
   stationAnalyse.evaluate();
   
   // Schreiben der Ergebnisse
-  stationAnalyse.writeResult();
+  stationAnalyse.writeResult("Stationen");
 }
 //---------------------------------------------------------------------------------------
 
