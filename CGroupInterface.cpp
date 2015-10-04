@@ -18,6 +18,7 @@ CGroupInterface::CGroupInterface(QStringList parameter, QString name, int number
   // Ok Button für Gruppenspezifische Eingaben
   ok_ = new QPushButton;
   ok_->setText("OK");
+  ok_->setAutoDefault(true);
   
   // connections
   connect(ok_, SIGNAL(clicked()), this, SLOT(closeProperties()));
