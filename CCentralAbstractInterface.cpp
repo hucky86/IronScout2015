@@ -175,6 +175,7 @@ void CCentralAbstractInterface::buildInputLayout()
   
   // Hinzufügen des Bestätigungs-Buttons
   bInputNew_ = new QPushButton("Eintrag hinzufügen");
+  bInputNew_->setAutoDefault(true);
   bEdit_ = new QPushButton("Eintrag bearbeiten");
   
   // Buttons ins Grid einfügen
@@ -186,6 +187,7 @@ void CCentralAbstractInterface::buildInputLayout()
 
   // connections
   connect(bInputNew_, SIGNAL(clicked()), this, SLOT(addEntry()));
+  connect(bInputNew_, SIGNAL(clicked()), this, SLOT(setFocus()));
   connect(bEdit_, SIGNAL(clicked()), this, SLOT(sendEditedInput()));
   connect(inputList_.at(0), SIGNAL(textEdited(QString)), this, SLOT(checkGroupName(QString)));
 }
@@ -508,7 +510,12 @@ bool CCentralAbstractInterface::compare(CCentralAbstractInterface* other)
   return true;
 }
 //---------------------------------------------------------------------------------------
+void CCentralAbstractInterface::setFocus()
+{
+  inputList_.at(0)->setFocus();
+}
 
+//---------------------------------------------------------------------------------------
 void CCentralAbstractInterface::buildNameLists()
 {
   std::map<int,QString> runner;

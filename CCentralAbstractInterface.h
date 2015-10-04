@@ -149,6 +149,8 @@ private slots:
     void checkGroupName(QString number);
     // Öffnet die Properties der aktuellen Gruppe
     void openProperties();
+    // Setzt den Focus auf den ersten Eintrag
+    void setFocus();
     
 signals:
 };
