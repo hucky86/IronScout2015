@@ -22,6 +22,33 @@ void CRunner::setTableEntries(CGroupInterface* interface, int row)
   
   // Anzahl der Läufer bei Station
   nRunner_.push_back(station->getNumberRunnerAt(row));
+  
+  if(joker_.back() == true)
+  {
+    if(nRunner_.back() == 0)
+    {
+      // Fehlermeldung
+      QMessageBox msgBox;
+      msgBox.setIcon(QMessageBox::Warning);
+      msgBox.setText("Fehlende Eingabe in Tabelle");
+      msgBox.setInformativeText(QString::fromStdString(getName()));
+      msgBox.exec();
+    }
+  }
+  else if(joker_.back() == false)
+  {
+    if(points_.back() == 0 ||
+       teamwork_.back() == 0 ||
+       nRunner_.back() == 0)
+    {
+      // Fehlermeldung
+      QMessageBox msgBox;
+      msgBox.setIcon(QMessageBox::Warning);
+      msgBox.setText("Fehlende Eingabe in Tabelle");
+      msgBox.setInformativeText(QString::fromStdString(getName()));
+      msgBox.exec();
+    }
+  }
 }
 //---------------------------------------------------------------------------------------
 
