@@ -33,6 +33,17 @@ void CStation::setGroupEntries(CGroupInterface* interface)
   
   // Läufer beim Start
   peopleAtStation_ = station->getNumberPeople();
+  
+  // Fehlende Eingabe
+  if(peopleAtStation_ == 0)
+  {
+    // Fehlermeldung
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Fehlende Eingabe bei Eigenschaften");
+    msgBox.setInformativeText(QString::fromStdString(getName()));
+    msgBox.exec();
+  }
 }
 //---------------------------------------------------------------------------------------
 
