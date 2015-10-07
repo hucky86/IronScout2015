@@ -138,7 +138,6 @@ void CRunner::evaluate()
   }
   
   // Auswertung der Laufzeit
-  // TODO: Verspätete Starter berücksichtigen!
   
   // Zur Verfügung stehende Gesamtzeit: 22h
   const int totalTime = 79200;

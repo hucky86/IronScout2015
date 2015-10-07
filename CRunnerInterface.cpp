@@ -23,6 +23,12 @@ int CRunnerInterface::taxiTicket()
 int CRunnerInterface::usedTime()
 {
   int time = startTime_->dateTime().secsTo(destinationTime_->dateTime());
+  QDateTime latestTime = QDateTime(QDate(2015,10,9), QTime(18,0));
+  
+  if(startTime_->dateTime() > latestTime)
+  {
+    time += latestTime.secsTo(startTime_->dateTime());
+  }
   
   return time;
 }
