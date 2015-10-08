@@ -49,7 +49,20 @@ void CAnalysis::getData()
   // Holen der Daten aus den Tabelleneinträgen und Abspeichern
   // Durch alle bereits gefundenen Gruppen
   for(map<int, CGroup*>::const_iterator it = groupList_.begin(); it != groupList_.end(); it++)
-  {
+  { 
+    // Durch alle Läuferbögen iterieren und Gruppenspezifische Einträge holen
+    for (int i = 0; i < secondInterface_->getGroupNumber(); i++)
+    {
+      CGroupInterface* group = secondInterface_->getGroupAt(i);
+      
+      // Wenn Gruppe gefunden
+      if(group->getNumber() == it->second->getNumber())
+      {
+        //Abspeichern der Daten
+        it->second->setGroupEntries(group);
+      }
+    }
+    
     // Durch alle im firstInterface iterieren
     for(int i = 0; i < firstInterface_->getGroupNumber(); i++)
     {
@@ -64,19 +77,6 @@ void CAnalysis::getData()
           // Abspeichern der Daten
           it->second->setTableEntries(group, row);
         }
-      }
-    }
-    
-    // Durch alle Läuferbögen iterieren und Gruppenspezifische Einträge holen
-    for (int i = 0; i < secondInterface_->getGroupNumber(); i++)
-    {
-      CGroupInterface* group = secondInterface_->getGroupAt(i);
-      
-      // Wenn Gruppe gefunden
-      if(group->getNumber() == it->second->getNumber())
-      {
-        //Abspeichern der Daten
-        it->second->setGroupEntries(group);
       }
     }
   }

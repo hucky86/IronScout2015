@@ -20,19 +20,6 @@ void CStation::setTableEntries(CGroupInterface* interface, int row)
   
   // Joker
   atmophere_.push_back(runner->getAtmosphereAt(row));
-  
-  // Fehlende Eingabe
-  if(gameIdea_.back() == 0 ||
-     gameDesign_.back() == 0 ||
-     atmophere_.back() == 0)
-  {
-    // Fehlermeldung
-    QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setText("Fehlende Eingabe in Tabelle");
-    msgBox.setInformativeText(QString::fromStdString(getName()));
-    msgBox.exec();
-  }
 }
 //---------------------------------------------------------------------------------------
 

@@ -32,6 +32,19 @@ void CRunner::setTableEntries(CGroupInterface* interface, int row)
     msgBox.setInformativeText(QString::fromStdString(getName()));
     msgBox.exec();
   }
+  
+  if(nRunner_.back() > runnerAtStart_)
+  {
+    // Fehlermeldung
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText("Mehr Läufer an der Station als am Start");
+    msgBox.setInformativeText("Läufername: "
+                              + QString::fromStdString(getName())
+                              + " Bei Station: "
+                              + station->getName());
+    msgBox.exec();
+  }
 }
 //---------------------------------------------------------------------------------------
 
