@@ -56,8 +56,7 @@ void CRunner::setGroupEntries(CGroupInterface* interface)
   uncrewedStations_ = runner->uncrewedStations();
   
   // Fehlende Eingabe
-  if(runnerAtStart_ == 0 ||
-     taxiTicket_ == 0)
+  if(runnerAtStart_ == 0)
   {
     // Fehlermeldung
     QMessageBox msgBox;
