@@ -16,6 +16,7 @@
 #include "CGroup.h"
 #include "CCentralAbstractInterface.h"
 #include "CGroupInterface.h"
+#include "CRunner.h"
 
  using namespace std;
  

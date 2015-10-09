@@ -115,7 +115,16 @@ void CAnalysis::writeResult(std::string type)
   
   for (vector<CGroup*>::iterator it = resultVec.begin(); it != resultVec.end(); it++)
   {
-    out << i << "\t"  << (*it)->getNumber() << "\t" << (*it)->getName() << "\t" << (*it)->pointSum_ << endl;
+    out << i << "\t"  << (*it)->getNumber() << "\t" << (*it)->getName() << "\t" << (*it)->pointSum_ << "\t";
+    
+    if(dynamic_cast<CRunner*> (*it))
+    {
+      CRunner* runner = dynamic_cast<CRunner*> (*it);
+      
+      out << runner->nRunner_.size() << "\t";
+    }
+    
+    out << endl;
   
     i++;
   }

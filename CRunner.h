@@ -31,6 +31,9 @@ public:
     void setTableEntries(CGroupInterface* interface, int row);
     void setGroupEntries(CGroupInterface* interface);
     void evaluate();
+    
+    // Punkte "alle Läufer anwesend"
+    vector<int> nRunner_;
 
 private:
 //Membervariablen:
@@ -46,8 +49,6 @@ private:
   vector<int> teamwork_;
   // "Joker" ja oder nein
   vector<bool> joker_;
-  // Punkte "alle Läufer anwesend"
-  vector<int> nRunner_;
   // Unbemannte Stationen
   vector<Qt::CheckState> uncrewedStations_;
 
